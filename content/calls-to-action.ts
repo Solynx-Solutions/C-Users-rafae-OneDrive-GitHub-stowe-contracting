@@ -19,7 +19,8 @@ export const ctaMessages: ControlledMessageRecord[] = [
     publicationStatus: 'active',
     messageKey: 'request-estimate',
     text: 'Request an Estimate',
-    verificationNote: 'Approved generic CTA — use when context is not explicitly residential or commercial.',
+    verificationNote:
+      'Approved generic CTA — use when context is not explicitly residential or commercial.',
     lastReviewedAt: '2026-07-20',
   },
   {

@@ -100,11 +100,14 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
  * Service names and areaServed are pending verification.
  * This function is a stub; call only after service verification is complete.
  */
-export function serviceSchema(_params: {
-  name: string;
-  description: string;
-  url: string;
-}): null {
+export function serviceSchema(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _params: {
+    name: string;
+    description: string;
+    url: string;
+  }
+): null {
   // BLOCKED: individual services and areaServed are pending verification
   // See content/verification-required.ts: vr-service-list, vr-service-areas
   return null;

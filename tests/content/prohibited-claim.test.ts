@@ -13,7 +13,9 @@ import { validateContentContext } from '../../lib/content/validate-content-conte
 describe('checkProhibitedClaimPolicy()', () => {
   // Test 9: Mechanical performance language is rejected
   it('Test 9 — rejects production rate claims', () => {
-    expect(checkProhibitedClaimPolicy('Our production rate is 3,000 sq ft per day.').passed).toBe(false);
+    expect(checkProhibitedClaimPolicy('Our production rate is 3,000 sq ft per day.').passed).toBe(
+      false
+    );
     expect(checkProhibitedClaimPolicy('sq ft per day').passed).toBe(false);
     expect(checkProhibitedClaimPolicy('square feet per day').passed).toBe(false);
   });
@@ -24,7 +26,9 @@ describe('checkProhibitedClaimPolicy()', () => {
   });
 
   it('Test 9 — rejects labor savings claims', () => {
-    expect(checkProhibitedClaimPolicy('Save on labor saving costs with our equipment.').passed).toBe(false);
+    expect(
+      checkProhibitedClaimPolicy('Save on labor saving costs with our equipment.').passed
+    ).toBe(false);
     expect(checkProhibitedClaimPolicy('significant labor savings').passed).toBe(false);
   });
 
@@ -34,7 +38,9 @@ describe('checkProhibitedClaimPolicy()', () => {
   });
 
   it('Test 9 — rejects laser-guided / gps-guided equipment descriptions', () => {
-    expect(checkProhibitedClaimPolicy('Our laser-guided screed delivers precision results.').passed).toBe(false);
+    expect(
+      checkProhibitedClaimPolicy('Our laser-guided screed delivers precision results.').passed
+    ).toBe(false);
     expect(checkProhibitedClaimPolicy('GPS-guided equipment').passed).toBe(false);
   });
 
@@ -70,7 +76,9 @@ describe('checkProhibitedClaimPolicy()', () => {
     expect(checkProhibitedClaimPolicy('Locally owned and operated.').passed).toBe(true);
     expect(checkProhibitedClaimPolicy('Experienced in-house crews.').passed).toBe(true);
     expect(checkProhibitedClaimPolicy('30+ employees.').passed).toBe(true);
-    expect(checkProhibitedClaimPolicy('Specialized mechanical installation equipment.').passed).toBe(true);
+    expect(
+      checkProhibitedClaimPolicy('Specialized mechanical installation equipment.').passed
+    ).toBe(true);
   });
 
   it('is case-insensitive', () => {

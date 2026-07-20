@@ -15,6 +15,7 @@
 - [ ] Approved expressions used: `Nearly 40 years`, `Nearly four decades`
 
 **Verify with:**
+
 ```bash
 grep -ri "since 1987" . --include="*.ts" --include="*.tsx" --include="*.md" --exclude-dir=node_modules
 grep -ri "40+ years" . --include="*.ts" --include="*.tsx" --exclude-dir=node_modules

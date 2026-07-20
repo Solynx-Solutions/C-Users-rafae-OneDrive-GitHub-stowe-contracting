@@ -15,12 +15,10 @@ import { isPublishable } from '@/lib/content';
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://stowecontracting.com';
 
-  return siteRoutes
-    .filter(isPublishable)
-    .map((route) => ({
-      url: `${baseUrl}${route.path}`,
-      lastModified: new Date(),
-      changeFrequency: route.changefreq ?? 'monthly',
-      priority: route.sitemapPriority ?? 0.5,
-    }));
+  return siteRoutes.filter(isPublishable).map((route) => ({
+    url: `${baseUrl}${route.path}`,
+    lastModified: new Date(),
+    changeFrequency: route.changefreq ?? 'monthly',
+    priority: route.sitemapPriority ?? 0.5,
+  }));
 }

@@ -16,7 +16,8 @@ export const VERIFICATION_REQUIRED_ITEMS = [
     description: 'Exact founding year of Stowe Contracting.',
     requiredFor: 'Activating claim "founding-year" in content/company-profile.ts',
     requiredSourceTier: 'priority-1-discovery-interview',
-    blockerNote: 'Do not use "Since 1987" or any exact year. Use "Nearly 40 years" until confirmed.',
+    blockerNote:
+      'Do not use "Since 1987" or any exact year. Use "Nearly 40 years" until confirmed.',
   },
   {
     id: 'vr-exact-employee-count',
@@ -33,7 +34,8 @@ export const VERIFICATION_REQUIRED_ITEMS = [
   {
     id: 'vr-equipment-names',
     description: 'Names and model numbers of mechanical installation equipment.',
-    requiredFor: 'Enabling equipment-specific messaging in content/mechanical-installation-messaging.ts',
+    requiredFor:
+      'Enabling equipment-specific messaging in content/mechanical-installation-messaging.ts',
     requiredSourceTier: 'priority-1-discovery-interview',
     blockerNote: 'No equipment names, models, or performance specs may appear until verified.',
   },
@@ -61,7 +63,8 @@ export const VERIFICATION_REQUIRED_ITEMS = [
     description: 'Official hours of operation.',
     requiredFor: 'Activating schema openingHoursSpecification.',
     requiredSourceTier: 'priority-1-discovery-interview',
-    blockerNote: 'The "Mon–Fri: 7:00 AM – 5:00 PM" in siteConfig is unverified and has been cleared.',
+    blockerNote:
+      'The "Mon–Fri: 7:00 AM – 5:00 PM" in siteConfig is unverified and has been cleared.',
   },
   {
     id: 'vr-legal-entity-name',

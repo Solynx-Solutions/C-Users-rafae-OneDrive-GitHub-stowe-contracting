@@ -29,7 +29,9 @@ export function generateMetadata({
   noIndex = false,
 }: GenerateMetadataOptions = {}): Metadata {
   const pageTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
-  const pageDescription = description ?? siteConfig.description;
+  // description falls back to empty string — site description is a pending content record
+  // Use resolveControlledMessage('positioning-statement') once brand-messaging module is active
+  const pageDescription = description ?? '';
   const pageUrl = `${siteConfig.url}${path}`;
   const pageOgImage = ogImage ?? siteConfig.ogImage;
 
@@ -63,9 +65,7 @@ export function generateMetadata({
       images: [pageOgImage],
       ...(siteConfig.twitterHandle ? { creator: siteConfig.twitterHandle } : {}),
     },
-    robots: noIndex
-      ? { index: false, follow: false }
-      : { index: true, follow: true },
+    robots: noIndex ? { index: false, follow: false } : { index: true, follow: true },
   };
 }
 
@@ -78,7 +78,9 @@ export const rootMetadata: Metadata = {
     default: siteConfig.name,
     template: `%s | ${siteConfig.name}`,
   },
-  description: siteConfig.description,
+  // description: site-level description is a pending content record
+  // Will be populated via resolveControlledMessage('positioning-statement') when confirmed
+  description: '',
   metadataBase: new URL(siteConfig.url),
   applicationName: siteConfig.name,
   referrer: 'origin-when-cross-origin',

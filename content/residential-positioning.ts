@@ -19,7 +19,7 @@ export type ResidentialClaimKey = (typeof RESIDENTIAL_CLAIM_KEYS)[number];
 
 // Pending — require verification:
 export const RESIDENTIAL_PENDING = [
-  'specific-residential-services',   // service names not yet verified
-  'residential-project-examples',    // no verified project data
-  'residential-warranties',          // warranty terms pending
+  'specific-residential-services', // service names not yet verified
+  'residential-project-examples', // no verified project data
+  'residential-warranties', // warranty terms pending
 ] as const;

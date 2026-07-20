@@ -16,12 +16,13 @@ This document records the architectural changes introduced in M0.1 to enforce th
 
 All content records now carry two independent status fields:
 
-| Field | Values |
-|---|---|
+| Field                | Values                                                 |
+| -------------------- | ------------------------------------------------------ |
 | `verificationStatus` | `confirmed` \| `pending` \| `rejected` \| `deprecated` |
-| `publicationStatus` | `active` \| `draft` \| `inactive` \| `internal-only` |
+| `publicationStatus`  | `active` \| `draft` \| `inactive` \| `internal-only`   |
 
 **Public render rule:** Content may only appear in public output when **both** conditions are met:
+
 ```
 verificationStatus === "confirmed" AND publicationStatus === "active"
 ```
@@ -34,52 +35,52 @@ This rule is enforced by `lib/content/can-publish.ts` → `canPublish()`.
 
 ### `lib/content/` — Enforcement Layer
 
-| File | Responsibility |
-|---|---|
-| `types.ts` | All governance types and interfaces |
-| `can-publish.ts` | `canPublish()` — the single render gate |
-| `chronology-policy.ts` | Blocks founding year expressions |
-| `prohibited-claim-policy.ts` | Blocks all categorically prohibited claims |
-| `validate-content-context.ts` | Runs all policy checks on a text string |
-| `resolve-controlled-claim.ts` | Returns claim text only if publishable |
-| `resolve-controlled-message.ts` | Returns CTA text only if publishable |
-| `registry.ts` | Central store of all records |
-| `index.ts` | Public API barrel |
+| File                            | Responsibility                             |
+| ------------------------------- | ------------------------------------------ |
+| `types.ts`                      | All governance types and interfaces        |
+| `can-publish.ts`                | `canPublish()` — the single render gate    |
+| `chronology-policy.ts`          | Blocks founding year expressions           |
+| `prohibited-claim-policy.ts`    | Blocks all categorically prohibited claims |
+| `validate-content-context.ts`   | Runs all policy checks on a text string    |
+| `resolve-controlled-claim.ts`   | Returns claim text only if publishable     |
+| `resolve-controlled-message.ts` | Returns CTA text only if publishable       |
+| `registry.ts`                   | Central store of all records               |
+| `index.ts`                      | Public API barrel                          |
 
 ### `content/` — Record Layer
 
-| File | Contents |
-|---|---|
-| `sources.ts` | All route records (sitemap + navigation source) |
-| `company-profile.ts` | Confirmed claims from Adam Cox discovery interview |
-| `brand-messaging.ts` | Approved tagline and positioning statement |
-| `calls-to-action.ts` | Three approved estimate CTAs |
-| `trust-indicators.ts` | Confirmed trust-signal claim keys |
-| `value-propositions.ts` | Confirmed value-prop claim keys |
-| `team-messaging.ts` | Confirmed crew/workforce claim keys |
-| `company-culture.ts` | Confirmed culture claim keys |
-| `local-ownership.ts` | Confirmed local identity claim keys |
-| `residential-positioning.ts` | Residential market claim keys + pending |
-| `commercial-positioning.ts` | Commercial market claim keys + pending |
-| `mechanical-installation-messaging.ts` | Equipment messaging — general only |
-| `prohibited-claims.ts` | Complete prohibited claim catalogue |
-| `verification-required.ts` | All information blockers with required actions |
-| `index.ts` | Public API barrel |
+| File                                   | Contents                                           |
+| -------------------------------------- | -------------------------------------------------- |
+| `sources.ts`                           | All route records (sitemap + navigation source)    |
+| `company-profile.ts`                   | Confirmed claims from Adam Cox discovery interview |
+| `brand-messaging.ts`                   | Approved tagline and positioning statement         |
+| `calls-to-action.ts`                   | Three approved estimate CTAs                       |
+| `trust-indicators.ts`                  | Confirmed trust-signal claim keys                  |
+| `value-propositions.ts`                | Confirmed value-prop claim keys                    |
+| `team-messaging.ts`                    | Confirmed crew/workforce claim keys                |
+| `company-culture.ts`                   | Confirmed culture claim keys                       |
+| `local-ownership.ts`                   | Confirmed local identity claim keys                |
+| `residential-positioning.ts`           | Residential market claim keys + pending            |
+| `commercial-positioning.ts`            | Commercial market claim keys + pending             |
+| `mechanical-installation-messaging.ts` | Equipment messaging — general only                 |
+| `prohibited-claims.ts`                 | Complete prohibited claim catalogue                |
+| `verification-required.ts`             | All information blockers with required actions     |
+| `index.ts`                             | Public API barrel                                  |
 
 ---
 
 ## Chronology Policy
 
-| Expression | Status |
-|---|---|
-| `Nearly 40 years` | ✅ Approved |
-| `Nearly four decades` | ✅ Approved |
+| Expression                                 | Status      |
+| ------------------------------------------ | ----------- |
+| `Nearly 40 years`                          | ✅ Approved |
+| `Nearly four decades`                      | ✅ Approved |
 | `Serving Monterey Bay for nearly 40 years` | ✅ Approved |
-| `Since 1987` | ❌ Blocked |
-| `40+ years` | ❌ Blocked |
-| `Over 40 years` | ❌ Blocked |
-| `More than 40 years` | ❌ Blocked |
-| Any exact founding year | ❌ Blocked |
+| `Since 1987`                               | ❌ Blocked  |
+| `40+ years`                                | ❌ Blocked  |
+| `Over 40 years`                            | ❌ Blocked  |
+| `More than 40 years`                       | ❌ Blocked  |
+| Any exact founding year                    | ❌ Blocked  |
 
 ---
 
@@ -103,12 +104,12 @@ This rule is enforced by `lib/content/can-publish.ts` → `canPublish()`.
 
 ## Source Priority
 
-| Priority | Source |
-|---|---|
-| 1 (highest) | Adam Cox discovery interview |
-| 2 | Approved Agent 03 Brand Messaging Guide |
-| 3 | Approved Agent 07 Visual Design System |
-| 4 | Existing Stowe website content (verified only) |
+| Priority    | Source                                         |
+| ----------- | ---------------------------------------------- |
+| 1 (highest) | Adam Cox discovery interview                   |
+| 2           | Approved Agent 03 Brand Messaging Guide        |
+| 3           | Approved Agent 07 Visual Design System         |
+| 4           | Existing Stowe website content (verified only) |
 
 A lower-priority source may never override a higher-priority source.
 
@@ -118,17 +119,17 @@ A lower-priority source may never override a higher-priority source.
 
 All unverified fields removed from `lib/schema.ts` output:
 
-| Field | Status |
-|---|---|
-| `telephone` | Omitted — pending `vr-contact-information` |
-| `email` | Omitted — pending `vr-contact-information` |
-| `address` | Omitted — pending `vr-contact-information` |
-| `legalName` | Omitted — pending `vr-legal-entity-name` |
-| `openingHoursSpecification` | Omitted — pending `vr-business-hours` |
-| `areaServed` | Omitted — pending `vr-service-areas` |
-| `foundingDate` | Omitted — CHRONOLOGY POLICY blocks exact year |
-| `numberOfEmployees` | Omitted — exact total pending |
-| `sameAs` | Omitted — pending `vr-social-profiles` |
+| Field                       | Status                                        |
+| --------------------------- | --------------------------------------------- |
+| `telephone`                 | Omitted — pending `vr-contact-information`    |
+| `email`                     | Omitted — pending `vr-contact-information`    |
+| `address`                   | Omitted — pending `vr-contact-information`    |
+| `legalName`                 | Omitted — pending `vr-legal-entity-name`      |
+| `openingHoursSpecification` | Omitted — pending `vr-business-hours`         |
+| `areaServed`                | Omitted — pending `vr-service-areas`          |
+| `foundingDate`              | Omitted — CHRONOLOGY POLICY blocks exact year |
+| `numberOfEmployees`         | Omitted — exact total pending                 |
+| `sameAs`                    | Omitted — pending `vr-social-profiles`        |
 
 ---
 
@@ -146,6 +147,7 @@ All unverified fields removed from `lib/schema.ts` output:
 ## Dependency Changes
 
 ### Removed (no current approved use)
+
 - `framer-motion`
 - `next-mdx-remote`
 - `@next/third-parties`
@@ -154,11 +156,13 @@ All unverified fields removed from `lib/schema.ts` output:
 - `next-sitemap`
 
 ### Retained
+
 - `zod` — form validation (future use)
 - `clsx` + `tailwind-merge` — className utilities
 - `lucide-react` — icon system
 
 ### Added (dev)
+
 - `vitest` — test runner
 - `@vitejs/plugin-react` — React support for vitest
 - `vite` — vitest peer dependency
@@ -169,12 +173,12 @@ All unverified fields removed from `lib/schema.ts` output:
 
 See `content/verification-required.ts` for the full list. Critical items:
 
-| Blocker | Impact |
-|---|---|
-| `vr-contact-information` | No phone/email/address in schema, footer, or 404 |
-| `vr-founding-year` | No exact year — "Nearly 40 years" expression only |
-| `vr-service-list` | No service pages, no service nav items |
-| `vr-legal-entity-name` | No legalName in schema |
-| `vr-business-hours` | No hours in schema |
-| `vr-social-profiles` | No social links |
-| `vr-testimonials` | No testimonials |
+| Blocker                  | Impact                                            |
+| ------------------------ | ------------------------------------------------- |
+| `vr-contact-information` | No phone/email/address in schema, footer, or 404  |
+| `vr-founding-year`       | No exact year — "Nearly 40 years" expression only |
+| `vr-service-list`        | No service pages, no service nav items            |
+| `vr-legal-entity-name`   | No legalName in schema                            |
+| `vr-business-hours`      | No hours in schema                                |
+| `vr-social-profiles`     | No social links                                   |
+| `vr-testimonials`        | No testimonials                                   |

@@ -33,18 +33,18 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 16 (App Router) |
-| Language | TypeScript 5 (strict mode) |
-| Styling | Tailwind CSS 4 |
-| Animations | Framer Motion |
-| Forms | React Hook Form + Zod |
-| Icons | Lucide React |
-| Content | Next MDX Remote |
-| Sitemap | next-sitemap |
-| Hosting | Vercel |
-| Analytics | Google Analytics 4 (configured at M8) |
+| Layer      | Technology                            |
+| ---------- | ------------------------------------- |
+| Framework  | Next.js 16 (App Router)               |
+| Language   | TypeScript 5 (strict mode)            |
+| Styling    | Tailwind CSS 4                        |
+| Animations | Framer Motion                         |
+| Forms      | React Hook Form + Zod                 |
+| Icons      | Lucide React                          |
+| Content    | Next MDX Remote                       |
+| Sitemap    | next-sitemap                          |
+| Hosting    | Vercel                                |
+| Analytics  | Google Analytics 4 (configured at M8) |
 
 ---
 
@@ -83,6 +83,7 @@ cp .env.example .env.local
 ```
 
 **Required at launch:**
+
 - `NEXT_PUBLIC_SITE_URL` — Production URL
 - `NEXT_PUBLIC_PHONE` — Client phone number
 - `NEXT_PUBLIC_EMAIL` — Client email
@@ -116,6 +117,7 @@ main                  ← Production (Vercel production deployment)
 ```
 
 **Workflow:**
+
 1. Branch from `development`: `git checkout -b feature/[description]`
 2. Develop and commit with conventional commits
 3. Open PR to `development` — CI must pass
@@ -129,13 +131,14 @@ main                  ← Production (Vercel production deployment)
 
 Deployed automatically on Vercel:
 
-| Branch | Environment | URL |
-|---|---|---|
-| `main` | Production | https://stowecontracting.com |
-| `development` | Preview (staging) | Auto-generated |
-| `feature/*` | Preview (per-PR) | Auto-generated |
+| Branch        | Environment       | URL                          |
+| ------------- | ----------------- | ---------------------------- |
+| `main`        | Production        | https://stowecontracting.com |
+| `development` | Preview (staging) | Auto-generated               |
+| `feature/*`   | Preview (per-PR)  | Auto-generated               |
 
 ### Manual deployment
+
 ```bash
 # Deploy to production (via Vercel CLI)
 vercel --prod
@@ -145,14 +148,14 @@ vercel --prod
 
 ## Performance Targets
 
-| Metric | Target |
-|---|---|
-| Lighthouse Performance | ≥ 95 |
-| Lighthouse Accessibility | ≥ 95 |
-| Lighthouse SEO | 100 |
-| LCP | < 2.5s |
-| INP | < 200ms |
-| CLS | < 0.1 |
+| Metric                   | Target  |
+| ------------------------ | ------- |
+| Lighthouse Performance   | ≥ 95    |
+| Lighthouse Accessibility | ≥ 95    |
+| Lighthouse SEO           | 100     |
+| LCP                      | < 2.5s  |
+| INP                      | < 200ms |
+| CLS                      | < 0.1   |
 
 ---
 
@@ -160,18 +163,18 @@ vercel --prod
 
 The following SOLYNX integrations are reserved in the codebase and will be activated at future milestones:
 
-| Integration | Status | Milestone |
-|---|---|---|
-| Contact Form + Email | Planned | M7 |
-| Google Analytics 4 | Planned | M8 |
-| AI Chat Widget | Reserved | M11+ |
-| Estimate Form | Reserved | M11+ |
-| Appointment Scheduling | Reserved | M11+ |
-| AI Phone | Reserved | M12+ |
-| Missed Call Text Back | Reserved | M12+ |
-| Review System | Reserved | M13+ |
-| Knowledge Base | Reserved | M14+ |
-| Marketing Automation | Reserved | M15+ |
+| Integration            | Status   | Milestone |
+| ---------------------- | -------- | --------- |
+| Contact Form + Email   | Planned  | M7        |
+| Google Analytics 4     | Planned  | M8        |
+| AI Chat Widget         | Reserved | M11+      |
+| Estimate Form          | Reserved | M11+      |
+| Appointment Scheduling | Reserved | M11+      |
+| AI Phone               | Reserved | M12+      |
+| Missed Call Text Back  | Reserved | M12+      |
+| Review System          | Reserved | M13+      |
+| Knowledge Base         | Reserved | M14+      |
+| Marketing Automation   | Reserved | M15+      |
 
 ---
 

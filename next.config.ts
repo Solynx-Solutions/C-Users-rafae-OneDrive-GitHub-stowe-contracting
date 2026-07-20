@@ -39,12 +39,8 @@ const nextConfig: NextConfig = {
   compiler: {
     // Remove console.log and console.debug in production only.
     // console.warn and console.error are preserved for runtime diagnostics.
-    removeConsole:
-      process.env.NODE_ENV === 'production'
-        ? { exclude: ['error', 'warn'] }
-        : false,
+    removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
   },
-
 
   // ── Experimental ────────────────────────────────────────────────────────────
   experimental: {
@@ -54,4 +50,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-

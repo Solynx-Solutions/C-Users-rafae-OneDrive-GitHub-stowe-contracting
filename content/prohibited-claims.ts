@@ -13,8 +13,18 @@
 export const PROHIBITED_CLAIM_CATEGORIES = {
   // ── Chronology ─────────────────────────────────────────────────────────────
   chronology: {
-    blocked: ['Since 1987', '40+ years', 'Over 40 years', 'More than 40 years', 'exact founding year'],
-    approved: ['Nearly 40 years', 'Nearly four decades', 'Serving Monterey Bay for nearly 40 years'],
+    blocked: [
+      'Since 1987',
+      '40+ years',
+      'Over 40 years',
+      'More than 40 years',
+      'exact founding year',
+    ],
+    approved: [
+      'Nearly 40 years',
+      'Nearly four decades',
+      'Serving Monterey Bay for nearly 40 years',
+    ],
   },
 
   // ── Identity / Numbers ─────────────────────────────────────────────────────
@@ -30,7 +40,8 @@ export const PROHIBITED_CLAIM_CATEGORIES = {
     description: 'Equipment brand names or model numbers (e.g., "Somero S-485").',
   },
   equipmentPerformance: {
-    description: 'Any numerical performance spec for equipment (production rates, tolerances, speed).',
+    description:
+      'Any numerical performance spec for equipment (production rates, tolerances, speed).',
   },
 
   // ── Services ──────────────────────────────────────────────────────────────

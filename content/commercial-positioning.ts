@@ -20,8 +20,8 @@ export type CommercialClaimKey = (typeof COMMERCIAL_CLAIM_KEYS)[number];
 
 // Pending — require verification:
 export const COMMERCIAL_PENDING = [
-  'specific-commercial-services',   // service names not yet verified
-  'public-works-capability',        // NOT confirmed — pending
-  'named-commercial-clients',       // client names pending
-  'commercial-project-examples',    // no verified project data
+  'specific-commercial-services', // service names not yet verified
+  'public-works-capability', // NOT confirmed — pending
+  'named-commercial-clients', // client names pending
+  'commercial-project-examples', // no verified project data
 ] as const;

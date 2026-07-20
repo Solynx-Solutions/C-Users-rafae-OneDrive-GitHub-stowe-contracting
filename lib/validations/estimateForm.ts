@@ -9,10 +9,7 @@ export const estimateFormSchema = z.object({
   phone: z
     .string()
     .min(7, 'Phone number is required')
-    .refine(
-      (val) => /^\+?[\d\s\-().]{7,20}$/.test(val),
-      'Please enter a valid phone number'
-    ),
+    .refine((val) => /^\+?[\d\s\-().]{7,20}$/.test(val), 'Please enter a valid phone number'),
   address: z.string().optional(),
   serviceType: z.string().min(1, 'Please select a service type'),
   projectDescription: z

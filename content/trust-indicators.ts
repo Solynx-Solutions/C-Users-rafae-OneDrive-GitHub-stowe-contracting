@@ -23,9 +23,9 @@ export type TrustIndicatorClaimKey = (typeof TRUST_INDICATOR_CLAIM_KEYS)[number]
 
 // Pending trust indicators — do not render until verified:
 export const TRUST_INDICATOR_PENDING_CLAIM_KEYS = [
-  'certifications',      // pending
-  'awards',              // pending
-  'safety-statistics',   // pending
+  'certifications', // pending
+  'awards', // pending
+  'safety-statistics', // pending
 ] as const;
 
 // Stub type to satisfy TypeScript if these are referenced as ClaimRecord arrays elsewhere

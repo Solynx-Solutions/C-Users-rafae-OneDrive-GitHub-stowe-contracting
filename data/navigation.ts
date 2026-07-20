@@ -21,12 +21,10 @@ import { siteRoutes } from '@/content/sources';
  * All others are filtered out.
  */
 export function getPublishableNavItems(): NavItem[] {
-  return siteRoutes
-    .filter(isPublishable)
-    .map((route) => ({
-      label: route.label,
-      href: route.path,
-    }));
+  return siteRoutes.filter(isPublishable).map((route) => ({
+    label: route.label,
+    href: route.path,
+  }));
 }
 
 /**

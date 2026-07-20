@@ -36,6 +36,5 @@ export function useMediaQuery(query: Breakpoint | string): boolean {
     return () => mql.removeEventListener('change', onChange);
   }, [mediaQuery]);
 
-
   return matches;
 }

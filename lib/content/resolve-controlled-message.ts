@@ -40,9 +40,7 @@ export function resolveControlledMessage(messageKey: string, variant?: string): 
   const result = canPublish(record);
   if (!result.allowed) {
     if (process.env.NODE_ENV !== 'production') {
-      console.warn(
-        `[content] resolveControlledMessage blocked "${messageKey}": ${result.reason}`
-      );
+      console.warn(`[content] resolveControlledMessage blocked "${messageKey}": ${result.reason}`);
     }
     return null;
   }

@@ -16,10 +16,7 @@ export type {
 
 export { canPublish, isPublishable } from './can-publish';
 export { checkChronologyPolicy, BLOCKED_CHRONOLOGY_EXPRESSIONS } from './chronology-policy';
-export {
-  checkProhibitedClaimPolicy,
-  PROHIBITED_CLAIM_PATTERNS,
-} from './prohibited-claim-policy';
+export { checkProhibitedClaimPolicy, PROHIBITED_CLAIM_PATTERNS } from './prohibited-claim-policy';
 export { validateContentContext } from './validate-content-context';
 export { resolveControlledClaim } from './resolve-controlled-claim';
 export { resolveControlledMessage } from './resolve-controlled-message';

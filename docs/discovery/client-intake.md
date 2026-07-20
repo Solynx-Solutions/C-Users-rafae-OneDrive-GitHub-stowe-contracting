@@ -26,17 +26,13 @@
 ## 3. Service Areas
 
 List all cities, counties, or regions served:
+
 - [ ] Primary market:
 - [ ] Secondary markets:
 
 ## 4. Services Offered
 
-List all services — each becomes a dedicated service page:
-1.
-2.
-3.
-4.
-5.
+List all services — each becomes a dedicated service page: 1. 2. 3. 4. 5.
 
 ## 5. Brand Assets
 
@@ -54,10 +50,7 @@ List all services — each becomes a dedicated service page:
 
 ## 7. Business Differentiators
 
-What makes Stowe Contracting different from competitors?
-1.
-2.
-3.
+What makes Stowe Contracting different from competitors? 1. 2. 3.
 
 ## 8. Target Customer
 
@@ -67,19 +60,11 @@ What makes Stowe Contracting different from competitors?
 
 ## 9. Testimonials
 
-Provide at least 5 real customer testimonials with names and locations:
-1.
-2.
-3.
-4.
-5.
+Provide at least 5 real customer testimonials with names and locations: 1. 2. 3. 4. 5.
 
 ## 10. Competitors
 
-List 3–5 local competitors (for SEO keyword research):
-1.
-2.
-3.
+List 3–5 local competitors (for SEO keyword research): 1. 2. 3.
 
 ## 11. Domain & Hosting
 
@@ -97,6 +82,7 @@ List 3–5 local competitors (for SEO keyword research):
 ## 13. SOLYNX Integrations
 
 Confirm which SOLYNX features to activate post-launch:
+
 - [ ] AI Chat Widget
 - [ ] AI Phone (missed call text back)
 - [ ] Appointment Scheduling

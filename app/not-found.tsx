@@ -12,8 +12,8 @@ import Link from 'next/link';
 export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-      <p className="text-sm font-semibold uppercase tracking-widest text-brand-primary">404</p>
-      <h1 className="mt-4 text-4xl font-bold tracking-tight text-brand-secondary sm:text-5xl">
+      <p className="text-brand-primary text-sm font-semibold tracking-widest uppercase">404</p>
+      <h1 className="text-brand-secondary mt-4 text-4xl font-bold tracking-tight sm:text-5xl">
         Page not found
       </h1>
       <p className="mt-4 max-w-md text-lg text-neutral-500">
@@ -23,7 +23,7 @@ export default function NotFound() {
       <div className="mt-8">
         <Link
           href="/"
-          className="inline-flex items-center justify-center rounded-md bg-brand-primary px-6 py-3 text-sm font-semibold text-white shadow-sm transition hover:bg-brand-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary"
+          className="bg-brand-primary hover:bg-brand-primary-dark focus-visible:outline-brand-primary inline-flex items-center justify-center rounded-md px-6 py-3 text-sm font-semibold text-white shadow-sm transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
         >
           Go back home
         </Link>

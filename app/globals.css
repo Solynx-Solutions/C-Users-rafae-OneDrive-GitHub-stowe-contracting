@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* =============================================================================
    STOWE CONTRACTING — DESIGN TOKENS
@@ -11,30 +11,30 @@
      TODO: Update with client-approved brand colors from branding guidelines.
      Placeholder palette — warm neutrals with a strong accent.
   ───────────────────────────────────────────────────────────────────────── */
-  --color-brand-primary: oklch(0.45 0.18 30);       /* Deep amber/orange */
-  --color-brand-primary-light: oklch(0.60 0.18 30); /* Lighter variant */
-  --color-brand-primary-dark: oklch(0.32 0.18 30);  /* Darker variant */
+  --color-brand-primary: oklch(0.45 0.18 30); /* Deep amber/orange */
+  --color-brand-primary-light: oklch(0.6 0.18 30); /* Lighter variant */
+  --color-brand-primary-dark: oklch(0.32 0.18 30); /* Darker variant */
 
-  --color-brand-secondary: oklch(0.22 0.04 250);    /* Near-black navy */
+  --color-brand-secondary: oklch(0.22 0.04 250); /* Near-black navy */
   --color-brand-secondary-light: oklch(0.35 0.06 250);
 
-  --color-brand-accent: oklch(0.75 0.15 80);        /* Warm gold accent */
+  --color-brand-accent: oklch(0.75 0.15 80); /* Warm gold accent */
 
   /* ── Neutral Scale ────────────────────────────────────────────────────────── */
   --color-neutral-50: oklch(0.98 0 0);
   --color-neutral-100: oklch(0.95 0 0);
-  --color-neutral-200: oklch(0.90 0 0);
-  --color-neutral-300: oklch(0.80 0 0);
+  --color-neutral-200: oklch(0.9 0 0);
+  --color-neutral-300: oklch(0.8 0 0);
   --color-neutral-400: oklch(0.65 0 0);
-  --color-neutral-500: oklch(0.50 0 0);
+  --color-neutral-500: oklch(0.5 0 0);
   --color-neutral-600: oklch(0.38 0 0);
   --color-neutral-700: oklch(0.28 0 0);
-  --color-neutral-800: oklch(0.20 0 0);
+  --color-neutral-800: oklch(0.2 0 0);
   --color-neutral-900: oklch(0.13 0 0);
 
   /* ── Semantic Colors ─────────────────────────────────────────────────────── */
   --color-success: oklch(0.55 0.15 142);
-  --color-warning: oklch(0.70 0.18 75);
+  --color-warning: oklch(0.7 0.18 75);
   --color-error: oklch(0.55 0.22 27);
   --color-info: oklch(0.55 0.15 250);
 
@@ -86,7 +86,12 @@
   }
 
   /* ── Heading defaults ────────────────────────────────────────────────────── */
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1.2;
@@ -109,7 +114,8 @@
   }
 
   /* ── Image defaults ──────────────────────────────────────────────────────── */
-  img, video {
+  img,
+  video {
     max-width: 100%;
     height: auto;
     display: block;
