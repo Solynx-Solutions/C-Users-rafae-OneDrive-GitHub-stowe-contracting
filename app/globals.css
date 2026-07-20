@@ -1,0 +1,210 @@
+@import "tailwindcss";
+
+/* =============================================================================
+   STOWE CONTRACTING — DESIGN TOKENS
+   All brand colors, spacing, and typography defined here.
+   Reference via Tailwind's CSS variable system: var(--color-brand-primary)
+   ============================================================================= */
+
+@theme {
+  /* ── Brand Colors ─────────────────────────────────────────────────────────
+     TODO: Update with client-approved brand colors from branding guidelines.
+     Placeholder palette — warm neutrals with a strong accent.
+  ───────────────────────────────────────────────────────────────────────── */
+  --color-brand-primary: oklch(0.45 0.18 30);       /* Deep amber/orange */
+  --color-brand-primary-light: oklch(0.60 0.18 30); /* Lighter variant */
+  --color-brand-primary-dark: oklch(0.32 0.18 30);  /* Darker variant */
+
+  --color-brand-secondary: oklch(0.22 0.04 250);    /* Near-black navy */
+  --color-brand-secondary-light: oklch(0.35 0.06 250);
+
+  --color-brand-accent: oklch(0.75 0.15 80);        /* Warm gold accent */
+
+  /* ── Neutral Scale ────────────────────────────────────────────────────────── */
+  --color-neutral-50: oklch(0.98 0 0);
+  --color-neutral-100: oklch(0.95 0 0);
+  --color-neutral-200: oklch(0.90 0 0);
+  --color-neutral-300: oklch(0.80 0 0);
+  --color-neutral-400: oklch(0.65 0 0);
+  --color-neutral-500: oklch(0.50 0 0);
+  --color-neutral-600: oklch(0.38 0 0);
+  --color-neutral-700: oklch(0.28 0 0);
+  --color-neutral-800: oklch(0.20 0 0);
+  --color-neutral-900: oklch(0.13 0 0);
+
+  /* ── Semantic Colors ─────────────────────────────────────────────────────── */
+  --color-success: oklch(0.55 0.15 142);
+  --color-warning: oklch(0.70 0.18 75);
+  --color-error: oklch(0.55 0.22 27);
+  --color-info: oklch(0.55 0.15 250);
+
+  /* ── Typography ──────────────────────────────────────────────────────────── */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+
+  /* ── Border Radius ───────────────────────────────────────────────────────── */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.5rem;
+
+  /* ── Spacing Scale Override (if needed) ──────────────────────────────────── */
+  /* Extends Tailwind defaults — add custom spacing tokens here */
+
+  /* ── Shadows ─────────────────────────────────────────────────────────────── */
+  --shadow-brand: 0 4px 24px oklch(0.45 0.18 30 / 0.25);
+
+  /* ── Transitions ─────────────────────────────────────────────────────────── */
+  --transition-base: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    color: var(--color-neutral-800);
+    background-color: #ffffff;
+  }
+
+  /* ── Heading defaults ────────────────────────────────────────────────────── */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--color-brand-secondary);
+  }
+
+  /* ── Focus styles — WCAG 2.2 AA ────────────────────────────────────────── */
+  :focus-visible {
+    outline: 2px solid var(--color-brand-primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* ── Link defaults ───────────────────────────────────────────────────────── */
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-base);
+  }
+
+  /* ── Image defaults ──────────────────────────────────────────────────────── */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* ── Selection ───────────────────────────────────────────────────────────── */
+  ::selection {
+    background-color: var(--color-brand-primary);
+    color: #ffffff;
+  }
+}
+
+/* =============================================================================
+   UTILITY LAYER
+   Custom utilities not available in Tailwind core.
+   ============================================================================= */
+
+@layer utilities {
+  /* Container with consistent max-width and padding */
+  .container-site {
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-site {
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container-site {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+
+  /* Screen-reader only — accessible but not visible */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  .sr-only.focus\:not-sr-only:focus {
+    position: fixed;
+    width: auto;
+    height: auto;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+
+  /* Gradient text utility */
+  .text-gradient-brand {
+    background: linear-gradient(
+      135deg,
+      var(--color-brand-primary) 0%,
+      var(--color-brand-accent) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section spacing consistency */
+  .section-py {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-py {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-py {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
+  }
+}

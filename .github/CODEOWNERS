@@ -1,0 +1,23 @@
+# CODEOWNERS
+# Defines required reviewers for protected paths.
+# GitHub enforces these on PRs to main and development.
+# Format: <path> <@github-username or @org/team>
+
+# ── Global ownership ──────────────────────────────────────────────────────────
+# Replace with actual GitHub usernames before repository creation.
+* @solynx/dev-team
+
+# ── Content governance — requires lead review ─────────────────────────────────
+/content/                           @solynx/content-governance
+/lib/content/                       @solynx/content-governance
+/data/siteConfig.ts                 @solynx/content-governance
+
+# ── Schema — requires lead review ────────────────────────────────────────────
+/lib/schema.ts                      @solynx/content-governance
+
+# ── CI/CD — requires lead review ─────────────────────────────────────────────
+/.github/workflows/                 @solynx/dev-team
+/next.config.ts                     @solynx/dev-team
+
+# ── Documentation ─────────────────────────────────────────────────────────────
+/docs/                              @solynx/dev-team
