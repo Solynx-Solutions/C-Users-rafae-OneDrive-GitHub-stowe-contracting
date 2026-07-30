@@ -1,65 +1,125 @@
-import Image from 'next/image';
+// =============================================================================
+// HOME PAGE
+//
+// M1 homepage composition.
+//
+// GOVERNANCE COMPLIANCE:
+// - All text from governance registry (resolveControlledClaim / resolveControlledMessage)
+// - No invented claims, founding year, or prohibited expressions
+// - Contact section omitted (vr-contact-information pending)
+// - Testimonials omitted (vr-testimonials inactive)
+// - Service list omitted (vr-service-list pending)
+// - Social links omitted (vr-social-profiles pending)
+// =============================================================================
 
-export default function Home() {
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
+import { resolveControlledClaim, resolveControlledMessage } from '@/lib/content';
+import { TrustBar } from '@/components/trust/trust-bar';
+import { TrustSection } from '@/components/trust/trust-section';
+import { PathwaySection } from '@/components/pathway/pathway-section';
+import { MechanicalInstallationSection } from '@/components/mechanical/mechanical-installation-section';
+import { PageContainer } from '@/components/layout/page-container';
+
+export const metadata: Metadata = generatePageMetadata({
+  title: 'Stowe Contracting — Nearly 40 Years Serving Monterey Bay',
+  description:
+    'Locally owned concrete and construction contractor serving Monterey Bay. Experienced in-house crews and specialized mechanical installation equipment for residential and commercial projects.',
+  path: '/',
+});
+
+export default function HomePage() {
+  // Resolve claims from governance registry
+  const yearsInBusiness = resolveControlledClaim('years-in-business');
+  const locallyOwned = resolveControlledClaim('locally-owned');
+  const tagline = resolveControlledMessage('tagline-primary');
+  const positioningStatement = resolveControlledMessage('positioning-statement');
+  const ctaLabel = resolveControlledMessage('request-estimate') ?? 'Request an Estimate';
+  const montereyBay = resolveControlledClaim('monterey-bay-identity');
+
   return (
-    <div className="flex flex-1 flex-col items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex w-full max-w-3xl flex-1 flex-col items-center justify-between bg-white px-16 py-32 sm:items-start dark:bg-black">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl leading-10 font-semibold tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{' '}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{' '}
-            or the{' '}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{' '}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="bg-foreground text-background flex h-12 w-full items-center justify-center gap-2 rounded-full px-5 transition-colors hover:bg-[#383838] md:w-[158px] dark:hover:bg-[#ccc]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      {/* ── Hero Section ───────────────────────────────────────────────── */}
+      <section
+        aria-label="Hero — Stowe Contracting introduction"
+        className="bg-[var(--color-brand-secondary)] text-white"
+      >
+        <PageContainer>
+          <div className="flex max-w-3xl flex-col gap-8 py-16 md:py-24 lg:py-32">
+            {/* Eyebrow */}
+            {locallyOwned && montereyBay && (
+              <p className="text-sm leading-none font-semibold tracking-widest text-[var(--color-brand-primary)] uppercase">
+                {locallyOwned} &mdash; {montereyBay}
+              </p>
+            )}
+
+            {/* Heading */}
+            <h1 className="text-4xl leading-tight font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
+              {yearsInBusiness ? `${yearsInBusiness}` : 'Serving Monterey Bay'}
+            </h1>
+
+            {/* Tagline */}
+            {tagline && (
+              <p className="text-xl leading-snug font-medium text-white/90 md:text-2xl">
+                {tagline}
+              </p>
+            )}
+
+            {/* Positioning statement */}
+            {positioningStatement && (
+              <p className="max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
+                {positioningStatement}
+              </p>
+            )}
+
+            {/* CTAs */}
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Link
+                href="/estimate/residential"
+                className={[
+                  'inline-flex items-center justify-center',
+                  'rounded-[var(--radius-md)] px-7 py-3.5',
+                  'bg-[var(--color-brand-primary)] text-white',
+                  'text-base font-semibold',
+                  'hover:bg-[var(--color-brand-primary-dark)]',
+                  'transition-colors duration-150',
+                  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
+                  'shadow-[var(--shadow-brand)]',
+                ].join(' ')}
+              >
+                {ctaLabel}
+              </Link>
+              <Link
+                href="/about"
+                className={[
+                  'inline-flex items-center justify-center',
+                  'rounded-[var(--radius-md)] px-7 py-3.5',
+                  'border border-white/30 text-white',
+                  'text-base font-semibold',
+                  'hover:border-white/50 hover:bg-white/10',
+                  'transition-colors duration-150',
+                  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
+                ].join(' ')}
+              >
+                About Stowe
+              </Link>
+            </div>
+          </div>
+        </PageContainer>
+      </section>
+
+      {/* ── Trust Bar ──────────────────────────────────────────────────── */}
+      <TrustBar />
+
+      {/* ── Pathway Section ────────────────────────────────────────────── */}
+      <PathwaySection />
+
+      {/* ── Trust / Why Stowe Section ──────────────────────────────────── */}
+      <TrustSection />
+
+      {/* ── Mechanical Installation Section ────────────────────────────── */}
+      <MechanicalInstallationSection />
+    </>
   );
 }

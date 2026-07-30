@@ -14,6 +14,7 @@ import { type ClaimRecord, type ControlledMessageRecord, type RouteRecord } from
 // ── Import all content modules ────────────────────────────────────────────────
 import { companyClaims } from '@/content/company-profile';
 import { ctaMessages } from '@/content/calls-to-action';
+import { brandMessages } from '@/content/brand-messaging';
 import { siteRoutes } from '@/content/sources';
 
 // ── Claims Registry ───────────────────────────────────────────────────────────
@@ -28,7 +29,7 @@ export const claimsRegistry: ClaimRecord[] = [...companyClaims];
  * All ControlledMessageRecord entries from all content modules.
  * Used by resolveControlledMessage().
  */
-export const messagesRegistry: ControlledMessageRecord[] = [...ctaMessages];
+export const messagesRegistry: ControlledMessageRecord[] = [...ctaMessages, ...brandMessages];
 
 // ── Routes Registry ───────────────────────────────────────────────────────────
 /**

@@ -3,6 +3,9 @@ import { Inter } from 'next/font/google';
 import './globals.css';
 import { rootMetadata } from '@/lib/metadata';
 import { localBusinessSchema, organizationSchema, webSiteSchema } from '@/lib/schema';
+import { SiteHeader } from '@/components/layout/site-header';
+import { SiteFooter } from '@/components/layout/site-footer';
+import { SkipLink } from '@/components/layout/skip-link';
 
 // =============================================================================
 // FONT
@@ -28,21 +31,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full scroll-smooth antialiased`}>
-      <body className="flex min-h-full flex-col bg-white text-gray-900">
-        {/* ── Skip to Content — Accessibility ────────────────────────────── */}
-        <a
-          href="#main-content"
-          className="focus:bg-brand-primary sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-md focus:px-4 focus:py-2 focus:text-white focus:outline-none"
-        >
-          Skip to content
-        </a>
+      <body className="flex min-h-full flex-col bg-white text-[var(--color-neutral-800)]">
+        {/* ── Skip to Content — WCAG 2.2 AA 2.4.1 ──────────────────────── */}
+        <SkipLink />
 
-        {/* ── Main Content ─────────────────────────────────────────────────── */}
-        <main id="main-content" className="flex-1">
+        {/* ── Global Header ─────────────────────────────────────────────── */}
+        <SiteHeader />
+
+        {/* ── Main Content ──────────────────────────────────────────────── */}
+        <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
           {children}
         </main>
 
-        {/* ── JSON-LD Schema — Runs on every page ──────────────────────────── */}
+        {/* ── Global Footer ─────────────────────────────────────────────── */}
+        <SiteFooter />
+
+        {/* ── JSON-LD Schema — Runs on every page ──────────────────────── */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema()) }}
