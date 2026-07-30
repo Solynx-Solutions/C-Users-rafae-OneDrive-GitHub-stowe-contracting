@@ -42,7 +42,7 @@ Open [http://localhost:3000](http://localhost:3000) to view the site.
 | Forms      | React Hook Form + Zod                 |
 | Icons      | Lucide React                          |
 | Content    | Next MDX Remote                       |
-| Sitemap    | next-sitemap                          |
+| Sitemap    | Native (App Router `app/sitemap.ts`)  |
 | Hosting    | Vercel                                |
 | Analytics  | Google Analytics 4 (configured at M8) |
 
@@ -71,6 +71,18 @@ stowe-contracting/
 ├── styles/            # Design tokens
 └── types/             # Global TypeScript types
 ```
+
+---
+
+## Runtime Requirements
+
+| Requirement             | Version |
+| ----------------------- | ------- |
+| Node.js (development)   | 24      |
+| Node.js (minimum)       | 20.9.0  |
+| Node.js (SOLYNX target) | 24      |
+
+Use `.nvmrc` or `nvm use` to activate the correct version. The `engines` field in `package.json` enforces `>=20.9.0 <25`.
 
 ---
 

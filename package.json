@@ -16,7 +16,7 @@
     "analyze": "ANALYZE=true next build"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.9.0 <25"
   },
   "dependencies": {
     "clsx": "^2.1.1",
