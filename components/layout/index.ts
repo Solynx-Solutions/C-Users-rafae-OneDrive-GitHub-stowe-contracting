@@ -13,3 +13,4 @@ export { PrimaryNavItems } from './primary-nav-items';
 export { MobileNavigation } from './mobile-navigation';
 export { SiteHeader } from './site-header';
 export { SiteFooter } from './site-footer';
+export { DesktopNavigation } from './desktop-navigation';

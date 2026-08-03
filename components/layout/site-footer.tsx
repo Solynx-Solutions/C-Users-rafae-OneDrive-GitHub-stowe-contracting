@@ -104,6 +104,24 @@ export function SiteFooter() {
             &copy; {currentYear} Stowe Contracting. All rights reserved.
           </p>
 
+          {/* SOLYNX attribution — required */}
+          <p className="text-xs text-[var(--color-neutral-500)]">
+            Website designed, built &amp; managed by{' '}
+            <a
+              href="https://solynx.solutions"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={[
+                'text-[var(--color-neutral-400)]',
+                'hover:text-[var(--color-neutral-200)]',
+                'transition-colors duration-150',
+                'underline underline-offset-2',
+              ].join(' ')}
+            >
+              SOLYNX
+            </a>
+          </p>
+
           {/* Legal nav — only confirmed+active */}
           {footerNavItems.length > 0 && (
             <nav aria-label="Footer legal navigation">

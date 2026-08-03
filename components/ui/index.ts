@@ -15,3 +15,4 @@ export { Notice } from './notice';
 export type { NoticeVariant } from './notice';
 export { Card, CardHeader, CardBody, CardFooter } from './card';
 export { Divider } from './divider';
+export { IconButton } from './icon-button';
