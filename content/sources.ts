@@ -39,13 +39,31 @@ export const siteRoutes: RouteRecord[] = [
     id: 'route-services',
     type: 'route',
     source: 'priority-1-discovery-interview',
-    verificationStatus: 'pending',
-    publicationStatus: 'inactive',
-    // pending — individual services not yet verified
+    verificationStatus: 'confirmed',
+    publicationStatus: 'draft',
+    // M4 — services foundation page built. Individual service list pending vr-service-list.
     path: '/services',
     label: 'Services',
     sitemapPriority: 0.9,
     changefreq: 'monthly',
+    verificationNote:
+      'Services foundation page built in M4. Activate when vr-service-list resolves.',
+    lastReviewedAt: '2026-08-07',
+  },
+  {
+    id: 'route-mechanical-installation',
+    type: 'route',
+    source: 'priority-1-discovery-interview',
+    verificationStatus: 'confirmed',
+    publicationStatus: 'active',
+    // M4 — mechanical installation authority page.
+    // General capability confirmed via Adam Cox discovery interview.
+    path: '/mechanical-installation',
+    label: 'Mechanical Installation',
+    sitemapPriority: 0.85,
+    changefreq: 'monthly',
+    verificationNote: 'Activated in M4 — mechanical installation authority page.',
+    lastReviewedAt: '2026-08-07',
   },
   {
     id: 'route-projects',
