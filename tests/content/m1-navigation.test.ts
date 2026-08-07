@@ -2,8 +2,9 @@
 // TESTS: M1 — Navigation governance
 //
 // Covers:
+// Tests:
 //   Test 1: getPublishableNavItems() returns only confirmed+active routes
-//   Test 2: Only home route is active at M0/M1 baseline
+//   Test 2: Active routes at current milestone (updated at M3)
 //   Test 3: Draft and inactive routes do not appear in nav
 //   Test 4: getPublishableNavItems() items have label and href
 // =============================================================================
@@ -26,10 +27,17 @@ describe('M1 — Navigation governance', () => {
     }
   });
 
-  it('Test 2 — Home is the only confirmed+active route at M0/M1 baseline', () => {
+  it('Test 2 — Active routes at current milestone include home + M3 estimate routes', () => {
+    // Updated at M3: /estimate/residential and /estimate/commercial were activated.
+    // Add new active routes here as milestones activate them.
+    const EXPECTED_ACTIVE_PATHS = ['/', '/estimate/residential', '/estimate/commercial'];
     const publishableRoutes = siteRoutes.filter(isPublishable);
-    expect(publishableRoutes).toHaveLength(1);
-    expect(publishableRoutes[0].path).toBe('/');
+    const activePaths = publishableRoutes.map((r) => r.path);
+    for (const expectedPath of EXPECTED_ACTIVE_PATHS) {
+      expect(activePaths, `Expected "${expectedPath}" to be confirmed+active`).toContain(
+        expectedPath
+      );
+    }
   });
 
   it('Test 3 — Draft routes are not in publishable nav', () => {
