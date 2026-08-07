@@ -27,14 +27,15 @@ describe('M1 — Navigation governance', () => {
     }
   });
 
-  it('Test 2 — Active routes at current milestone include home + M3 estimate + M4 mechanical routes', () => {
-    // Updated at M4: /mechanical-installation was activated.
+  it('Test 2 — Active routes at current milestone include home + M3 estimate + M4 mechanical + M5 contact', () => {
+    // Updated at M5: /contact was activated.
     // Add new active routes here as milestones activate them.
     const EXPECTED_ACTIVE_PATHS = [
       '/',
       '/estimate/residential',
       '/estimate/commercial',
       '/mechanical-installation',
+      '/contact',
     ];
     const publishableRoutes = siteRoutes.filter(isPublishable);
     const activePaths = publishableRoutes.map((r) => r.path);

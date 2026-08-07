@@ -82,12 +82,16 @@ export const siteRoutes: RouteRecord[] = [
     type: 'route',
     source: 'priority-1-discovery-interview',
     verificationStatus: 'confirmed',
-    publicationStatus: 'draft',
-    // draft — page not yet built
+    publicationStatus: 'active',
+    // M5 — contact and conversion trust layer. Page built with governance-gated
+    // contact information. Phone/email/address/hours render only when confirmed.
     path: '/contact',
     label: 'Contact',
     sitemapPriority: 0.7,
     changefreq: 'monthly',
+    verificationNote:
+      'Activated in M5 — contact and trust layer. Contact details pending vr-contact-information.',
+    lastReviewedAt: '2026-08-07',
   },
   {
     id: 'route-blog',
