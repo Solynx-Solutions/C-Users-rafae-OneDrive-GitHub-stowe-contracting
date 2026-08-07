@@ -88,24 +88,28 @@ export const siteRoutes: RouteRecord[] = [
     type: 'route',
     source: 'priority-1-discovery-interview',
     verificationStatus: 'confirmed',
-    publicationStatus: 'draft',
-    // distinct from commercial — kept separate per architecture spec
+    publicationStatus: 'active',
+    // M3 — estimate experience foundation. Distinct from commercial per architecture spec.
     path: '/estimate/residential',
     label: 'Request a Residential Estimate',
     sitemapPriority: 0.8,
     changefreq: 'monthly',
+    verificationNote: 'Activated in M3 — estimate experience foundation milestone.',
+    lastReviewedAt: '2026-08-07',
   },
   {
     id: 'route-estimate-commercial',
     type: 'route',
     source: 'priority-1-discovery-interview',
     verificationStatus: 'confirmed',
-    publicationStatus: 'draft',
-    // distinct from residential — kept separate per architecture spec
+    publicationStatus: 'active',
+    // M3 — estimate experience foundation. Distinct from residential per architecture spec.
     path: '/estimate/commercial',
     label: 'Request a Commercial Estimate',
     sitemapPriority: 0.8,
     changefreq: 'monthly',
+    verificationNote: 'Activated in M3 — estimate experience foundation milestone.',
+    lastReviewedAt: '2026-08-07',
   },
   {
     id: 'route-privacy-policy',
