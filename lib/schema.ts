@@ -96,6 +96,34 @@ export function breadcrumbSchema(items: { name: string; url: string }[]) {
 }
 
 /**
+ * WebPage schema for interior pages (service, capability, about pages).
+ * Only confirmed text fields are included.
+ * Do not add 'author', 'publisher' with unverified fields.
+ */
+export function webPageSchema({
+  name,
+  description,
+  url,
+}: {
+  name: string;
+  description: string;
+  url: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name,
+    description,
+    url: `${siteConfig.url}${url}`,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+  };
+}
+
+/**
  * Service schema — DISABLED.
  * Service names and areaServed are pending verification.
  * This function is a stub; call only after service verification is complete.
