@@ -207,7 +207,6 @@ export function ContactForm({ formId = 'contact-form' }: ContactFormProps) {
     return <ContactSuccessState onReset={handleReset} />;
   }
 
-
   return (
     <form
       ref={formRef}
