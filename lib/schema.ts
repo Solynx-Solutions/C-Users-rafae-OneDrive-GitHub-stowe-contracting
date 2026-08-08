@@ -199,6 +199,50 @@ export function articleSchema({
 }
 
 // =============================================================================
+// CONTACT PAGE SCHEMA
+// =============================================================================
+
+/**
+ * ContactPage schema for /contact.
+ *
+ * GOVERNANCE:
+ *   - ContactPage type indicates this page's purpose to search engines.
+ *   - telephone, email, and address are OMITTED until vr-contact-information resolves.
+ *   - Do not add invented telephone/address/email here.
+ *   - LocalBusiness block reused from localBusinessSchema() for consistency.
+ *
+ * When contact fields are confirmed, update localBusinessSchema() —
+ * this schema will inherit the values automatically via the shared block.
+ */
+export function contactPageSchema({ url }: { url: string }) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: `Contact ${siteConfig.name}`,
+    url: `${siteConfig.url}${url}`,
+    description: `Contact ${siteConfig.name} to discuss your residential or commercial project.`,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: siteConfig.name,
+      url: siteConfig.url,
+    },
+    mainEntity: {
+      '@type': 'LocalBusiness',
+      name: siteConfig.name,
+      url: siteConfig.url,
+      // telephone: omitted — pending vr-contact-information
+      // email: omitted — pending vr-contact-information
+      // address: omitted — pending vr-contact-information
+      // openingHoursSpecification: omitted — pending vr-business-hours
+      areaServed: {
+        '@type': 'GeoCircle',
+        description: 'Monterey Bay area',
+      },
+    },
+  };
+}
+
+// =============================================================================
 // RESERVED — Review / AggregateRating schema
 // Blocked until Review System integration (M13+) and vr-testimonials confirmed.
 // =============================================================================
