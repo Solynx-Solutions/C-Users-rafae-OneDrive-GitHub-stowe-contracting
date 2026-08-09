@@ -44,8 +44,8 @@ describe('Sitemap route governance', () => {
     });
   });
 
-  it('Test 10 — /services is NOT in the sitemap (pending)', () => {
-    expect(allPaths).not.toContain('/services');
+  it('Test 10 — /services IS in the sitemap (activated in M6)', () => {
+    expect(allPaths).toContain('/services');
   });
 
   it('Test 10 — /projects is NOT in the sitemap (pending/inactive)', () => {

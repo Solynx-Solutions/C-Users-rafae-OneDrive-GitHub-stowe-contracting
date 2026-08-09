@@ -1,29 +1,36 @@
 // =============================================================================
-// SERVICES PAGE — M4 Foundation
+// SERVICES PAGE — M6 Upgrade
 //
-// Services directory foundation. Currently shows a governance-aware holding
-// state until vr-service-list is resolved and services are activated.
+// Full service discovery and lead generation experience.
+// Rebuilt from M4 holding-state foundation to production-ready index.
 //
-// When services are activated:
-//   1. Update serviceRegistry.ts — set verificationStatus: 'confirmed',
-//      publicationStatus: 'active' for each verified service.
-//   2. Update sources.ts — set route-services to publicationStatus: 'active'.
-//   3. This page renders the ServiceGrid automatically — no component changes.
+// Page structure:
+//   1. Services Hero
+//   2. Residential / Commercial pathway split
+//   3. Verified service grid (governance-gated)
+//   4. Mechanical installation feature (confirmed capability)
+//   5. Estimate CTA
 //
-// GOVERNANCE COMPLIANCE:
-//   ✅ No specific service capabilities claimed beyond what's confirmed
-//   ✅ Mechanical installation referenced as confirmed general capability
-//   ✅ Residential and commercial capability claims — confirmed
-//   ✅ No certifications, awards, or performance claims
-//   ✅ ServiceGrid renders empty state (no services active yet)
+// GOVERNANCE:
+//   ✅ years-in-business — confirmed
+//   ✅ locally-owned — confirmed
+//   ✅ in-house-crews — confirmed
+//   ✅ mechanical-equipment — confirmed
+//   ✅ residential-capability — confirmed
+//   ✅ commercial-capability — confirmed
+//   ✅ Service grid renders empty state until vr-service-list resolves
+//   ❌ No specific service performance claims
+//   ❌ No certifications, awards
+//   ❌ No guaranteed response times
+//   ❌ No service areas beyond "Monterey Bay"
 //
 // SEO:
-//   Title:       Services — Stowe Contracting
-//   Description: Governance-approved — no specific service list
-//   Schema:      WebPage, LocalBusiness, BreadcrumbList
+//   Title:    Services — Stowe Contracting
+//   Canonical: /services
+//   Schema:   WebPage, LocalBusiness, BreadcrumbList
 //
 // PERFORMANCE:
-//   All components: Server Components (zero client JS in this tree)
+//   All components: Server Components (zero client JS)
 // =============================================================================
 
 import type { Metadata } from 'next';
@@ -34,6 +41,8 @@ import { resolveControlledClaim, resolveControlledMessage } from '@/lib/content'
 
 // ── Components ────────────────────────────────────────────────────────────────
 import { ServiceGrid } from '@/components/services/service-grid';
+import { ServiceEstimateCta } from '@/components/services/service-estimate-cta';
+import { ServiceCapabilityList } from '@/components/services/service-capability-list';
 import { PageContainer } from '@/components/layout/page-container';
 import { ContentSection } from '@/components/layout/content-section';
 import { SectionHeading } from '@/components/layout/section-heading';
@@ -42,7 +51,7 @@ import { SectionHeading } from '@/components/layout/section-heading';
 // METADATA
 // =============================================================================
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Services — Stowe Contracting',
+  title: 'Services',
   description:
     'Stowe Contracting offers residential and commercial concrete and construction services in the Monterey Bay area. Nearly 40 years of experience with in-house crews and specialized mechanical installation equipment.',
   path: '/services',
@@ -52,14 +61,18 @@ export const metadata: Metadata = generatePageMetadata({
 // PAGE
 // =============================================================================
 export default function ServicesPage() {
+  // ── Confirmed claims ───────────────────────────────────────────────────────
   const yearsInBusiness = resolveControlledClaim('years-in-business');
   const locallyOwned = resolveControlledClaim('locally-owned');
   const inHouseCrews = resolveControlledClaim('in-house-crews');
   const mechanicalEquipment = resolveControlledClaim('mechanical-equipment');
+  const residentialCapability = resolveControlledClaim('residential-capability');
+  const commercialCapability = resolveControlledClaim('commercial-capability');
   const residentialCta = resolveControlledMessage('request-estimate', 'residential');
   const commercialCta = resolveControlledMessage('request-estimate', 'commercial');
+  const customersKnowCrew = resolveControlledClaim('customers-know-crew');
 
-  // Schema
+  // ── Schema ─────────────────────────────────────────────────────────────────
   const pageSchema = webPageSchema({
     name: 'Services — Stowe Contracting',
     description:
@@ -74,19 +87,19 @@ export default function ServicesPage() {
 
   return (
     <>
-      {/* ── JSON-LD structured data ────────────────────────────────────── */}
+      {/* JSON-LD structured data */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([pageSchema, businessSchema, crumbs]) }}
       />
 
-      {/* ── Page Hero ────────────────────────────────────────────────────── */}
+      {/* ── 1. Services Hero ──────────────────────────────────────────────── */}
       <section
         aria-label="Services overview"
         className="bg-[var(--color-brand-secondary)] py-20 md:py-28"
       >
         <PageContainer>
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col gap-8">
             {/* Eyebrow */}
             {locallyOwned && (
               <p className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.25em] text-[var(--color-brand-primary)] uppercase">
@@ -100,12 +113,7 @@ export default function ServicesPage() {
 
             {/* Heading */}
             <div className="flex max-w-3xl flex-col gap-4">
-              <h1
-                className={[
-                  'text-5xl leading-tight font-extrabold tracking-tight text-white',
-                  'md:text-6xl',
-                ].join(' ')}
-              >
+              <h1 className="text-5xl leading-tight font-extrabold tracking-tight text-white md:text-6xl">
                 What We Do
               </h1>
               <p className="max-w-2xl text-lg leading-relaxed text-white/70">
@@ -143,9 +151,112 @@ export default function ServicesPage() {
         </PageContainer>
       </section>
 
-      {/* ── Service Grid ─────────────────────────────────────────────────── */}
-      {/* Renders confirmed + active services only. Empty state shown until   */}
-      {/* vr-service-list resolves and services are activated.                */}
+      {/* ── 2. Residential / Commercial Pathway Split ─────────────────────── */}
+      <ContentSection
+        bg="white"
+        aria-label="Service pathways for residential and commercial clients"
+      >
+        <PageContainer>
+          <div className="flex flex-col gap-10">
+            <SectionHeading
+              level="h2"
+              centered
+              subtitle="Whether you're a homeowner or managing a commercial project, our crews are structured to deliver."
+            >
+              Who We Serve
+            </SectionHeading>
+
+            <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+              {/* Residential */}
+              <div
+                className={[
+                  'flex flex-col gap-5',
+                  'rounded-[var(--radius-xl)]',
+                  'border border-[var(--color-neutral-200)]',
+                  'bg-[var(--color-neutral-50)] p-8',
+                ].join(' ')}
+              >
+                <span className="inline-flex w-fit rounded-full bg-[var(--color-brand-primary)]/10 px-3 py-1 text-[11px] font-bold tracking-wide text-[var(--color-brand-primary)] uppercase">
+                  {residentialCapability ?? 'Residential'}
+                </span>
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-xl font-bold text-[var(--color-brand-secondary)]">
+                    Home & Property Projects
+                  </h3>
+                  <p className="text-sm leading-relaxed text-[var(--color-neutral-600)]">
+                    Driveways, flatwork, patios, foundations, and site preparation for residential
+                    properties.
+                    {customersKnowCrew
+                      ? ` ${customersKnowCrew}.`
+                      : ' Our in-house crews work on your property directly.'}
+                  </p>
+                </div>
+                <Link
+                  href="/estimate/residential"
+                  id="services-pathway-residential"
+                  className={[
+                    'mt-auto inline-flex w-full items-center justify-center',
+                    'rounded-[var(--radius-md)] px-6 py-3.5',
+                    'bg-[var(--color-brand-primary)] text-white',
+                    'text-sm font-bold',
+                    'hover:bg-[var(--color-brand-primary-dark)]',
+                    'transition-colors duration-150',
+                    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
+                    'shadow-[var(--shadow-brand)]',
+                  ].join(' ')}
+                >
+                  {residentialCta ?? 'Request a Residential Estimate'}
+                </Link>
+              </div>
+
+              {/* Commercial */}
+              <div
+                className={[
+                  'flex flex-col gap-5',
+                  'rounded-[var(--radius-xl)]',
+                  'border border-[var(--color-neutral-200)]',
+                  'bg-[var(--color-neutral-50)] p-8',
+                ].join(' ')}
+              >
+                <span className="inline-flex w-fit rounded-full bg-[var(--color-brand-secondary)]/10 px-3 py-1 text-[11px] font-bold tracking-wide text-[var(--color-brand-secondary)] uppercase">
+                  {commercialCapability ?? 'Commercial'}
+                </span>
+                <div className="flex flex-col gap-3">
+                  <h3 className="text-xl font-bold text-[var(--color-brand-secondary)]">
+                    Commercial & Development Projects
+                  </h3>
+                  <p className="text-sm leading-relaxed text-[var(--color-neutral-600)]">
+                    Foundations, flatwork, site work, and mechanical installation for commercial
+                    properties and development projects.
+                    {inHouseCrews
+                      ? ` ${inHouseCrews} — structured for commercial project requirements.`
+                      : ' Our crews are structured for commercial project requirements.'}
+                  </p>
+                </div>
+                <Link
+                  href="/estimate/commercial"
+                  id="services-pathway-commercial"
+                  className={[
+                    'mt-auto inline-flex w-full items-center justify-center',
+                    'rounded-[var(--radius-md)] px-6 py-3.5',
+                    'border border-[var(--color-brand-secondary)]',
+                    'text-sm font-bold text-[var(--color-brand-secondary)]',
+                    'hover:bg-[var(--color-brand-secondary)] hover:text-white',
+                    'transition-colors duration-150',
+                    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-secondary)]',
+                  ].join(' ')}
+                >
+                  {commercialCta ?? 'Request a Commercial Estimate'}
+                </Link>
+              </div>
+            </div>
+          </div>
+        </PageContainer>
+      </ContentSection>
+
+      {/* ── 3. Verified Service Grid ──────────────────────────────────────── */}
+      {/* Only confirmed + active services render. Governance-aware empty  */}
+      {/* state shown until vr-service-list resolves.                      */}
       <ContentSection bg="neutral" aria-label="Available services">
         <PageContainer>
           <div className="flex flex-col gap-10">
@@ -160,107 +271,99 @@ export default function ServicesPage() {
         </PageContainer>
       </ContentSection>
 
-      {/* ── Mechanical Installation Feature ──────────────────────────────── */}
-      {/* Confirmed general capability — links to authority page */}
+      {/* ── 4. Mechanical Installation Feature ───────────────────────────── */}
+      {/* Confirmed general capability — links to authority page.         */}
       {mechanicalEquipment && (
         <ContentSection bg="white" aria-label="Mechanical installation capability">
           <PageContainer>
-            <div
-              className={[
-                'flex flex-col gap-6 md:flex-row md:items-center md:justify-between',
-                'rounded-[var(--radius-xl)]',
-                'border border-[var(--color-brand-primary)]/20',
-                'bg-[var(--color-brand-primary)]/5',
-                'px-8 py-8',
-              ].join(' ')}
-            >
-              <div className="flex flex-col gap-2">
-                <h3 className="text-lg font-bold text-[var(--color-brand-secondary)]">
-                  {mechanicalEquipment}
-                </h3>
-                <p className="max-w-xl text-sm leading-relaxed text-[var(--color-neutral-600)]">
-                  {inHouseCrews
-                    ? `${inHouseCrews} operating specialized equipment — available for residential and commercial projects.`
-                    : 'Specialized equipment and experienced crews available for residential and commercial projects.'}
-                </p>
+            <div className="grid grid-cols-1 gap-10 lg:grid-cols-2">
+              {/* Left: copy */}
+              <div className="flex flex-col gap-6">
+                <div className="flex flex-col gap-2">
+                  <span className="text-xs font-bold tracking-widest text-[var(--color-brand-primary)] uppercase">
+                    Specialized Capability
+                  </span>
+                  <h2 className="text-2xl font-bold text-[var(--color-brand-secondary)] md:text-3xl">
+                    {mechanicalEquipment}
+                  </h2>
+                  <p className="text-sm leading-relaxed text-[var(--color-neutral-600)]">
+                    {inHouseCrews
+                      ? `${inHouseCrews} operating specialized equipment — available for residential and commercial projects across the Monterey Bay area.`
+                      : 'Specialized equipment and experienced crews available for residential and commercial projects across the Monterey Bay area.'}
+                  </p>
+                </div>
+
+                {/* Confirmed capability highlights */}
+                <ServiceCapabilityList
+                  highlights={[
+                    'Specialized mechanical equipment',
+                    'In-house crews — not subcontracted',
+                    'Residential and commercial applications',
+                    'Monterey Bay area service region',
+                  ]}
+                />
+
+                <Link
+                  href="/mechanical-installation"
+                  id="services-mechanical-feature-link"
+                  className={[
+                    'mt-2 inline-flex items-center gap-2',
+                    'rounded-[var(--radius-md)] px-6 py-3',
+                    'bg-[var(--color-brand-primary)] text-white',
+                    'text-sm font-bold',
+                    'hover:bg-[var(--color-brand-primary-dark)]',
+                    'transition-colors duration-150',
+                    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
+                    'w-fit',
+                  ].join(' ')}
+                >
+                  Learn About Mechanical Installation
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
               </div>
-              <Link
-                href="/mechanical-installation"
-                id="services-mechanical-link"
+
+              {/* Right: callout card */}
+              <div
                 className={[
-                  'inline-flex shrink-0 items-center gap-2',
-                  'rounded-[var(--radius-md)] px-6 py-3',
-                  'bg-[var(--color-brand-primary)] text-white',
-                  'text-sm font-bold',
-                  'hover:bg-[var(--color-brand-primary-dark)]',
-                  'transition-colors duration-150',
-                  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
+                  'flex flex-col gap-4',
+                  'rounded-[var(--radius-xl)]',
+                  'border border-[var(--color-brand-primary)]/20',
+                  'bg-[var(--color-brand-primary)]/5',
+                  'p-8',
+                  'self-start',
                 ].join(' ')}
               >
-                Learn About Mechanical Installation
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  aria-hidden="true"
-                >
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </Link>
+                <p className="text-xs font-bold tracking-widest text-[var(--color-brand-primary)] uppercase">
+                  Why it matters
+                </p>
+                <p className="text-sm leading-relaxed text-[var(--color-neutral-700)]">
+                  Mechanical installation equipment allows Stowe Contracting to handle concrete work
+                  that would otherwise require multiple subcontractors. Our in-house crews operate
+                  this equipment directly — giving you a single accountable team.
+                </p>
+                <p className="text-xs text-[var(--color-neutral-500)]">
+                  Available for residential and commercial projects in the Monterey Bay area.
+                </p>
+              </div>
             </div>
           </PageContainer>
         </ContentSection>
       )}
 
-      {/* ── Estimate CTAs ─────────────────────────────────────────────────── */}
+      {/* ── 5. Estimate CTA ───────────────────────────────────────────────── */}
       <ContentSection bg="neutral" aria-label="Request a project estimate">
         <PageContainer>
-          <div className="flex flex-col items-center gap-8 text-center">
-            <div className="flex max-w-xl flex-col gap-3">
-              <h2 className="text-2xl font-bold text-[var(--color-brand-secondary)] md:text-3xl">
-                Ready to get started?
-              </h2>
-              <p className="text-sm leading-relaxed text-[var(--color-neutral-600)]">
-                Request an estimate for your residential or commercial project.
-              </p>
-            </div>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/estimate/residential"
-                id="services-cta-residential"
-                className={[
-                  'inline-flex items-center justify-center',
-                  'rounded-[var(--radius-md)] px-8 py-4',
-                  'bg-[var(--color-brand-primary)] text-white',
-                  'text-base font-bold',
-                  'hover:bg-[var(--color-brand-primary-dark)]',
-                  'transition-colors duration-150',
-                  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
-                  'shadow-[var(--shadow-brand)]',
-                ].join(' ')}
-              >
-                {residentialCta ?? 'Request a Residential Estimate'}
-              </Link>
-              <Link
-                href="/estimate/commercial"
-                id="services-cta-commercial"
-                className={[
-                  'inline-flex items-center justify-center gap-2',
-                  'rounded-[var(--radius-md)] px-8 py-4',
-                  'border border-[var(--color-neutral-300)] text-[var(--color-brand-secondary)]',
-                  'text-base font-semibold',
-                  'hover:border-[var(--color-neutral-400)] hover:bg-[var(--color-neutral-100)]',
-                  'transition-colors duration-150',
-                  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-secondary)]',
-                ].join(' ')}
-              >
-                {commercialCta ?? 'Request a Commercial Estimate'}
-              </Link>
-            </div>
-          </div>
+          <ServiceEstimateCta audience="both" idPrefix="services-index" />
         </PageContainer>
       </ContentSection>
     </>

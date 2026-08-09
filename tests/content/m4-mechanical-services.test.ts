@@ -177,12 +177,19 @@ describe('M4 — Service registry governance', () => {
     expect(mechService?.source).toBe('priority-1-discovery-interview');
   });
 
-  it('Test 14 — all service CTAs link to valid estimate routes', () => {
+  it('Test 14 — all service CTAs link to valid estimate routes or authority pages', () => {
+    // M6 update: mechanical-installation CTA links to its canonical authority page.
+    // All other services link to estimate routes.
+    const VALID_CTA_LINKS = [
+      ...VALID_ESTIMATE_ROUTES,
+      '/mechanical-installation', // canonical authority page for that service
+    ];
     for (const service of serviceRegistry) {
+      const isValid = VALID_CTA_LINKS.some((link) => service.cta.href === link);
       expect(
-        VALID_ESTIMATE_ROUTES,
-        `Service "${service.serviceKey}" CTA href must be a valid estimate route`
-      ).toContain(service.cta.href);
+        isValid,
+        `Service "${service.serviceKey}" CTA href "${service.cta.href}" must be a valid estimate route or authority page`
+      ).toBe(true);
     }
   });
 });
