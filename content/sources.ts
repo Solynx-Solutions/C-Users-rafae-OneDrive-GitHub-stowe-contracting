@@ -40,15 +40,17 @@ export const siteRoutes: RouteRecord[] = [
     type: 'route',
     source: 'priority-1-discovery-interview',
     verificationStatus: 'confirmed',
-    publicationStatus: 'draft',
-    // M4 — services foundation page built. Individual service list pending vr-service-list.
+    publicationStatus: 'active',
+    // M6 — services index rebuilt as full lead-generation experience.
+    // Individual service detail pages remain gated by vr-service-list.
+    // ServiceGrid renders empty state until individual services are verified.
     path: '/services',
     label: 'Services',
     sitemapPriority: 0.9,
     changefreq: 'monthly',
     verificationNote:
-      'Services foundation page built in M4. Activate when vr-service-list resolves.',
-    lastReviewedAt: '2026-08-07',
+      'Activated in M6 — service discovery experience. Service detail pages remain draft pending vr-service-list.',
+    lastReviewedAt: '2026-08-09',
   },
   {
     id: 'route-mechanical-installation',

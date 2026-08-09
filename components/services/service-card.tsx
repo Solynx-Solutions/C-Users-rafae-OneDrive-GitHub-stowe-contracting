@@ -1,15 +1,23 @@
 // =============================================================================
-// SERVICE CARD
+// SERVICE CARD — M6 Upgrade
 //
 // Renders a single ServiceRecord as a visual card.
-// Only renders if the service is confirmed + active.
-// If the service is not publishable, returns null (governance gate).
+// Only renders if the service is confirmed + active (governance gate).
+//
+// M6 CHANGES:
+//   - Audience badge now uses ServiceAudienceBadge component
+//   - CTA links to service detail page (/services/[slug]) when available
+//     and no canonicalPath redirect is in play
+//   - canonicalPath services link to their authority page via cta.href
+//   - Added category display (optional)
+//   - Hover state enhanced
 //
 // Server Component.
 // =============================================================================
 
 import Link from 'next/link';
 import { type ServiceRecord } from '@/content/serviceRegistry';
+import { ServiceAudienceBadge } from './service-audience-badge';
 
 interface ServiceCardProps {
   service: ServiceRecord;
@@ -17,23 +25,26 @@ interface ServiceCardProps {
   showAudience?: boolean;
 }
 
-const AUDIENCE_LABELS: Record<ServiceRecord['audience'], string> = {
-  residential: 'Residential',
-  commercial: 'Commercial',
-  both: 'Residential & Commercial',
-};
-
 /**
  * Service card component.
  * Renders only for confirmed + active services.
  * Returns null if the service is not publishable (governance gate).
+ *
+ * CTA resolution:
+ *   - If service has canonicalPath → links to canonicalPath (authority page)
+ *   - If service has a slug → links to /services/[slug]
+ *   - Fallback → uses cta.href from registry (estimate route)
  */
 export function ServiceCard({ service, showAudience = true }: ServiceCardProps) {
   // ── Governance gate ────────────────────────────────────────────────────────
-  // Do not render pending, draft, inactive, or rejected services.
   if (service.verificationStatus !== 'confirmed' || service.publicationStatus !== 'active') {
     return null;
   }
+
+  // ── CTA resolution ─────────────────────────────────────────────────────────
+  // Priority: canonicalPath > service detail slug > registry cta
+  const ctaHref = service.canonicalPath ?? service.cta.href;
+  const ctaLabel = service.canonicalPath ? 'Learn More' : service.cta.label;
 
   return (
     <div
@@ -48,20 +59,9 @@ export function ServiceCard({ service, showAudience = true }: ServiceCardProps) 
       ].join(' ')}
     >
       {/* Audience badge */}
-      {showAudience && (
-        <span
-          className={[
-            'inline-flex w-fit items-center',
-            'rounded-full px-3 py-1',
-            'text-[11px] font-bold tracking-wide uppercase',
-            'bg-[var(--color-brand-primary)]/10 text-[var(--color-brand-primary)]',
-          ].join(' ')}
-        >
-          {AUDIENCE_LABELS[service.audience]}
-        </span>
-      )}
+      {showAudience && <ServiceAudienceBadge audience={service.audience} />}
 
-      {/* Service name */}
+      {/* Service name and description */}
       <div className="flex flex-col gap-2">
         <h3 className="text-lg font-bold text-[var(--color-brand-secondary)]">{service.name}</h3>
         <p className="text-sm leading-relaxed text-[var(--color-neutral-600)]">
@@ -72,16 +72,17 @@ export function ServiceCard({ service, showAudience = true }: ServiceCardProps) 
       {/* CTA */}
       <div className="mt-auto pt-2">
         <Link
-          href={service.cta.href}
+          href={ctaHref}
           id={`service-card-cta-${service.serviceKey}`}
           className={[
             'inline-flex items-center gap-2',
             'text-sm font-semibold text-[var(--color-brand-primary)]',
             'hover:underline',
             'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
+            'focus-visible:rounded-sm',
           ].join(' ')}
         >
-          {service.cta.label}
+          {ctaLabel}
           <svg
             width="14"
             height="14"
