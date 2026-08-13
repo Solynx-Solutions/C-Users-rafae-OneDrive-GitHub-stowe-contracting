@@ -49,7 +49,7 @@ export function MechanicalHero() {
         {/* Secondary accent */}
         <div
           className="absolute -bottom-32 -left-16 h-[400px] w-[400px] rounded-full opacity-[0.025]"
-          style={{ background: 'var(--color-brand-accent)' }}
+          style={{ background: 'var(--color-brand-punctuation)' }}
         />
 
         {/* Industrial grid pattern */}

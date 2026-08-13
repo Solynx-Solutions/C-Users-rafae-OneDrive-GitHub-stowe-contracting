@@ -77,7 +77,7 @@ export function HomeEditorial() {
         <PageContainer>
           <div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]">
             <div>
-              <p className="text-xs font-bold tracking-[.22em] text-[#7A3B45] uppercase">
+              <p className="text-xs font-bold tracking-[.22em] text-[#24507A] uppercase">
                 Signature capability
               </p>
               <h2 className="mt-4 text-[clamp(2.5rem,5vw,4.5rem)] leading-[.95] text-[#222522]">

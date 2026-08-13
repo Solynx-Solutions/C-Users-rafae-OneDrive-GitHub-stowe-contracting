@@ -95,7 +95,7 @@ function ResidentialTrustBar() {
         <li key={text} className="flex items-center gap-2.5 text-sm text-white/75">
           <span
             aria-hidden="true"
-            className="flex size-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-[var(--color-brand-accent)]"
+            className="flex size-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-[#A9C2D9]"
           >
             <Icon className="size-3.5" strokeWidth={1.75} />
           </span>
@@ -133,7 +133,7 @@ export default function ResidentialEstimatePage() {
           <div className="mx-auto max-w-2xl text-center">
             {/* Eyebrow */}
             {montereyBay && (
-              <p className="mb-4 text-sm font-semibold tracking-widest text-[var(--color-brand-accent)] uppercase">
+              <p className="mb-4 text-sm font-semibold tracking-widest text-[#A9C2D9] uppercase">
                 Serving {montereyBay}
               </p>
             )}

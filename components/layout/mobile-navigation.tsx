@@ -111,7 +111,7 @@ export function MobileNavigation({ items, ctaHref, ctaLabel }: MobileNavigationP
         id="mobile-menu"
         aria-label="Navigation menu"
         className={[
-          'fixed inset-y-0 right-0 z-50',
+          'fixed top-0 right-0 bottom-0 z-50 h-dvh',
           'w-full max-w-sm',
           'bg-white shadow-xl',
           'flex flex-col',
