@@ -116,7 +116,7 @@ export function MobileNavigation({ items, ctaHref, ctaLabel }: MobileNavigationP
           'bg-white shadow-xl',
           'flex flex-col',
           'transition-transform duration-300 ease-in-out',
-          isOpen ? 'translate-x-0' : 'translate-x-full',
+          isOpen ? 'translate-x-0' : 'hidden translate-x-full',
         ].join(' ')}
         role="dialog"
         aria-modal="true"

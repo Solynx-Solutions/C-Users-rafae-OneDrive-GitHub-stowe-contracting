@@ -28,7 +28,7 @@ export function HomeCta() {
   return (
     <section
       aria-label="Get started with Stowe Contracting"
-      className="bg-[var(--color-brand-primary)]"
+      className="bg-[#1e211f]"
       id="get-started"
     >
       <PageContainer>
@@ -57,9 +57,9 @@ export function HomeCta() {
               className={[
                 'inline-flex items-center justify-center',
                 'rounded-[var(--radius-md)] px-8 py-4',
-                'bg-white text-[var(--color-brand-primary)]',
+                'bg-[#9a5435] text-white',
                 'text-base font-bold',
-                'hover:bg-[var(--color-neutral-100)]',
+                'hover:bg-[#7c4029]',
                 'transition-colors duration-150',
                 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
                 'shadow-[0_4px_16px_rgba(0,0,0,0.15)]',

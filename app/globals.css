@@ -11,26 +11,26 @@
      TODO: Update with client-approved brand colors from branding guidelines.
      Placeholder palette — warm neutrals with a strong accent.
   ───────────────────────────────────────────────────────────────────────── */
-  --color-brand-primary: oklch(0.45 0.18 30); /* Deep amber/orange */
-  --color-brand-primary-light: oklch(0.6 0.18 30); /* Lighter variant */
-  --color-brand-primary-dark: oklch(0.32 0.18 30); /* Darker variant */
+  --color-brand-primary: #9a5435;
+  --color-brand-primary-light: #b26a48;
+  --color-brand-primary-dark: #7c4029;
 
-  --color-brand-secondary: oklch(0.22 0.04 250); /* Near-black navy */
-  --color-brand-secondary-light: oklch(0.35 0.06 250);
+  --color-brand-secondary: #202220;
+  --color-brand-secondary-light: #565b57;
 
-  --color-brand-accent: oklch(0.75 0.15 80); /* Warm gold accent */
+  --color-brand-accent: #b9a58d;
 
   /* ── Neutral Scale ────────────────────────────────────────────────────────── */
-  --color-neutral-50: oklch(0.98 0 0);
-  --color-neutral-100: oklch(0.95 0 0);
-  --color-neutral-200: oklch(0.9 0 0);
-  --color-neutral-300: oklch(0.8 0 0);
-  --color-neutral-400: oklch(0.65 0 0);
-  --color-neutral-500: oklch(0.5 0 0);
-  --color-neutral-600: oklch(0.38 0 0);
-  --color-neutral-700: oklch(0.28 0 0);
-  --color-neutral-800: oklch(0.2 0 0);
-  --color-neutral-900: oklch(0.13 0 0);
+  --color-neutral-50: #f7f5f0;
+  --color-neutral-100: #ece8e0;
+  --color-neutral-200: #d4d0c8;
+  --color-neutral-300: #b9a58d;
+  --color-neutral-400: #727771;
+  --color-neutral-500: #565b57;
+  --color-neutral-600: #4a4e4a;
+  --color-neutral-700: #353835;
+  --color-neutral-800: #202220;
+  --color-neutral-900: #1e211f;
 
   /* ── Semantic Colors ─────────────────────────────────────────────────────── */
   --color-success: oklch(0.55 0.15 142);
@@ -39,8 +39,8 @@
   --color-info: oklch(0.55 0.15 250);
 
   /* ── Typography ──────────────────────────────────────────────────────────── */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-heading: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
+  --font-heading: 'Barlow Semi Condensed', 'Arial Narrow', ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
 
   /* ── Border Radius ───────────────────────────────────────────────────────── */
@@ -82,7 +82,8 @@
 
   body {
     color: var(--color-neutral-800);
-    background-color: #ffffff;
+    background-color: #f7f5f0;
+    font-size: 17px;
   }
 
   /* ── Heading defaults ────────────────────────────────────────────────────── */
@@ -93,7 +94,7 @@
   h5,
   h6 {
     font-family: var(--font-heading);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.2;
     letter-spacing: -0.02em;
     color: var(--color-brand-secondary);

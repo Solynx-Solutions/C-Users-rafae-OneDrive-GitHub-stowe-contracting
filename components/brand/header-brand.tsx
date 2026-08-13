@@ -17,7 +17,7 @@ export function HeaderBrand() {
     <Link
       href="/"
       className={[
-        'inline-flex items-center gap-3',
+        'inline-flex items-center gap-2 sm:gap-3',
         'focus-visible:outline-2 focus-visible:outline-[var(--color-brand-primary)]',
         'focus-visible:rounded-sm focus-visible:outline-offset-4',
         'transition-opacity hover:opacity-90',
@@ -25,7 +25,7 @@ export function HeaderBrand() {
       aria-label="Stowe Contracting — Home"
     >
       <BrandMark size={36} />
-      <StoweWordmark size="md" />
+      <StoweWordmark size="md" className="text-lg sm:text-2xl" />
     </Link>
   );
 }
