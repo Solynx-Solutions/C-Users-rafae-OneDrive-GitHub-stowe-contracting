@@ -1,125 +1,105 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageContainer } from '@/components/layout/page-container';
-import { resolveControlledClaim, resolveControlledMessage } from '@/lib/content';
 
 function Media({ label, tall = false }: { label: string; tall?: boolean }) {
   return (
     <div
       role="img"
-      aria-label={`${label} staging placeholder`}
-      className={`flex items-end bg-[linear-gradient(135deg,transparent_48%,rgba(154,84,53,.18)_48%,rgba(154,84,53,.18)_49%,transparent_49%),linear-gradient(145deg,#d4d0c8,#ece8e0)] p-5 ${tall ? 'min-h-[32rem]' : 'min-h-64'}`}
+      aria-label={`${label}; approved photography pending`}
+      className={`relative flex items-end overflow-hidden bg-[repeating-linear-gradient(90deg,transparent_0,transparent_79px,rgba(36,80,122,.13)_80px,rgba(36,80,122,.13)_82px),repeating-linear-gradient(0deg,transparent_0,transparent_39px,rgba(122,59,69,.09)_40px,rgba(122,59,69,.09)_42px),linear-gradient(145deg,#D6D1C8,#E9E3D8)] p-5 ${tall ? 'min-h-[34rem]' : 'min-h-72'}`}
     >
-      <span className="bg-[#202220] px-3 py-2 text-xs font-semibold tracking-[.15em] text-white uppercase">
+      <span className="bg-[#1D2421] px-3 py-2 text-[.68rem] font-bold tracking-[.16em] text-white uppercase">
         {label}
       </span>
     </div>
   );
 }
 
-const SectionTitle = ({ eyebrow, children }: { eyebrow: string; children: React.ReactNode }) => (
-  <div>
-    <p className="text-sm font-semibold tracking-[.18em] text-[#9a5435] uppercase">{eyebrow}</p>
-    <h2 className="mt-4 text-[clamp(2rem,4vw,2.75rem)] leading-[1.05] text-[#202220]">
-      {children}
-    </h2>
-  </div>
-);
+function SectionTitle({ eyebrow, children }: { eyebrow: string; children: React.ReactNode }) {
+  return (
+    <div>
+      <p className="text-xs font-bold tracking-[.22em] text-[#24507A] uppercase">{eyebrow}</p>
+      <h2 className="mt-4 max-w-4xl text-[clamp(2.35rem,5vw,4.5rem)] leading-[.95] tracking-[-.04em] text-[#222522]">
+        {children}
+      </h2>
+    </div>
+  );
+}
 
 export function HomeEditorial() {
-  const positioning = resolveControlledMessage('positioning-statement');
-  const trust = [
-    resolveControlledClaim('years-in-business'),
-    resolveControlledClaim('locally-owned'),
-    resolveControlledClaim('in-house-crews'),
-  ].filter(Boolean);
   return (
     <>
-      <section className="bg-[#f7f5f0] py-24 md:py-32">
+      <section className="bg-[#1D2421] text-white">
         <PageContainer>
-          <div className="grid gap-10 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
-            <p className="text-sm font-semibold tracking-[.18em] text-[#9a5435] uppercase">
-              Built around accountable work
-            </p>
+          <dl className="grid divide-y divide-white/10 py-2 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+            {[
+              ['Since', '1987'],
+              ['California license', '513674'],
+              ['Built for', 'Monterey Bay'],
+              ['Workforce', 'Dedicated crews'],
+            ].map(([term, value]) => (
+              <div key={term} className="px-0 py-7 first:pl-0 last:pr-0 sm:px-7">
+                <dt className="text-[.65rem] font-bold tracking-[.18em] text-white/45 uppercase">
+                  {term}
+                </dt>
+                <dd className="mt-2 text-xl font-semibold text-white">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </PageContainer>
+      </section>
+
+      <section className="bg-white py-24 md:py-32">
+        <PageContainer>
+          <div className="grid gap-12 lg:grid-cols-[.62fr_1.38fr] lg:gap-24">
+            <SectionTitle eyebrow="Hardscape authority">
+              Outdoor work that reads as architecture.
+            </SectionTitle>
             <div>
-              <h2 className="max-w-4xl text-[clamp(2rem,4vw,2.75rem)] leading-[1.05]">
-                Local knowledge, experienced crews, and the equipment to carry demanding work
-                through.
-              </h2>
-              <p className="mt-7 max-w-3xl text-xl leading-8 text-[#565b57]">{positioning}</p>
-              <div className="mt-12 flex flex-wrap gap-8 border-t border-[#d4d0c8] pt-6 text-sm font-semibold">
-                {trust.map((x) => (
-                  <span key={x}>{x}</span>
-                ))}
+              <p className="max-w-3xl text-2xl leading-9 text-[#535B57]">
+                Large-format paver and permeable interlocking concrete pavement driveways anchor our
+                hardscape work, supported by residential outdoor spaces and complete site
+                preparation.
+              </p>
+              <div className="mt-12 grid gap-5 md:grid-cols-2">
+                <Media label="Paver + PICP driveways" tall />
+                <div className="md:pt-24">
+                  <Media label="Backyards + outdoor spaces" />
+                </div>
               </div>
             </div>
           </div>
         </PageContainer>
       </section>
 
-      <section className="bg-white py-24 md:py-32">
+      <section className="bg-[#E9E3D8] py-24 md:py-32">
         <PageContainer>
-          <SectionTitle eyebrow="Capabilities">
-            One contractor. Two distinct project paths.
-          </SectionTitle>
-          <div className="mt-14 grid gap-14 lg:grid-cols-[1.2fr_.8fr]">
+          <div className="grid gap-14 lg:grid-cols-[.72fr_1.28fr]">
             <div>
-              <Media label="Residential project photography" />
-              <h3 className="mt-6 text-3xl">Residential</h3>
-              <p className="mt-3 text-lg text-[#565b57]">
-                A clear route for homeowners planning concrete and construction work.
-              </p>
-              <Link
-                className="mt-5 inline-flex items-center gap-2 font-semibold text-[#7c4029]"
-                href="/estimate/residential"
-              >
-                Residential estimates <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="lg:pt-24">
-              <Media label="Commercial project photography" />
-              <h3 className="mt-6 text-3xl">Commercial</h3>
-              <p className="mt-3 text-lg text-[#565b57]">
-                A dedicated path for commercial scopes and project requirements.
-              </p>
-              <Link
-                className="mt-5 inline-flex items-center gap-2 font-semibold text-[#7c4029]"
-                href="/estimate/commercial"
-              >
-                Commercial estimates <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-          </div>
-        </PageContainer>
-      </section>
-
-      <section className="bg-[#1e211f] py-24 text-white md:py-32">
-        <PageContainer>
-          <div className="grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
-            <div>
-              <p className="text-sm tracking-[.18em] text-[#c98767] uppercase">
+              <p className="text-xs font-bold tracking-[.22em] text-[#7A3B45] uppercase">
                 Signature capability
               </p>
-              <h2 className="mt-4 text-[clamp(2rem,4vw,2.75rem)] text-white">
-                Mechanical installation
+              <h2 className="mt-4 text-[clamp(2.5rem,5vw,4.5rem)] leading-[.95] text-[#222522]">
+                Mechanical paver installation.
               </h2>
-              <p className="mt-6 text-lg leading-8 text-[#d4d0c8]">
-                Specialized equipment and in-house crews create a controlled path from preparation
-                to finished work.
+              <p className="mt-7 max-w-xl text-xl leading-8 text-[#535B57]">
+                People, equipment, and process aligned for controlled placement across larger or
+                more demanding hardscape scopes.
               </p>
               <Link
                 href="/mechanical-installation"
-                className="mt-7 inline-flex items-center gap-2 font-semibold"
+                className="mt-8 inline-flex items-center gap-2 font-bold text-[#24507A]"
               >
-                Explore the process <ArrowRight className="h-4 w-4 text-[#c98767]" />
+                See the installation approach <ArrowRight className="size-4" />
               </Link>
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
-              {['Prepare', 'Place', 'Finish'].map((x, i) => (
-                <div key={x}>
-                  <Media label={`0${i + 1} ${x}`} />
-                  <p className="mt-4 border-t border-white/20 pt-3 text-sm tracking-[.14em] uppercase">
-                    {x}
+              {['Prepare', 'Install', 'Finish'].map((item, index) => (
+                <div key={item}>
+                  <Media label={`0${index + 1} ${item}`} />
+                  <p className="mt-4 border-t border-[#BEB6AA] pt-3 text-xs font-bold tracking-[.16em] uppercase">
+                    {item}
                   </p>
                 </div>
               ))}
@@ -128,79 +108,112 @@ export function HomeEditorial() {
         </PageContainer>
       </section>
 
-      <section className="bg-[#ece8e0] py-24 md:py-32">
+      <section className="bg-[#F6F3EC] py-24 md:py-32">
         <PageContainer>
-          <SectionTitle eyebrow="Selected work">Projects, presented at full scale.</SectionTitle>
-          <p className="mt-5 max-w-xl text-lg text-[#565b57]">
-            Architectural staging fields remain in place until approved project photography and
-            metadata are supplied.
-          </p>
-          <div className="mt-14">
-            <Media label="Oversized featured project" tall />
-            <div className="grid border-y border-[#b9a58d] py-5 text-sm md:grid-cols-3">
-              <span>Featured project</span>
-              <span>Monterey Bay</span>
-              <span className="md:text-right">Verified details pending</span>
-            </div>
-            <div className="mt-8 grid gap-8 md:grid-cols-2">
-              <Media label="Supporting project" />
-              <Media label="Supporting project" />
-            </div>
+          <SectionTitle eyebrow="One accountable contractor">
+            Three divisions. One clear path through the work.
+          </SectionTitle>
+          <div className="mt-16 grid border-t border-[#C9C2B7] lg:grid-cols-3">
+            {[
+              [
+                '01',
+                'Hardscape',
+                'Paver driveways, outdoor spaces, and mechanical installation lead the work.',
+              ],
+              [
+                '02',
+                'Construction + Remodeling',
+                'Construction support and remodeling extend the project beyond the exterior surface.',
+              ],
+              [
+                '03',
+                'Sitework + Underground',
+                'Preparation, grading, and underground support connect the site to the finished result.',
+              ],
+            ].map(([number, title, body]) => (
+              <article
+                key={title}
+                className="border-b border-[#C9C2B7] py-10 first:pl-0 last:border-r-0 lg:border-r lg:px-8"
+              >
+                <span className="text-xs font-bold text-[#7A3B45]">{number}</span>
+                <h3 className="mt-10 text-3xl text-[#222522]">{title}</h3>
+                <p className="mt-5 text-lg leading-8 text-[#535B57]">{body}</p>
+              </article>
+            ))}
           </div>
         </PageContainer>
       </section>
 
       <section className="bg-white py-24 md:py-32">
         <PageContainer>
-          <div className="grid gap-5 lg:grid-cols-[1.35fr_.65fr]">
-            <Media label="Crew and operator photography" tall />
-            <div className="flex flex-col justify-between bg-[#202220] p-8 text-white md:p-10">
+          <SectionTitle eyebrow="Featured work">Let the built work carry the story.</SectionTitle>
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-[#535B57]">
+            The editorial project system is ready for approved Stowe photography and verified
+            project captions. No stock or scraped imagery is used.
+          </p>
+          <div className="mt-14">
+            <Media label="Featured hardscape project" tall />
+          </div>
+          <div className="mt-5 grid gap-5 md:grid-cols-2">
+            <Media label="Residential hardscape" />
+            <Media label="Mechanical installation" />
+          </div>
+        </PageContainer>
+      </section>
+
+      <section className="bg-[#1D2421] py-24 text-white md:py-32">
+        <PageContainer>
+          <div className="grid gap-8 lg:grid-cols-[1.25fr_.75fr]">
+            <Media label="Crew + equipment on site" tall />
+            <div className="flex flex-col justify-between border-l-4 border-[#24507A] bg-[#222522] p-9 md:p-12">
               <div>
-                <p className="text-sm tracking-[.16em] text-[#c98767] uppercase">
-                  People + equipment
+                <p className="text-xs font-bold tracking-[.22em] text-[#A9C2D9] uppercase">
+                  Site capability
                 </p>
-                <h2 className="mt-5 text-[clamp(2rem,4vw,2.75rem)] text-white">
-                  The crew behind the capability.
+                <h2 className="mt-5 text-[clamp(2.5rem,5vw,4.5rem)] leading-[.95] text-white">
+                  The crew behind the finish.
                 </h2>
               </div>
-              <p className="mt-12 text-lg leading-8 text-[#d4d0c8]">
-                Experienced people and specialized equipment, working as one accountable team.
+              <p className="mt-14 text-xl leading-8 text-white/70">
+                Dedicated local crews and specialized equipment keep responsibility close—from site
+                preparation through installation.
               </p>
             </div>
           </div>
         </PageContainer>
       </section>
 
-      <section className="bg-[#f7f5f0] py-24 md:py-32">
+      <section className="bg-[#E9E3D8] py-24 md:py-32">
         <PageContainer>
-          <SectionTitle eyebrow="How work moves">A clean six-stage process.</SectionTitle>
-          <ol className="mt-14 grid border-t border-[#d4d0c8] md:grid-cols-3 lg:grid-cols-6">
-            {['Inquiry', 'Review', 'Plan', 'Prepare', 'Build', 'Finish'].map((x, i) => (
-              <li
-                key={x}
-                className="border-b border-[#d4d0c8] py-7 first:pl-0 last:border-r-0 md:pr-5 lg:border-r lg:px-5"
-              >
-                <span className="text-sm text-[#9a5435]">0{i + 1}</span>
-                <h3 className="mt-7 text-xl">{x}</h3>
-              </li>
-            ))}
-          </ol>
-        </PageContainer>
-      </section>
-
-      <section className="bg-[#ece8e0] py-24 md:py-32">
-        <PageContainer>
-          <div className="grid gap-10 lg:grid-cols-[.65fr_1.35fr]">
+          <div className="grid gap-14 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
+            <SectionTitle eyebrow="Built here">A Monterey Bay contractor since 1987.</SectionTitle>
             <div>
-              <SectionTitle eyebrow="Heritage to modern">Experience carried forward.</SectionTitle>
-              <p className="mt-6 text-lg leading-8 text-[#565b57]">
-                A visual timeline reserved for verified historical and current operations
-                photography.
+              <p className="text-2xl leading-9 text-[#535B57]">
+                Stowe Contracting combines long-standing local knowledge with dedicated crews and
+                modern installation capability. Trusted, reliable, and accountable to the
+                communities where the work is built.
               </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2">
-              <Media label="Historical operations" tall />
-              <Media label="Current operations" tall />
+              <div className="mt-12 grid gap-4 sm:grid-cols-2">
+                {[
+                  'CA License 513674',
+                  'Approved CMHA credentials',
+                  'Dedicated local crews',
+                  'Monterey Bay Area',
+                ].map((item) => (
+                  <p
+                    key={item}
+                    className="border-t border-[#BEB6AA] pt-5 text-sm font-bold tracking-[.08em] text-[#222522] uppercase"
+                  >
+                    {item}
+                  </p>
+                ))}
+              </div>
+              <Link
+                href="/about"
+                className="mt-9 inline-flex items-center gap-2 font-bold text-[#24507A]"
+              >
+                Our company story <ArrowRight className="size-4" />
+              </Link>
             </div>
           </div>
         </PageContainer>

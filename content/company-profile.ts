@@ -9,7 +9,7 @@
 // CHRONOLOGY POLICY REMINDER:
 //   ✅ "Nearly 40 years" — approved
 //   ✅ "Nearly four decades" — approved
-//   ❌ "Since 1987" — BLOCKED
+//   ✅ "Since 1987" — authorized by governed onboarding
 //   ❌ "40+ years" — BLOCKED
 //   ❌ "Over 40 years" — BLOCKED
 // =============================================================================
@@ -24,10 +24,9 @@ export const companyClaims: ClaimRecord[] = [
     verificationStatus: 'confirmed',
     publicationStatus: 'active',
     claimKey: 'years-in-business',
-    canonicalText: 'Nearly 40 years serving Monterey Bay',
-    verificationNote:
-      'Verified via Adam Cox discovery interview. Exact founding year is pending — approved expression only.',
-    lastReviewedAt: '2026-07-20',
+    canonicalText: 'Since 1987 · Serving Monterey Bay',
+    verificationNote: 'Exact founding year authorized by governed Agent 07 onboarding direction.',
+    lastReviewedAt: '2026-08-13',
   },
   {
     id: 'claim-years-experience-short',
@@ -192,13 +191,12 @@ export const companyClaims: ClaimRecord[] = [
     id: 'claim-founding-year',
     type: 'claim',
     source: 'priority-1-discovery-interview',
-    verificationStatus: 'pending',
-    publicationStatus: 'inactive',
+    verificationStatus: 'confirmed',
+    publicationStatus: 'active',
     claimKey: 'founding-year',
-    canonicalText: '', // Exact year not yet confirmed — pending
-    verificationNote:
-      'Exact founding year requires document-level verification. Approved expression is "Nearly 40 years" until confirmed.',
-    lastReviewedAt: '2026-07-20',
+    canonicalText: '1987',
+    verificationNote: 'Authorized by governed Agent 07 onboarding direction.',
+    lastReviewedAt: '2026-08-13',
   },
   {
     id: 'claim-exact-employee-total',

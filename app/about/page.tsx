@@ -41,9 +41,9 @@ import Link from 'next/link';
 // METADATA
 // =============================================================================
 export const metadata: Metadata = generatePageMetadata({
-  title: 'About Stowe Contracting — Nearly 40 Years Serving Monterey Bay',
+  title: 'About Stowe Contracting — Monterey Bay Contractor Since 1987',
   description:
-    'Stowe Contracting is a locally owned concrete and construction contractor based in Monterey Bay. Nearly 40 years of local experience, experienced in-house crews, and specialized mechanical installation equipment.',
+    'Stowe Contracting is a locally owned Monterey Bay hardscape and construction contractor established in 1987. CA License 513674.',
   path: '/about',
 });
 
@@ -210,16 +210,13 @@ export default function AboutPage() {
 
             <div className="flex max-w-3xl flex-col gap-4">
               <h1 className="text-4xl leading-none font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl">
-                {yearsInBusiness
-                  ? `${yearsInBusiness} Serving Monterey Bay`
-                  : 'Serving Monterey Bay'}
+                {yearsInBusiness ?? 'Serving Monterey Bay'}
               </h1>
               <p className="max-w-2xl text-lg leading-relaxed text-white/75">
-                Stowe Contracting is a locally owned concrete and construction contractor based in
-                {montereyBay ? ` ${montereyBay}` : ' Monterey Bay'}. We bring{' '}
-                {yearsInBusiness ? `${yearsInBusiness.toLowerCase()} of` : ''} local experience,
-                experienced in-house crews, and specialized mechanical installation equipment to
-                residential and commercial projects of every scale.
+                Stowe Contracting is a locally owned hardscape and construction contractor based in
+                {montereyBay ? ` ${montereyBay}` : ' Monterey Bay'}. Dedicated crews and specialized
+                mechanical installation equipment support residential and commercial projects across
+                our three divisions.
               </p>
             </div>
 

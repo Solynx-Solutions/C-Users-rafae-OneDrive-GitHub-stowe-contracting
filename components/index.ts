@@ -19,7 +19,7 @@ export {
 export type { BreadcrumbItem } from './layout';
 
 // Re-export brand components for convenience
-export { HeaderBrand, FooterBrand, StoweWordmark, BrandMark } from './brand';
+export { HeaderBrand, FooterBrand, BrandLogo, StoweWordmark, BrandMark } from './brand';
 
 // Re-export content governance components for convenience
 export { ControlledMessageText, VerifiedClaim, ControlledContentBoundary } from './content';

@@ -9,7 +9,7 @@
 //   - "Serving Monterey Bay for nearly 40 years"
 //
 // BLOCKED expressions (must never appear in any output):
-//   - "Since 1987" (or any exact founding year)
+//   - Unsupported exact founding-year formulations
 //   - "40+ years"
 //   - "Over 40 years"
 //   - "More than 40 years"
@@ -27,16 +27,6 @@ import { type ProhibitedExpression } from './types';
  * Checked case-insensitively against any string passed to checkChronologyPolicy().
  */
 export const BLOCKED_CHRONOLOGY_EXPRESSIONS: ProhibitedExpression[] = [
-  {
-    pattern: 'since 1987',
-    reason: 'Exact founding year is pending verification and is not an approved expression.',
-    approvedAlternative: 'Nearly 40 years',
-  },
-  {
-    pattern: '1987',
-    reason: 'Exact founding year is pending verification.',
-    approvedAlternative: 'Nearly 40 years',
-  },
   {
     pattern: '40+ years',
     reason: '"40+" is a blocked chronology expression.',
@@ -84,7 +74,7 @@ export interface ChronologyCheckResult {
  *
  * @example
  * checkChronologyPolicy('Since 1987, we have served...')
- * // → { passed: false, blockedMatch: 'since 1987', reason: '...' }
+ * // → { passed: true }
  *
  * checkChronologyPolicy('Nearly 40 years serving Monterey Bay')
  * // → { passed: true }

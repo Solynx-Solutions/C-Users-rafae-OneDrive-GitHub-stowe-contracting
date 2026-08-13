@@ -5,11 +5,10 @@
 // =============================================================================
 
 import Link from 'next/link';
-import Image from 'next/image';
+import { BrandLogo } from './brand-logo';
 
 /**
  * Header brand lockup — links to homepage.
- * Composed of BrandMark + StoweWordmark.
  */
 export function HeaderBrand() {
   return (
@@ -23,13 +22,7 @@ export function HeaderBrand() {
       ].join(' ')}
       aria-label="Stowe Contracting — Home"
     >
-      <Image
-        src="/images/stowe-logo.jpg"
-        alt=""
-        width={175}
-        height={75}
-        className="h-11 w-auto sm:h-12"
-      />
+      <BrandLogo />
     </Link>
   );
 }

@@ -1,54 +1,54 @@
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { PageContainer } from '@/components/layout/page-container';
-import { resolveControlledClaim, resolveControlledMessage } from '@/lib/content';
 
 export function HomeHero() {
-  const years = resolveControlledClaim('years-in-business') ?? 'Serving Monterey Bay';
-  const tagline = resolveControlledMessage('tagline-primary');
   return (
-    <section className="overflow-hidden bg-[#f7f5f0]" aria-label="Stowe Contracting introduction">
+    <section className="overflow-hidden bg-[#F6F3EC]" aria-label="Stowe Contracting introduction">
       <PageContainer>
-        <div className="grid min-h-[calc(100svh-5rem)] items-center gap-12 py-14 lg:grid-cols-[.82fr_1.18fr] lg:py-20">
+        <div className="grid min-h-[calc(100svh-4rem)] items-center gap-12 py-14 lg:grid-cols-[.78fr_1.22fr] lg:py-20">
           <div className="relative z-10">
-            <p className="text-sm font-semibold tracking-[.18em] text-[#9a5435] uppercase">
-              Locally owned · Monterey Bay
+            <p className="text-xs font-bold tracking-[.22em] text-[#24507A] uppercase">
+              Monterey Bay Area · Since 1987
             </p>
-            <h1 className="mt-7 max-w-2xl text-[clamp(2.5rem,5.4vw,4.25rem)] leading-[.98] font-semibold tracking-[-.035em] text-[#202220]">
-              Grounded in experience. Built for what comes next.
+            <h1 className="mt-7 max-w-2xl text-[clamp(3.25rem,7vw,6.6rem)] leading-[.82] font-semibold tracking-[-.055em] text-[#222522]">
+              Monterey Built.
+              <span className="mt-2 block text-[#24507A]">Hardscape First.</span>
             </h1>
-            <p className="mt-7 max-w-xl text-xl leading-8 text-[#565b57]">{tagline}</p>
+            <p className="mt-8 max-w-xl text-xl leading-8 text-[#535B57]">
+              Paver driveways, outdoor spaces, and site-ready construction delivered by dedicated
+              local crews—with mechanical installation capability for demanding scopes.
+            </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
                 href="/estimate/residential"
-                className="inline-flex min-h-14 items-center gap-3 bg-[#9a5435] px-7 font-semibold text-white transition hover:bg-[#7c4029]"
+                className="inline-flex min-h-14 items-center gap-3 bg-[#24507A] px-7 font-semibold text-white transition hover:bg-[#183A58]"
               >
-                Request an estimate <ArrowRight className="h-4 w-4" />
+                Start a project <ArrowRight className="size-4" />
               </Link>
               <Link
                 href="/services"
-                className="inline-flex min-h-14 items-center border border-[#202220] px-7 font-semibold text-[#202220] hover:bg-[#202220] hover:text-white"
+                className="inline-flex min-h-14 items-center border border-[#222522] px-7 font-semibold text-[#222522] transition hover:bg-[#222522] hover:text-white"
               >
                 Explore capabilities
               </Link>
             </div>
-            <p className="mt-10 border-l-2 border-[#9a5435] pl-4 text-sm font-semibold text-[#565b57]">
-              {years}
-            </p>
-          </div>
-          <div
-            className="relative min-h-[28rem] lg:min-h-[42rem]"
-            role="img"
-            aria-label="Large project and equipment staging photography placeholder"
-          >
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,transparent_48%,rgba(154,84,53,.2)_48%,rgba(154,84,53,.2)_49%,transparent_49%),linear-gradient(145deg,#d4d0c8,#ece8e0)]" />
-            <div className="absolute right-0 bottom-0 bg-[#202220] px-5 py-4 text-xs tracking-[.15em] text-white uppercase">
-              Project + equipment photography
+            <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#C9C2B7] pt-5 text-xs font-bold tracking-[.12em] text-[#535B57] uppercase">
+              <span>CA License 513674</span>
+              <span>Dedicated crews</span>
+              <span>Monterey Bay Area</span>
             </div>
-            <div
-              className="absolute -bottom-6 -left-6 hidden h-40 w-32 bg-[#b9a58d] lg:block"
-              aria-hidden="true"
-            />
+          </div>
+
+          <div
+            className="relative min-h-[30rem] overflow-hidden border-l-[10px] border-[#7A3B45] lg:min-h-[44rem]"
+            role="img"
+            aria-label="Reserved space for approved large-format hardscape project photography"
+          >
+            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(29,36,33,.12),transparent_40%),repeating-linear-gradient(90deg,transparent_0,transparent_79px,rgba(36,80,122,.14)_80px,rgba(36,80,122,.14)_82px),repeating-linear-gradient(0deg,transparent_0,transparent_39px,rgba(36,80,122,.12)_40px,rgba(36,80,122,.12)_42px),linear-gradient(145deg,#D5D0C7,#E9E3D8)]" />
+            <div className="absolute right-5 bottom-5 bg-[#1D2421] px-5 py-4 text-[.68rem] font-bold tracking-[.18em] text-white uppercase">
+              Approved project photography reserved
+            </div>
           </div>
         </div>
       </PageContainer>

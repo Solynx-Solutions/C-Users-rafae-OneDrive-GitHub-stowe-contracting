@@ -53,7 +53,7 @@ import { SectionHeading } from '@/components/layout/section-heading';
 export const metadata: Metadata = generatePageMetadata({
   title: 'Services',
   description:
-    'Stowe Contracting offers residential and commercial concrete and construction services in the Monterey Bay area. Nearly 40 years of experience with in-house crews and specialized mechanical installation equipment.',
+    'Stowe Contracting provides hardscape, construction and remodeling, and sitework support across the Monterey Bay area, led by dedicated crews and mechanical installation capability.',
   path: '/services',
 });
 

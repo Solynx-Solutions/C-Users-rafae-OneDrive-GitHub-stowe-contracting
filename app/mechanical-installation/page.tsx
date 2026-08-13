@@ -55,7 +55,7 @@ import { CtaSection } from '@/components/sections/cta-section';
 export const metadata: Metadata = generatePageMetadata({
   title: 'Mechanical Installation — Stowe Contracting',
   description:
-    'Stowe Contracting provides specialized mechanical concrete installation for residential and commercial projects in the Monterey Bay area. Nearly 40 years of experience, with experienced in-house crews and specialized equipment.',
+    'Stowe Contracting provides mechanical paver installation for demanding hardscape scopes in the Monterey Bay area, supported by dedicated crews and specialized equipment.',
   path: '/mechanical-installation',
 });
 

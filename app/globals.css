@@ -11,26 +11,26 @@
      TODO: Update with client-approved brand colors from branding guidelines.
      Placeholder palette — warm neutrals with a strong accent.
   ───────────────────────────────────────────────────────────────────────── */
-  --color-brand-primary: #9a5435;
-  --color-brand-primary-light: #b26a48;
-  --color-brand-primary-dark: #7c4029;
+  --color-brand-primary: #24507a;
+  --color-brand-primary-light: #356a98;
+  --color-brand-primary-dark: #183a58;
 
-  --color-brand-secondary: #202220;
+  --color-brand-secondary: #222522;
   --color-brand-secondary-light: #565b57;
 
-  --color-brand-accent: #b9a58d;
+  --color-brand-accent: #7a3b45;
 
   /* ── Neutral Scale ────────────────────────────────────────────────────────── */
-  --color-neutral-50: #f7f5f0;
-  --color-neutral-100: #ece8e0;
+  --color-neutral-50: #f6f3ec;
+  --color-neutral-100: #e9e3d8;
   --color-neutral-200: #d4d0c8;
-  --color-neutral-300: #b9a58d;
+  --color-neutral-300: #b7b0a4;
   --color-neutral-400: #727771;
   --color-neutral-500: #565b57;
   --color-neutral-600: #4a4e4a;
   --color-neutral-700: #353835;
-  --color-neutral-800: #202220;
-  --color-neutral-900: #1e211f;
+  --color-neutral-800: #222522;
+  --color-neutral-900: #1d2421;
 
   /* ── Semantic Colors ─────────────────────────────────────────────────────── */
   --color-success: oklch(0.55 0.15 142);
@@ -82,7 +82,7 @@
 
   body {
     color: var(--color-neutral-800);
-    background-color: #f7f5f0;
+    background-color: #f6f3ec;
     font-size: 17px;
   }
 

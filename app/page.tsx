@@ -5,9 +5,9 @@ import { HomeEditorial } from '@/components/sections/home-editorial';
 import { HomeCta } from '@/components/sections/home-cta';
 
 export const metadata: Metadata = generatePageMetadata({
-  title: 'Stowe Contracting — Nearly 40 Years Serving Monterey Bay',
+  title: 'Monterey Built — Hardscape First | Stowe Contracting',
   description:
-    'Locally owned concrete and construction contractor serving Monterey Bay, with experienced in-house crews and specialized mechanical installation equipment.',
+    'Monterey Bay hardscape contractor for paver driveways, outdoor spaces, mechanical paver installation, construction, remodeling, and sitework. CA License 513674.',
   path: '/',
 });
 

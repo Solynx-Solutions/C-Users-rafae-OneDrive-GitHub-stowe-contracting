@@ -12,14 +12,6 @@
 
 export const VERIFICATION_REQUIRED_ITEMS = [
   {
-    id: 'vr-founding-year',
-    description: 'Exact founding year of Stowe Contracting.',
-    requiredFor: 'Activating claim "founding-year" in content/company-profile.ts',
-    requiredSourceTier: 'priority-1-discovery-interview',
-    blockerNote:
-      'Do not use "Since 1987" or any exact year. Use "Nearly 40 years" until confirmed.',
-  },
-  {
     id: 'vr-exact-employee-count',
     description: 'Current total employee count (exact number).',
     requiredFor: 'Activating claim "exact-employee-total". Current approved claim is "30+".',

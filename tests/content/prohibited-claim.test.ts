@@ -90,12 +90,12 @@ describe('checkProhibitedClaimPolicy()', () => {
 
 // Test 12 (partial): validateContentContext catches both policy violations
 describe('validateContentContext() — combined policy check', () => {
-  it('Test 12 — catches chronology violation in metadata-style text', () => {
+  it('Test 12 — accepts the authorized founding-year expression', () => {
     const result = validateContentContext(
       'Stowe Contracting has served Monterey Bay since 1987 with expert concrete work.'
     );
-    expect(result.valid).toBe(false);
-    expect(result.violations.some((v) => v.policy === 'chronology')).toBe(true);
+    expect(result.valid).toBe(true);
+    expect(result.violations).toHaveLength(0);
   });
 
   it('Test 12 — catches prohibited claim in schema-style text', () => {

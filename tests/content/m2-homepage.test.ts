@@ -28,9 +28,8 @@ describe('M2 — Homepage composition governance', () => {
   it('Test 1 — years-in-business claim contains approved expression', () => {
     const yearsInBusiness = resolveControlledClaim('years-in-business');
     expect(yearsInBusiness).not.toBeNull();
-    expect(yearsInBusiness?.toLowerCase()).toContain('nearly 40 years');
-    // Must NOT contain blocked expressions
-    expect(yearsInBusiness?.toLowerCase()).not.toContain('since 1987');
+    expect(yearsInBusiness?.toLowerCase()).toContain('since 1987');
+    // Unsupported duration variants remain blocked
     expect(yearsInBusiness?.toLowerCase()).not.toContain('40+ years');
     expect(yearsInBusiness?.toLowerCase()).not.toContain('over 40 years');
   });

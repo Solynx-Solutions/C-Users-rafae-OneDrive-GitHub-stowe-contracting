@@ -3,7 +3,7 @@
 //
 // Covers:
 //   Test 5: "Nearly 40 years" is accepted
-//   Test 6: "Since 1987" is rejected
+//   Test 6: "Since 1987" is accepted
 //   Test 7: "40+ years" is rejected
 //   Test 8: An exact employee count cannot replace "30+"
 // =============================================================================
@@ -29,12 +29,10 @@ describe('checkChronologyPolicy()', () => {
     expect(result.passed).toBe(true);
   });
 
-  // Test 6: "Since 1987" is rejected
-  it('Test 6 — rejects "Since 1987"', () => {
+  // Test 6: "Since 1987" is now authorized by governed onboarding
+  it('Test 6 — accepts "Since 1987"', () => {
     const result = checkChronologyPolicy('Since 1987, we have served the Monterey Bay area.');
-    expect(result.passed).toBe(false);
-    expect(result.blockedMatch).toBeDefined();
-    expect(result.approvedAlternative).toBe('Nearly 40 years');
+    expect(result.passed).toBe(true);
   });
 
   it('rejects exact year 1987 in any context', () => {
@@ -61,7 +59,7 @@ describe('checkChronologyPolicy()', () => {
   });
 
   it('is case-insensitive', () => {
-    expect(checkChronologyPolicy('SINCE 1987').passed).toBe(false);
+    expect(checkChronologyPolicy('SINCE 1987').passed).toBe(true);
     expect(checkChronologyPolicy('40+ YEARS').passed).toBe(false);
     expect(checkChronologyPolicy('OVER 40 YEARS').passed).toBe(false);
   });

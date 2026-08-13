@@ -189,6 +189,6 @@ describe('M3 — Content governance', () => {
   it('Test 14 — years-in-business claim still resolves (M2 regression)', () => {
     const claim = resolveControlledClaim('years-in-business');
     expect(claim).not.toBeNull();
-    expect(claim?.toLowerCase()).toContain('nearly 40 years');
+    expect(claim?.toLowerCase()).toContain('since 1987');
   });
 });

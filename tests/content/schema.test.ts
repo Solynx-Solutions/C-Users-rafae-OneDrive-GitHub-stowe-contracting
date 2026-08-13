@@ -100,7 +100,7 @@ describe('Schema safety — webSiteSchema()', () => {
 describe('resolveControlledClaim() — confirmed + active', () => {
   it('Test 1 — resolves "years-in-business" (confirmed + active)', () => {
     const text = resolveControlledClaim('years-in-business');
-    expect(text).toBe('Nearly 40 years serving Monterey Bay');
+    expect(text).toBe('Since 1987 · Serving Monterey Bay');
   });
 
   it('Test 1 — resolves "locally-owned" (confirmed + active)', () => {
@@ -116,9 +116,9 @@ describe('resolveControlledClaim() — confirmed + active', () => {
 
 // Test 2: Pending claims resolve to null
 describe('resolveControlledClaim() — pending records return null', () => {
-  it('Test 2 — "founding-year" is pending — resolves to null', () => {
+  it('Test 2 — "founding-year" is authorized and resolves', () => {
     const text = resolveControlledClaim('founding-year');
-    expect(text).toBeNull();
+    expect(text).toBe('1987');
   });
 
   it('Test 2 — "exact-employee-total" is pending — resolves to null', () => {

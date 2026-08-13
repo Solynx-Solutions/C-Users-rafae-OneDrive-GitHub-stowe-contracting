@@ -28,7 +28,7 @@ export function HomeCta() {
   return (
     <section
       aria-label="Get started with Stowe Contracting"
-      className="bg-[#1e211f]"
+      className="bg-[#1D2421]"
       id="get-started"
     >
       <PageContainer>
@@ -41,11 +41,11 @@ export function HomeCta() {
                 'md:text-4xl lg:text-5xl',
               ].join(' ')}
             >
-              Ready to get started?
+              Build the Monterey Bay way.
             </h2>
             <p className="mx-auto max-w-xl text-base leading-relaxed text-white/80 md:text-lg">
-              Request an estimate for your residential or commercial project. Stowe Contracting —
-              locally owned, experienced crews, accountable work.
+              Tell us what you are planning. We will review the scope, identify the right division,
+              and outline the next step—no commitment required.
             </p>
           </div>
 
@@ -57,9 +57,9 @@ export function HomeCta() {
               className={[
                 'inline-flex items-center justify-center',
                 'rounded-[var(--radius-md)] px-8 py-4',
-                'bg-[#9a5435] text-white',
+                'bg-[#24507A] text-white',
                 'text-base font-bold',
-                'hover:bg-[#7c4029]',
+                'hover:bg-[#183A58]',
                 'transition-colors duration-150',
                 'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
                 'shadow-[0_4px_16px_rgba(0,0,0,0.15)]',
@@ -87,7 +87,7 @@ export function HomeCta() {
 
           {/* Trust note */}
           <p className="text-sm text-white/60">
-            Serving Monterey Bay — locally owned and operated.
+            Since 1987 · CA License 513674 · Monterey Bay Area
           </p>
         </div>
       </PageContainer>

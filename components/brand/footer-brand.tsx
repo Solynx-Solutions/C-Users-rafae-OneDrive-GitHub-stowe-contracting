@@ -5,7 +5,7 @@
 // =============================================================================
 
 import Link from 'next/link';
-import { StoweWordmark } from './stowe-wordmark';
+import { BrandLogo } from './brand-logo';
 import { resolveControlledMessage } from '@/lib/content';
 
 /**
@@ -28,7 +28,7 @@ export function FooterBrand() {
         ].join(' ')}
         aria-label="Stowe Contracting — Home"
       >
-        <StoweWordmark size="sm" />
+        <BrandLogo size="sm" />
       </Link>
 
       {positioningStatement && (

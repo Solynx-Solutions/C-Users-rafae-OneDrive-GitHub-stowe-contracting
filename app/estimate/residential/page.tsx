@@ -36,6 +36,7 @@ import { SectionHeading } from '@/components/layout/section-heading';
 import { Breadcrumbs } from '@/components/layout/breadcrumbs';
 import { EstimateForm } from '@/components/forms/EstimateForm';
 import { type ServiceOption } from '@/components/forms/ProjectDetailsSection';
+import { Clock3, MapPin, Users } from 'lucide-react';
 
 // =============================================================================
 // METADATA
@@ -78,10 +79,10 @@ function ResidentialTrustBar() {
   const inHouseCrews = resolveControlledClaim('in-house-crews');
 
   const items = [
-    yearsInBusiness && { icon: '🏆', text: yearsInBusiness },
-    locallyOwned && { icon: '📍', text: locallyOwned },
-    inHouseCrews && { icon: '👷', text: inHouseCrews },
-  ].filter(Boolean) as { icon: string; text: string }[];
+    yearsInBusiness && { Icon: Clock3, text: yearsInBusiness },
+    locallyOwned && { Icon: MapPin, text: locallyOwned },
+    inHouseCrews && { Icon: Users, text: inHouseCrews },
+  ].filter(Boolean) as { Icon: typeof Clock3; text: string }[];
 
   if (items.length === 0) return null;
 
@@ -90,15 +91,15 @@ function ResidentialTrustBar() {
       className="flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:gap-6"
       aria-label="Why choose Stowe Contracting"
     >
-      {items.map((item) => (
-        <li
-          key={item.text}
-          className="flex items-center gap-2 text-sm text-[var(--color-neutral-600)]"
-        >
-          <span aria-hidden="true" className="text-base">
-            {item.icon}
+      {items.map(({ Icon, text }) => (
+        <li key={text} className="flex items-center gap-2.5 text-sm text-white/75">
+          <span
+            aria-hidden="true"
+            className="flex size-7 items-center justify-center rounded-full border border-white/15 bg-white/5 text-[var(--color-brand-accent)]"
+          >
+            <Icon className="size-3.5" strokeWidth={1.75} />
           </span>
-          <span>{item.text}</span>
+          <span>{text}</span>
         </li>
       ))}
     </ul>
