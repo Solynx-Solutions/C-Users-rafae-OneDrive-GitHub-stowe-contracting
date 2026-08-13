@@ -5,8 +5,7 @@
 // =============================================================================
 
 import Link from 'next/link';
-import { StoweWordmark } from './stowe-wordmark';
-import { BrandMark } from './brand-mark';
+import Image from 'next/image';
 
 /**
  * Header brand lockup — links to homepage.
@@ -24,8 +23,13 @@ export function HeaderBrand() {
       ].join(' ')}
       aria-label="Stowe Contracting — Home"
     >
-      <BrandMark size={36} />
-      <StoweWordmark size="md" className="text-lg sm:text-2xl" />
+      <Image
+        src="/images/stowe-logo.jpg"
+        alt=""
+        width={175}
+        height={75}
+        className="h-11 w-auto sm:h-12"
+      />
     </Link>
   );
 }
