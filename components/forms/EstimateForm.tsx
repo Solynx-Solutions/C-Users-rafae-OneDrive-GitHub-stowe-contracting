@@ -1,5 +1,5 @@
 // =============================================================================
-// ESTIMATE FORM
+// ESTIMATE FORM (M7)
 //
 // Main form orchestrator for the estimate conversion experience.
 // Supports both 'residential' and 'commercial' modes via the `estimateType` prop.
@@ -7,14 +7,19 @@
 // ARCHITECTURE:
 //   - Native React state + HTML form elements (no external form library)
 //   - Zod schema validation on submit
-//   - Integration-ready: submitEstimate() stub is pre-wired for M7+ CRM
-//   - FormSuccessState shown on submit success
-//   - No fake confirmation numbers, response time guarantees, or pricing claims
+//   - CRM integration via submitEstimate() — returns typed SubmitEstimateResult
+//   - FormSuccessState shown on confirmed CRM success only
+//   - configuration_unavailable: user sees a clear "not available" message
+//   - No fake confirmation when CRM did not confirm receipt
+//   - Duplicate submission protection: isSubmitting flag prevents rapid re-submits
+//   - Honeypot field: visually hidden, included in FormData, checked server-side
+//   - No marketing SMS consent — not applicable
 //
-// M3 changes:
-//   - CommercialDetailsFields injected for commercial mode (companyName, contactName)
-//   - ProjectDetailsSection receives showPropertyType + scopeLabel per mode
-//   - ContactDetailsSection now collects firstName, lastName, preferredContactMethod
+// M7 changes from M3:
+//   - submitEstimate returns SubmitEstimateResult (not boolean)
+//   - New configuration_unavailable UI state distinguished from submission_error
+//   - Honeypot hidden field added
+//   - Duplicate-submit protection via isSubmitting flag (already present; hardened)
 //
 // Client Component.
 // =============================================================================
@@ -24,7 +29,8 @@
 import { useState, useRef, type FormEvent } from 'react';
 import { estimateFormSchema, type EstimateFormValues } from '@/lib/validations/estimateForm';
 import { type ZodIssue } from 'zod';
-import { submitEstimate, type EstimateType } from '@/lib/actions/submitEstimate';
+import { submitEstimateAction } from '@/lib/actions/submitEstimateAction';
+import { type EstimateType, type SubmitEstimateResult } from '@/lib/actions/submitEstimate';
 
 import { CommercialDetailsFields } from './CommercialDetailsFields';
 import { ContactDetailsSection } from './ContactDetailsSection';
@@ -72,6 +78,22 @@ function readFormData(form: HTMLFormElement): Record<string, string> {
   return out;
 }
 
+/** Resolve a user-facing submit error message from the CRM result */
+function resolveSubmitErrorMessage(result: SubmitEstimateResult): string | null {
+  switch (result.outcome) {
+    case 'success':
+    case 'spam_rejected':
+      return null;
+    case 'configuration_unavailable':
+      return 'Our online submission system is temporarily unavailable. Please try again later.';
+    case 'submission_error':
+    case 'validation_error':
+      return 'Something went wrong submitting your request. Please try again later.';
+    default:
+      return 'Something went wrong. Please try again.';
+  }
+}
+
 // ─── Component ────────────────────────────────────────────────────────────────
 
 export function EstimateForm({ estimateType, serviceOptions, formId }: EstimateFormProps) {
@@ -88,6 +110,9 @@ export function EstimateForm({ estimateType, serviceOptions, formId }: EstimateF
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!formRef.current) return;
+
+    // Duplicate-submit guard: ignore if already in flight
+    if (isSubmitting) return;
 
     setSubmitError(null);
 
@@ -110,13 +135,16 @@ export function EstimateForm({ estimateType, serviceOptions, formId }: EstimateF
     setIsSubmitting(true);
 
     try {
-      const success = await submitEstimate(result.data, estimateType);
-      if (success) {
+      // Pass honeypot value from raw FormData (field name: 'website')
+      const crmResult = await submitEstimateAction(result.data, estimateType, raw['website']);
+
+      if (crmResult.outcome === 'success') {
         setSubmitted(true);
+      } else if (crmResult.outcome === 'spam_rejected') {
+        // Do not claim receipt when no external submission occurred.
+        return;
       } else {
-        setSubmitError(
-          'Something went wrong submitting your request. Please try again or call us directly.'
-        );
+        setSubmitError(resolveSubmitErrorMessage(crmResult));
       }
     } catch {
       setSubmitError(
@@ -151,6 +179,23 @@ export function EstimateForm({ estimateType, serviceOptions, formId }: EstimateF
       aria-label={`${isCommercial ? 'Commercial' : 'Residential'} estimate request form`}
       className="flex flex-col gap-8"
     >
+      {/*
+        Honeypot field — visually hidden, aria-hidden, not in tab order.
+        Legitimate browsers leave this empty. Bots that fill all fields
+        will populate it; submitEstimate() rejects those submissions.
+        Named 'website' to look like a plausible autocomplete target.
+      */}
+      <div aria-hidden="true" style={{ display: 'none' }}>
+        <label htmlFor={`${formId ?? estimateType}-website`}>Website</label>
+        <input
+          id={`${formId ?? estimateType}-website`}
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {/* Commercial-only: company information */}
       {isCommercial && (
         <>

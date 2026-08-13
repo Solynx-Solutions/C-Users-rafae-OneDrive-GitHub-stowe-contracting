@@ -175,18 +175,18 @@ vercel --prod
 
 The following SOLYNX integrations are reserved in the codebase and will be activated at future milestones:
 
-| Integration            | Status   | Milestone |
-| ---------------------- | -------- | --------- |
-| Contact Form + Email   | Planned  | M7        |
-| Google Analytics 4     | Planned  | M8        |
-| AI Chat Widget         | Reserved | M11+      |
-| Estimate Form          | Reserved | M11+      |
-| Appointment Scheduling | Reserved | M11+      |
-| AI Phone               | Reserved | M12+      |
-| Missed Call Text Back  | Reserved | M12+      |
-| Review System          | Reserved | M13+      |
-| Knowledge Base         | Reserved | M14+      |
-| Marketing Automation   | Reserved | M15+      |
+| Integration               | Status                                              | Milestone |
+| ------------------------- | --------------------------------------------------- | --------- |
+| CRM submission foundation | Complete; activation pending verified configuration | M7        |
+| Google Analytics 4        | Planned                                             | M8        |
+| AI Chat Widget            | Reserved                                            | M11+      |
+| Estimate Form             | Reserved                                            | M11+      |
+| Appointment Scheduling    | Reserved                                            | M11+      |
+| AI Phone                  | Reserved                                            | M12+      |
+| Missed Call Text Back     | Reserved                                            | M12+      |
+| Review System             | Reserved                                            | M13+      |
+| Knowledge Base            | Reserved                                            | M14+      |
+| Marketing Automation      | Reserved                                            | M15+      |
 
 ---
 

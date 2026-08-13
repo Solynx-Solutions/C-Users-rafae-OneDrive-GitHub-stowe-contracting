@@ -1,67 +1,81 @@
 // =============================================================================
-// SUBMIT ESTIMATE — Integration Layer
+// SUBMIT ESTIMATE — Integration Layer (M7)
 //
 // This module is the single integration point between the estimate form UI
 // and external systems (CRM, email, SMS, webhooks).
 //
-// CURRENT STATE (M3):
-//   - Stub implementation — logs submission data in development.
-//   - No CRM, email, SMS, or payment integration.
-//   - Returns true to allow the UI to show the success state.
+// ARCHITECTURE (M7):
+//   - Validates form data via Zod (already done in the form component; re-used
+//     here as a safety boundary before any external call).
+//   - Maps validated data to a normalized EstimateLead via the CRM adapter.
+//   - Submits via submitEstimateToCrm() — which checks the config state first.
+//   - Returns a typed SubmitEstimateResult so the form can distinguish:
+//       success            — CRM confirmed receipt
+//       validation_error   — caller passed invalid data (should not normally occur)
+//       configuration_unavailable — CRM is disabled or misconfigured
+//       submission_error   — CRM responded with an error
 //
-// M7+ INTEGRATION:
-//   Replace the body of `submitEstimate` with a Server Action or fetch call.
-//   The function signature must not change — the form component depends on it.
+// BEHAVIOR BY CONFIG STATE:
+//   configured:
+//     validate → map → submit → return success only after confirmed CRM response
+//   disabled:
+//     return { outcome: 'configuration_unavailable' } immediately, no fetch
+//   misconfigured:
+//     return { outcome: 'configuration_unavailable' } immediately, no fetch
 //
-//   Example — GoHighLevel / LeadConnector webhook:
-//     const res = await fetch(process.env.GHL_WEBHOOK_URL!, {
-//       method: 'POST',
-//       headers: { 'Content-Type': 'application/json' },
-//       body: JSON.stringify(buildPayload(data, estimateType)),
-//     });
-//     return res.ok;
+// SAFETY:
+//   - No endpoint URLs or secrets are returned to the caller.
+//   - No fake success is returned when the CRM did not confirm receipt.
+//   - Duplicate submission protection is enforced at the UI level (see form).
 //
-//   Example — Next.js Server Action:
-//     'use server';
-//     // Move this function to app/actions/submitEstimate.ts
-//     // and import it directly into the form component.
+// SPAM PROTECTION:
+//   - Honeypot field check is performed here before any external call.
 //
-// PAYLOAD SHAPE (forwarded to CRM at M7+):
-//   {
-//     estimateType: 'residential' | 'commercial',
-//     firstName: string,
-//     lastName: string,
-//     email: string,
-//     phone: string,
-//     preferredContactMethod?: 'phone' | 'email' | 'either',
-//     propertyType?: string,        // residential
-//     companyName?: string,         // commercial
-//     contactName?: string,         // commercial
-//     serviceType: string,
-//     projectDescription: string,
-//     timeline?: string,
-//     budget?: string,
-//     submittedAt: string,          // ISO 8601
-//   }
+// PRIVACY:
+//   - No SMS consent language is added here. SMS is not activated.
+//   - Data is used only to respond to the estimate request.
+//   - CRM activation requires a privacy policy update (see M7 findings).
 //
-// GoHighLevel / LeadConnector field mapping:
-//   firstName            → Contact: First Name
-//   lastName             → Contact: Last Name
-//   email                → Contact: Email
-//   phone                → Contact: Phone
-//   companyName          → Contact: Company Name
-//   contactName          → Contact: Full Name (commercial override)
-//   preferredContactMethod → Custom Field: preferred_contact_method
-//   serviceType          → Custom Field: service_type
-//   projectDescription   → Custom Field: project_description
-//   estimateType         → Custom Field: estimate_type (tag / pipeline routing)
-//   timeline             → Custom Field: project_timeline
-//   budget               → Custom Field: project_budget
+// Do not rewrite the function signature — form components depend on it.
 // =============================================================================
 
-import { type EstimateFormValues } from '@/lib/validations/estimateForm';
+import { estimateFormSchema, type EstimateFormValues } from '@/lib/validations/estimateForm';
+import {
+  mapEstimateLead,
+  resolveEstimateRouting,
+  submitEstimateToCrm,
+  type EstimateType,
+} from '@/lib/integrations/crm';
 
-export type EstimateType = 'residential' | 'commercial';
+// Re-export EstimateType so consumers can import from submitEstimate as before
+export type { EstimateType };
+
+// ─── Result type ──────────────────────────────────────────────────────────────
+
+/**
+ * Typed result from submitEstimate.
+ * The form layer maps this to an appropriate UI state.
+ *
+ *   success                   — CRM confirmed receipt
+ *   validation_error          — data did not pass pre-submission sanity check
+ *   configuration_unavailable — CRM disabled or misconfigured (not an error)
+ *   submission_error          — CRM responded with a failure
+ *   spam_rejected             — honeypot or other spam signal detected
+ */
+export type SubmitEstimateOutcome =
+  | 'success'
+  | 'validation_error'
+  | 'configuration_unavailable'
+  | 'submission_error'
+  | 'spam_rejected';
+
+export interface SubmitEstimateResult {
+  outcome: SubmitEstimateOutcome;
+  /** Human-safe message — no secrets, no stack traces */
+  message?: string;
+}
+
+// ─── Payload type (backwards-compatible) ─────────────────────────────────────
 
 export interface EstimateSubmissionPayload extends EstimateFormValues {
   estimateType: EstimateType;
@@ -69,8 +83,8 @@ export interface EstimateSubmissionPayload extends EstimateFormValues {
 }
 
 /**
- * Builds the normalized submission payload from validated form data.
- * Add any transformation or enrichment logic here before forwarding to the CRM.
+ * Builds the normalized submission payload (retained for backwards compat
+ * and external tooling that calls buildEstimatePayload directly).
  */
 export function buildEstimatePayload(
   data: EstimateFormValues,
@@ -83,28 +97,81 @@ export function buildEstimatePayload(
   };
 }
 
+// ─── Honeypot check ───────────────────────────────────────────────────────────
+
 /**
- * Submits a validated estimate form payload to the configured integration target.
+ * Check the honeypot field value.
+ * The honeypot field is a hidden input that legitimate browsers leave empty.
+ * Bots that fill all form fields will populate it — reject those submissions.
  *
- * M3: Stub — logs in development, always resolves true.
- * M7+: Replace the body with a Server Action call or fetch to the CRM webhook.
+ * @param honeypotValue  Value of the hidden honeypot field from FormData
+ * @returns true if the submission appears to be spam
+ */
+export function isHoneypotTriggered(honeypotValue: string | undefined): boolean {
+  return typeof honeypotValue === 'string' && honeypotValue.trim().length > 0;
+}
+
+// ─── Main submission function ─────────────────────────────────────────────────
+
+/**
+ * Submits a validated estimate form payload to the configured CRM integration.
  *
- * @param data     Validated form values from Zod schema
- * @param estimateType  'residential' | 'commercial'
- * @returns        true on success, false on failure (triggers UI error state)
+ * M7 behavior:
+ *   - Checks honeypot first. Spam → spam_rejected.
+ *   - Resolves CRM config state.
+ *   - CONFIGURED: validate → map → submit → return success only on confirmed response.
+ *   - DISABLED / MISCONFIGURED: return configuration_unavailable (no external call).
+ *   - FAILURE: return submission_error (no secrets exposed).
+ *
+ * @param data           Validated form values from Zod schema
+ * @param estimateType   'residential' | 'commercial'
+ * @param honeypotValue  Optional honeypot field value (should be empty for humans)
+ * @returns              SubmitEstimateResult with outcome and optional message
  */
 export async function submitEstimate(
   data: EstimateFormValues,
-  estimateType: EstimateType
-): Promise<boolean> {
-  const payload = buildEstimatePayload(data, estimateType);
-
-  // ── M3 stub ──────────────────────────────────────────────────────────────
-  // TODO (M7+): Replace this block with the real integration.
-  if (process.env.NODE_ENV !== 'production') {
-    console.log('[submitEstimate] M3 stub — payload ready for CRM at M7+', payload);
+  estimateType: EstimateType,
+  honeypotValue?: string
+): Promise<SubmitEstimateResult> {
+  // ── Spam check ──────────────────────────────────────────────────────────────
+  if (isHoneypotTriggered(honeypotValue)) {
+    // Silently reject — do not signal to bots that they were caught
+    return { outcome: 'spam_rejected' };
   }
-  await new Promise((resolve) => setTimeout(resolve, 600)); // simulate network
-  return true;
-  // ── End stub ─────────────────────────────────────────────────────────────
+
+  const validation = estimateFormSchema.safeParse(data);
+  if (!validation.success) {
+    return { outcome: 'validation_error', message: 'Please review the submitted project details.' };
+  }
+
+  // ── Map to normalized lead ──────────────────────────────────────────────────
+  const lead = mapEstimateLead(validation.data, estimateType);
+  const routing = resolveEstimateRouting(estimateType);
+
+  // ── Submit via CRM adapter ──────────────────────────────────────────────────
+  const result = await submitEstimateToCrm(lead, routing);
+
+  switch (result.status) {
+    case 'success':
+      return { outcome: 'success' };
+
+    case 'disabled':
+      return {
+        outcome: 'configuration_unavailable',
+        message: result.reason,
+      };
+
+    case 'misconfigured':
+      return {
+        outcome: 'configuration_unavailable',
+        message: result.reason,
+      };
+
+    case 'failure':
+      return {
+        outcome: 'submission_error',
+        // Do not forward internal reason to form — it may contain URL fragments
+        message: 'CRM submission failed. Please try again or contact us directly.',
+      };
+  }
 }

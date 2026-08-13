@@ -1,15 +1,24 @@
 // =============================================================================
-// CONTACT FORM
+// CONTACT FORM (M7)
 //
 // General-purpose contact form for /contact page.
 //
 // ARCHITECTURE:
-//   - Mirrors M3 EstimateForm: native React state, FormData, Zod validation
-//   - Uses EstimateField and inputClasses from the M3 form primitives
-//   - Integration-ready: submitContact() stub pre-wired for M7+ CRM
-//   - FormSuccessState pattern — consistent with estimate form success UI
-//   - No fake confirmation numbers, response time guarantees, or pricing claims
-//   - inquiryType field drives M7+ CRM pipeline routing
+//   - Mirrors EstimateForm: native React state, FormData, Zod validation
+//   - CRM integration via submitContact() — returns typed SubmitContactResult
+//   - Success only shown when CRM confirmed receipt
+//   - configuration_unavailable state distinguished from submission_error
+//   - No fake confirmation when CRM did not confirm receipt
+//   - Duplicate-submit protection: isSubmitting flag prevents rapid re-submits
+//   - Honeypot field: visually hidden, included in FormData, checked server-side
+//   - inquiryType field drives CRM pipeline routing
+//   - No marketing SMS consent — not applicable
+//
+// M7 changes from M5:
+//   - submitContact returns SubmitContactResult (not boolean)
+//   - New configuration_unavailable UI state
+//   - Honeypot hidden field added
+//   - Duplicate-submit protection hardened
 //
 // Client Component.
 // =============================================================================
@@ -19,7 +28,8 @@
 import { useState, useRef, type FormEvent } from 'react';
 import { contactFormSchema, type ContactFormValues } from '@/lib/validations/contactForm';
 import { type ZodIssue } from 'zod';
-import { submitContact } from '@/lib/actions/submitContact';
+import { submitContactAction } from '@/lib/actions/submitContactAction';
+import { type SubmitContactResult } from '@/lib/actions/submitContact';
 import { EstimateField, inputClasses } from '@/components/forms/EstimateField';
 import { cn } from '@/lib/utils';
 
@@ -58,6 +68,22 @@ function selectClasses(hasError = false) {
     "bg-[url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E\")]",
     'bg-[right_0.75rem_center] bg-no-repeat pr-10'
   );
+}
+
+/** Resolve a user-facing submit error message from the CRM result */
+function resolveSubmitErrorMessage(result: SubmitContactResult): string | null {
+  switch (result.outcome) {
+    case 'success':
+    case 'spam_rejected':
+      return null;
+    case 'configuration_unavailable':
+      return 'Our online submission system is temporarily unavailable. Please try again later.';
+    case 'submission_error':
+    case 'validation_error':
+      return 'Something went wrong submitting your message. Please try again later.';
+    default:
+      return 'Something went wrong. Please try again.';
+  }
 }
 
 // ── Success state ─────────────────────────────────────────────────────────────
@@ -143,12 +169,11 @@ interface ContactFormProps {
 
 /**
  * General contact form.
- * Uses the same patterns as M3 EstimateForm:
- *   - Native FormData on submit
- *   - Zod validation
- *   - submitContact() stub (M7+ CRM integration point)
  *
- * inquiryType drives CRM pipeline routing at M7+.
+ * M7: submitContact() returns a typed SubmitContactResult.
+ * Success is shown only when the CRM confirmed receipt.
+ * configuration_unavailable is distinguished from submission_error.
+ * inquiryType drives CRM pipeline routing.
  */
 export function ContactForm({ formId = 'contact-form' }: ContactFormProps) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -160,6 +185,9 @@ export function ContactForm({ formId = 'contact-form' }: ContactFormProps) {
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!formRef.current) return;
+
+    // Duplicate-submit guard: ignore if already in flight
+    if (isSubmitting) return;
 
     setSubmitError(null);
 
@@ -179,13 +207,16 @@ export function ContactForm({ formId = 'contact-form' }: ContactFormProps) {
     setIsSubmitting(true);
 
     try {
-      const success = await submitContact(result.data);
-      if (success) {
+      // Pass honeypot value from raw FormData (field name: 'website')
+      const crmResult = await submitContactAction(result.data, raw['website']);
+
+      if (crmResult.outcome === 'success') {
         setSubmitted(true);
+      } else if (crmResult.outcome === 'spam_rejected') {
+        // Do not claim receipt when no external submission occurred.
+        return;
       } else {
-        setSubmitError(
-          'Something went wrong submitting your message. Please try again or use one of the estimate request forms.'
-        );
+        setSubmitError(resolveSubmitErrorMessage(crmResult));
       }
     } catch {
       setSubmitError(
@@ -216,6 +247,22 @@ export function ContactForm({ formId = 'contact-form' }: ContactFormProps) {
       aria-label="General contact form"
       className="flex flex-col gap-6"
     >
+      {/*
+        Honeypot field — visually hidden, aria-hidden, not in tab order.
+        Named 'website' to look like a plausible autocomplete target.
+        submitContact() rejects submissions where this field is non-empty.
+      */}
+      <div aria-hidden="true" style={{ display: 'none' }}>
+        <label htmlFor={`${formId}-website`}>Website</label>
+        <input
+          id={`${formId}-website`}
+          name="website"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+        />
+      </div>
+
       {/* ── Name row ─────────────────────────────────────────────────────── */}
       <div className="grid gap-5 sm:grid-cols-2">
         <EstimateField label="First Name" error={errors.firstName} required>
@@ -308,7 +355,7 @@ export function ContactForm({ formId = 'contact-form' }: ContactFormProps) {
         )}
       </EstimateField>
 
-      {/* ── Inquiry type — CRM routing at M7+ ───────────────────────────── */}
+      {/* ── Inquiry type — CRM routing ───────────────────────────────────── */}
       <EstimateField
         label="Inquiry Type"
         hint="Helps us route your message to the right person."
