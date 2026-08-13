@@ -28,7 +28,11 @@ export function generateMetadata({
   ogImage,
   noIndex = false,
 }: GenerateMetadataOptions = {}): Metadata {
-  const pageTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.name;
+  const pageTitle = title
+    ? title.includes(siteConfig.name)
+      ? title
+      : `${title} | ${siteConfig.name}`
+    : siteConfig.name;
   // description falls back to empty string — site description is a pending content record
   // Use resolveControlledMessage('positioning-statement') once brand-messaging module is active
   const pageDescription = description ?? '';
@@ -74,10 +78,9 @@ export function generateMetadata({
  * All pages inherit and merge from this baseline.
  */
 export const rootMetadata: Metadata = {
-  title: {
-    default: siteConfig.name,
-    template: `%s | ${siteConfig.name}`,
-  },
+  // Page metadata is already fully branded by generateMetadata(). A root title
+  // template would append the site name a second time during metadata merging.
+  title: siteConfig.name,
   // description: site-level description is a pending content record
   // Will be populated via resolveControlledMessage('positioning-statement') when confirmed
   description: '',
