@@ -5,7 +5,7 @@
 [![Next.js](https://img.shields.io/badge/Next.js-16-black?style=flat-square&logo=next.js)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=flat-square&logo=typescript)](https://typescriptlang.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-38bdf8?style=flat-square&logo=tailwindcss)](https://tailwindcss.com)
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed_on-Vercel-black?style=flat-square&logo=vercel)](https://vercel.com)
+[![Vercel target pending](https://img.shields.io/badge/Vercel_target-Pending-6b7280?style=flat-square&logo=vercel)](#deployment)
 
 ---
 
@@ -141,20 +141,22 @@ main                  ← Production (Vercel production deployment)
 
 ## Deployment
 
-Deployed automatically on Vercel:
+No Vercel project is currently registered for this repository. Do not deploy or link the repository until the exact target is approved.
 
-| Branch        | Environment       | URL                          |
-| ------------- | ----------------- | ---------------------------- |
-| `main`        | Production        | https://stowecontracting.com |
-| `development` | Preview (staging) | Auto-generated               |
-| `feature/*`   | Preview (per-PR)  | Auto-generated               |
+Verified settings required for future registration:
 
-### Manual deployment
+| Setting           | Required value                                                                    |
+| ----------------- | --------------------------------------------------------------------------------- |
+| Team              | `team_H0yHc8PgFXJB3ounTR9YtuPn`                                                   |
+| Project name      | `stowe-contracting`                                                               |
+| Framework         | Next.js                                                                           |
+| Root directory    | Repository root (`.`)                                                             |
+| Git repository    | `Solynx-Solutions/C-Users-rafae-OneDrive-GitHub-stowe-contracting`                |
+| Production branch | `main`                                                                            |
+| Preview branch    | `development`                                                                     |
+| Custom domain     | `stowecontracting.com` (currently external to Vercel; attach only after approval) |
 
-```bash
-# Deploy to production (via Vercel CLI)
-vercel --prod
-```
+Production remains unchanged until the target, environment configuration, domain cutover, and a separate deployment approval are verified.
 
 ---
 
