@@ -14,7 +14,7 @@
 //   - areaServed — vr-service-areas
 //   - foundingDate — vr-founding-year (CHRONOLOGY POLICY: no exact year)
 //   - numberOfEmployees — exact total pending (use 30+ in copy; omit from schema)
-//   - sameAs (social) — vr-social-profiles
+//   - unverified social profiles — vr-social-profiles
 //   - aggregateRating / review — vr-testimonials
 //   - serviceType — vr-service-list
 //
@@ -29,7 +29,7 @@ import { siteConfig } from '@/data/siteConfig';
 
 /**
  * Safe LocalBusiness schema — minimal confirmed fields only.
- * Unverified address, phone, email, hours, and social are omitted.
+ * Unverified address, phone, email, hours, and social profiles are omitted.
  */
 export function localBusinessSchema() {
   return {
@@ -37,6 +37,7 @@ export function localBusinessSchema() {
     '@type': 'LocalBusiness',
     name: siteConfig.name,
     url: siteConfig.url,
+    sameAs: [siteConfig.social.facebook],
     // address: OMITTED — pending vr-contact-information
     // telephone: OMITTED — pending vr-contact-information
     // email: OMITTED — pending vr-contact-information
@@ -44,7 +45,6 @@ export function localBusinessSchema() {
     // areaServed: OMITTED — pending vr-service-areas
     // foundingDate: OMITTED — CHRONOLOGY POLICY: no exact year
     // numberOfEmployees: OMITTED — exact total pending
-    // sameAs: OMITTED — pending vr-social-profiles
   };
 }
 
@@ -57,11 +57,11 @@ export function organizationSchema() {
     '@type': 'Organization',
     name: siteConfig.name,
     url: siteConfig.url,
+    sameAs: [siteConfig.social.facebook],
     // legalName: OMITTED — pending vr-legal-entity-name
     // address: OMITTED — pending vr-contact-information
     // telephone: OMITTED — pending vr-contact-information
     // email: OMITTED — pending vr-contact-information
-    // sameAs: OMITTED — pending vr-social-profiles
   };
 }
 

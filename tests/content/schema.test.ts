@@ -46,8 +46,8 @@ describe('Schema safety — localBusinessSchema()', () => {
     expect(schema).not.toHaveProperty('numberOfEmployees');
   });
 
-  it('Test 12 — does not include sameAs', () => {
-    expect(schema).not.toHaveProperty('sameAs');
+  it('includes only the verified Facebook profile in sameAs', () => {
+    expect(schema.sameAs).toEqual(['https://www.facebook.com/stowecontractinginc']);
   });
 
   it('Test 12 — does not include aggregateRating', () => {
@@ -74,11 +74,11 @@ describe('Schema safety — organizationSchema()', () => {
     expect(schema).not.toHaveProperty('legalName');
   });
 
-  it('Test 12 — does not include telephone, email, address, sameAs', () => {
+  it('Test 12 — does not include telephone, email, or address', () => {
     expect(schema).not.toHaveProperty('telephone');
     expect(schema).not.toHaveProperty('email');
     expect(schema).not.toHaveProperty('address');
-    expect(schema).not.toHaveProperty('sameAs');
+    expect(schema.sameAs).toEqual(['https://www.facebook.com/stowecontractinginc']);
   });
 
   it('includes confirmed fields', () => {

@@ -196,7 +196,10 @@ export function HomeEditorial() {
               <div className="mt-12 grid gap-4 sm:grid-cols-2">
                 {[
                   'CA License 513674',
-                  'Approved CMHA credentials',
+                  'CMHA: Concrete Paver Installer',
+                  'CMHA: Permeable Interlocking Concrete Paver Installer',
+                  'CMHA: Commercial Installer',
+                  'CMHA: Advanced Residential Installer',
                   'Dedicated local crews',
                   'Monterey Bay Area',
                 ].map((item) => (

@@ -66,8 +66,8 @@ export const VERIFICATION_REQUIRED_ITEMS = [
   },
   {
     id: 'vr-social-profiles',
-    description: 'Social media profile URLs.',
-    requiredFor: 'Activating sameAs in schema and social links in footer.',
+    description: 'Remaining social media profile URLs. Facebook is verified and active.',
+    requiredFor: 'Adding any social profiles beyond the verified Facebook account.',
     requiredSourceTier: 'priority-1-discovery-interview',
   },
   {
@@ -79,8 +79,10 @@ export const VERIFICATION_REQUIRED_ITEMS = [
   },
   {
     id: 'vr-certifications',
-    description: 'Named professional certifications.',
-    requiredFor: 'Enabling certification claims.',
+    description:
+      'Additional certifications or memberships beyond the verified CMHA installer credentials.',
+    requiredFor:
+      'Enabling NARI, NFIB, Construction Exchange, ICPI, WHA, or other membership claims and marks.',
     requiredSourceTier: 'priority-1-discovery-interview',
   },
   {

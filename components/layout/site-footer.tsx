@@ -2,7 +2,7 @@
 // SITE FOOTER
 // Global site footer with brand lockup, legal nav links, and governed claims.
 // Contact information is NOT included — pending vr-contact-information blocker.
-// Social links are NOT included — pending vr-social-profiles blocker.
+// Only individually verified social links are included.
 // Server Component.
 // =============================================================================
 
@@ -13,6 +13,7 @@ import { Divider } from '@/components/ui/divider';
 import { footerNavFull } from '@/data/navigation';
 import { isPublishable } from '@/lib/content';
 import { siteRoutes } from '@/content/sources';
+import { siteConfig } from '@/data/siteConfig';
 
 /**
  * Global site footer.
@@ -24,7 +25,7 @@ import { siteRoutes } from '@/content/sources';
  * - Phone number (vr-contact-information)
  * - Email address (vr-contact-information)
  * - Physical address (vr-contact-information)
- * - Social media links (vr-social-profiles)
+ * - Unverified social media links (vr-social-profiles)
  */
 export function SiteFooter() {
   const currentYear = new Date().getFullYear();
@@ -93,6 +94,18 @@ export function SiteFooter() {
                 Serving Monterey Bay.
                 {/* Phone/email/address added once vr-contact-information resolves. */}
               </p>
+              <a
+                href={siteConfig.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Stowe Contracting on Facebook (opens in a new tab)"
+                className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-[var(--color-neutral-200)] transition-colors duration-150 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+              >
+                <span aria-hidden="true" className="text-base font-bold">
+                  f
+                </span>
+                Facebook
+              </a>
             </div>
           </div>
         </div>

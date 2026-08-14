@@ -45,10 +45,10 @@ export const siteConfig = {
     sunday: '',
   },
 
-  // ── Social Links — PENDING VERIFICATION ──────────────────────────────────────
-  // See verification-required.ts: vr-social-profiles
+  // ── Social Links — INDIVIDUAL VERIFICATION REQUIRED ──────────────────────────
+  // Facebook is verified. See verification-required.ts for remaining profiles.
   social: {
-    facebook: '',
+    facebook: 'https://www.facebook.com/stowecontractinginc',
     instagram: '',
     linkedin: '',
     youtube: '',
