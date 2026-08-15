@@ -48,8 +48,8 @@ describe('Sitemap route governance', () => {
     expect(allPaths).toContain('/services');
   });
 
-  it('Test 10 — /projects is NOT in the sitemap (pending/inactive)', () => {
-    expect(allPaths).not.toContain('/projects');
+  it('Test 10 — /projects is in the sitemap as a verified photography holding page', () => {
+    expect(allPaths).toContain('/projects');
   });
 
   it('Test 10 — /blog is NOT in the sitemap (pending/inactive)', () => {

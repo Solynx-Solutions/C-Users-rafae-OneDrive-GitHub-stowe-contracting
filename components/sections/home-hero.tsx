@@ -17,20 +17,15 @@ export function HomeHero() {
             </h1>
             <p className="mt-8 max-w-xl text-xl leading-8 text-[#535B57]">
               Paver driveways, outdoor spaces, and site-ready construction delivered by dedicated
-              local crews—with mechanical installation capability for demanding scopes.
+              local crews—with the planning, placement capability, and field coordination demanding
+              scopes require.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link
-                href="/estimate/residential"
+                href="/contact#contact-form"
                 className="inline-flex min-h-14 items-center gap-3 bg-[#24507A] px-7 font-semibold text-white transition hover:bg-[#183A58]"
               >
                 Start a project <ArrowRight className="size-4" />
-              </Link>
-              <Link
-                href="/services"
-                className="inline-flex min-h-14 items-center border border-[#222522] px-7 font-semibold text-[#222522] transition hover:bg-[#222522] hover:text-white"
-              >
-                Explore capabilities
               </Link>
             </div>
             <div className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-t border-[#C9C2B7] pt-5 text-xs font-bold tracking-[.12em] text-[#535B57] uppercase">

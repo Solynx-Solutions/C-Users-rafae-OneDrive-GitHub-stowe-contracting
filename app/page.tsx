@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
 import { HomeHero } from '@/components/sections/home-hero';
 import { HomeEditorial } from '@/components/sections/home-editorial';
-import { HomeCta } from '@/components/sections/home-cta';
 
 export const metadata: Metadata = generatePageMetadata({
   title: 'Monterey Built — Hardscape First | Stowe Contracting',
@@ -16,7 +15,6 @@ export default function HomePage() {
     <>
       <HomeHero />
       <HomeEditorial />
-      <HomeCta />
     </>
   );
 }

@@ -43,8 +43,6 @@ import { MechanicalHero } from '@/components/sections/mechanical-hero';
 import { MechanicalExplainer } from '@/components/sections/mechanical-explainer';
 import { EquipmentShowcase } from '@/components/sections/equipment-showcase';
 import { HomeProcess } from '@/components/sections/home-process';
-import { CapabilitySplit } from '@/components/sections/capability-split';
-import { CtaSection } from '@/components/sections/cta-section';
 
 // =============================================================================
 // METADATA
@@ -104,19 +102,6 @@ export default function MechanicalInstallationPage() {
       {/* Planning → Preparation → Installation → Finished Project */}
       {/* Reusing M2 HomeProcess — same 4-step framework applies */}
       <HomeProcess />
-
-      {/* ── 5. Residential / Commercial Capability Split ─────────────────── */}
-      {/* Residential: mentions mechanical capability where appropriate */}
-      {/* Commercial: no public works or government contract claims */}
-      <CapabilitySplit />
-
-      {/* ── 6. Estimate CTAs ─────────────────────────────────────────────── */}
-      {/* Dual: /estimate/residential + /estimate/commercial */}
-      <CtaSection
-        variant="dual"
-        heading="Ready to discuss your concrete project?"
-        subheading={`Nearly 40 years serving Monterey Bay. Talk to our team about what your project needs.`}
-      />
     </>
   );
 }

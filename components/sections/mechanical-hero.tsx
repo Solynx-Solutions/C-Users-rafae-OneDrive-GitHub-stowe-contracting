@@ -26,12 +26,10 @@ import { PageContainer } from '@/components/layout/page-container';
  * No equipment names, model numbers, or performance claims.
  */
 export function MechanicalHero() {
-  const mechanicalEquipment = resolveControlledClaim('mechanical-equipment');
   const yearsInBusiness = resolveControlledClaim('years-in-business');
   const locallyOwned = resolveControlledClaim('locally-owned');
   const inHouseCrews = resolveControlledClaim('in-house-crews');
-  const ctaResidential = resolveControlledMessage('request-estimate', 'residential');
-  const ctaCommercial = resolveControlledMessage('request-estimate', 'commercial');
+  const estimateCta = resolveControlledMessage('request-estimate');
 
   return (
     <section
@@ -108,11 +106,11 @@ export function MechanicalHero() {
                 'md:text-6xl lg:text-7xl',
               ].join(' ')}
             >
-              Mechanical
+              Built for
               <br />
-              <span className="text-[var(--color-brand-primary)]">Installation</span>
+              <span className="text-[var(--color-brand-primary)]">Demanding</span>
               <br />
-              Capability
+              Hardscape
             </h1>
 
             {/* Primary description */}
@@ -121,9 +119,9 @@ export function MechanicalHero() {
                 ' '
               )}
             >
-              {mechanicalEquipment
-                ? `${mechanicalEquipment}, operated by ${inHouseCrews?.toLowerCase() ?? 'experienced in-house crews'}. ${yearsInBusiness ? `${yearsInBusiness}.` : ''}`
-                : 'Specialized mechanical equipment operated by experienced in-house crews.'}
+              Purpose-built placement capability, operated by{' '}
+              {inHouseCrews?.toLowerCase() ?? 'experienced in-house crews'}.
+              {yearsInBusiness ? ` ${yearsInBusiness}.` : ''}
             </p>
           </div>
 
@@ -131,7 +129,7 @@ export function MechanicalHero() {
           <div className="flex flex-wrap gap-6">
             {[
               { label: inHouseCrews ?? 'In-house crews', icon: 'crew' },
-              { label: mechanicalEquipment ?? 'Specialized equipment', icon: 'equipment' },
+              { label: 'Crew-led execution', icon: 'equipment' },
               {
                 label: yearsInBusiness ? `${yearsInBusiness} of experience` : 'Established company',
                 icon: 'years',
@@ -160,8 +158,8 @@ export function MechanicalHero() {
           {/* ── CTAs ──────────────────────────────────────────────────────── */}
           <div className="flex flex-wrap gap-4 pt-2">
             <Link
-              href="/estimate/residential"
-              id="mechanical-hero-cta-residential"
+              href="/contact#contact-form"
+              id="mechanical-hero-cta"
               className={[
                 'inline-flex items-center justify-center',
                 'rounded-[var(--radius-md)] px-8 py-4',
@@ -173,34 +171,7 @@ export function MechanicalHero() {
                 'shadow-[var(--shadow-brand)]',
               ].join(' ')}
             >
-              {ctaResidential ?? 'Request a Residential Estimate'}
-            </Link>
-
-            <Link
-              href="/estimate/commercial"
-              id="mechanical-hero-cta-commercial"
-              className={[
-                'inline-flex items-center justify-center gap-2',
-                'rounded-[var(--radius-md)] px-8 py-4',
-                'border border-white/25 text-white',
-                'text-base font-semibold',
-                'hover:border-white/50 hover:bg-white/10',
-                'transition-colors duration-150',
-                'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
-              ].join(' ')}
-            >
-              {ctaCommercial ?? 'Request a Commercial Estimate'}
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                aria-hidden="true"
-              >
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              {estimateCta ?? 'Request an Estimate'}
             </Link>
           </div>
         </div>

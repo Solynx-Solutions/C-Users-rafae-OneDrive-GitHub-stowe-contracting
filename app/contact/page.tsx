@@ -33,7 +33,6 @@ import { contactPageSchema, localBusinessSchema, breadcrumbSchema } from '@/lib/
 import {
   ContactHero,
   ContactInformation,
-  ContactRouting,
   ContactTrustSection,
   ContactForm,
 } from '@/components/contact';
@@ -77,13 +76,10 @@ export default function ContactPage() {
       {/* 2 — Contact information */}
       <ContactInformation />
 
-      {/* 3 — Project routing */}
-      <ContactRouting />
-
-      {/* 4 — Trust section */}
+      {/* 3 — Trust section */}
       <ContactTrustSection />
 
-      {/* 5 — General contact form */}
+      {/* 4 — One clear project inquiry form */}
       <ContentSection bg="neutral" aria-label="Send a general message" id="contact-form">
         <PageContainer>
           <div className="flex flex-col gap-10">
@@ -94,81 +90,11 @@ export default function ContactPage() {
               Send a Message
             </SectionHeading>
 
-            {/* Two-column layout on larger screens */}
-            <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
+            <div className="max-w-3xl">
               {/* Form */}
               <div>
                 <ContactForm formId="contact-page-form" />
               </div>
-
-              {/* Supporting note — no invented content */}
-              <aside
-                className={[
-                  'flex flex-col gap-6',
-                  'rounded-[var(--radius-xl)]',
-                  'border border-[var(--color-neutral-200)]',
-                  'bg-white p-8',
-                  'self-start',
-                ].join(' ')}
-                aria-label="Additional contact options"
-              >
-                <div className="flex flex-col gap-2">
-                  <h3 className="text-base font-bold text-[var(--color-brand-secondary)]">
-                    Prefer to request an estimate directly?
-                  </h3>
-                  <p className="text-sm leading-relaxed text-[var(--color-neutral-600)]">
-                    If you already know you need a project estimate, use one of the dedicated
-                    estimate forms — they&apos;ll help us understand your project before we reach
-                    out.
-                  </p>
-                </div>
-
-                {/* Estimate links */}
-                <div className="flex flex-col gap-3">
-                  <a
-                    href="/estimate/residential"
-                    id="contact-form-sidebar-residential"
-                    className={[
-                      'inline-flex items-center gap-2',
-                      'rounded-[var(--radius-md)] px-4 py-3',
-                      'bg-[var(--color-brand-primary)] text-white',
-                      'text-sm font-bold',
-                      'hover:bg-[var(--color-brand-primary-dark)]',
-                      'transition-colors duration-150',
-                      'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
-                      'shadow-[var(--shadow-brand)]',
-                    ].join(' ')}
-                  >
-                    Residential Estimate
-                    <span aria-hidden="true">→</span>
-                  </a>
-
-                  <a
-                    href="/estimate/commercial"
-                    id="contact-form-sidebar-commercial"
-                    className={[
-                      'inline-flex items-center gap-2',
-                      'rounded-[var(--radius-md)] px-4 py-3',
-                      'border border-[var(--color-brand-secondary)]',
-                      'text-sm font-bold text-[var(--color-brand-secondary)]',
-                      'hover:bg-[var(--color-brand-secondary)] hover:text-white',
-                      'transition-colors duration-150',
-                      'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-secondary)]',
-                    ].join(' ')}
-                  >
-                    Commercial Estimate
-                    <span aria-hidden="true">→</span>
-                  </a>
-                </div>
-
-                {/* Divider */}
-                <div className="border-t border-[var(--color-neutral-200)]" role="separator" />
-
-                <p className="text-xs leading-relaxed text-[var(--color-neutral-500)]">
-                  Stowe Contracting serves residential and commercial clients in the Monterey Bay
-                  area. We do not provide services outside our established service region.
-                </p>
-              </aside>
             </div>
           </div>
         </PageContainer>

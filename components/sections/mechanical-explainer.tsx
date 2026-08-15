@@ -25,8 +25,8 @@ interface ExplainerPoint {
 
 const points: ExplainerPoint[] = [
   {
-    heading: 'What Mechanical Installation Means',
-    body: 'Mechanical installation uses specialized equipment to handle concrete placement and finishing operations that would otherwise require additional manual labor. The equipment coordinates with an experienced crew to execute the installation from start to finish.',
+    heading: 'A Planned Placement Method',
+    body: 'The installation approach is selected around the site, scope, and material requirements. Purpose-built tools support an experienced crew from preparation through finish.',
     icon: (
       <svg
         width="22"
@@ -45,8 +45,8 @@ const points: ExplainerPoint[] = [
     ),
   },
   {
-    heading: 'How Equipment Supports the Process',
-    body: 'Contractors use different installation methods based on the scope and requirements of each project. Mechanical equipment supports the crew in managing the placement process, and the specific approach is determined by the project site and concrete specifications.',
+    heading: 'Matched to the Project',
+    body: 'Different scopes call for different methods. The crew determines the approach from project conditions and the approved specifications.',
     icon: (
       <svg
         width="22"
@@ -66,8 +66,8 @@ const points: ExplainerPoint[] = [
     ),
   },
   {
-    heading: 'Crew and Equipment Work Together',
-    body: "Mechanical equipment doesn't replace the crew — it works with them. Experienced operators and tradespeople work alongside the equipment throughout the installation process. The crew's familiarity with the equipment they operate is what drives the quality of the result.",
+    heading: 'Crew-Led Execution',
+    body: 'Experienced operators and tradespeople remain responsible for the work throughout the process. Tools support the plan; the crew directs the result.',
     icon: (
       <svg
         width="22"
@@ -89,7 +89,7 @@ const points: ExplainerPoint[] = [
   },
   {
     heading: 'Project-Specific Decisions',
-    body: 'The decision to use mechanical installation depends on the project: site conditions, scale, concrete mix, and the client requirements. Not every project requires mechanical installation — and not every contractor has access to the equipment when it is appropriate.',
+    body: 'Site conditions, scale, material, and client requirements determine the method. Not every project needs the same installation approach.',
     icon: (
       <svg
         width="22"
@@ -118,14 +118,14 @@ const points: ExplainerPoint[] = [
  */
 export function MechanicalExplainer() {
   return (
-    <ContentSection bg="white" aria-label="What mechanical installation involves">
+    <ContentSection bg="white" aria-label="How the placement approach works">
       <PageContainer>
         <div className="flex flex-col gap-12">
           <SectionHeading
             level="h2"
-            subtitle="Mechanical concrete installation involves specialized equipment and experienced crews working together through each phase of a project."
+            subtitle="A coordinated approach aligns site conditions, crew experience, and the right tools for the work."
           >
-            What Mechanical Installation Involves
+            How the Work Comes Together
           </SectionHeading>
 
           {/* 2-column explainer grid */}

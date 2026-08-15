@@ -26,7 +26,7 @@ export function SiteHeader() {
   const navItems = getPublishableNavItems();
   const ctaLabel = resolveControlledMessage('request-estimate') ?? 'Request an Estimate';
   // CTA links to generic /estimate path — specific routes are draft (residential/commercial)
-  const ctaHref = '/estimate/residential';
+  const ctaHref = '/contact#contact-form';
 
   return (
     <header

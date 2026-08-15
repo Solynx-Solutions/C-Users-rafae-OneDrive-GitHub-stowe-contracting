@@ -74,8 +74,8 @@ export function EquipmentShowcase() {
               level="h2"
               subtitle={
                 mechanicalEquipment
-                  ? `${mechanicalEquipment}, operated by ${inHouseCrews?.toLowerCase() ?? 'experienced in-house crews'}.`
-                  : 'Specialized equipment operated by experienced in-house crews.'
+                  ? `Purpose-built field tools operated by ${inHouseCrews?.toLowerCase() ?? 'experienced in-house crews'}.`
+                  : 'Purpose-built field tools operated by experienced in-house crews.'
               }
             >
               Equipment &amp; Crew
@@ -157,9 +157,8 @@ export function EquipmentShowcase() {
             ].join(' ')}
           >
             <p className="text-sm leading-relaxed text-[var(--color-brand-secondary)]">
-              <strong className="font-semibold">Crew accountability.</strong> Our equipment is
-              operated by our own in-house teams — the same crew that starts a project carries it
-              through to completion. No subcontracted operators.
+              <strong className="font-semibold">Crew accountability.</strong> Our in-house teams
+              carry the work from preparation through completion. No subcontracted operators.
             </p>
           </div>
         </div>

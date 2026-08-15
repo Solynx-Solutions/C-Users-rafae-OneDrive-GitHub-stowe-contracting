@@ -46,7 +46,7 @@ import { Building2, Cog, Users } from 'lucide-react';
 export const metadata: Metadata = generatePageMetadata({
   title: 'Request a Commercial Estimate — Stowe Contracting',
   description:
-    'Request a commercial project estimate from Stowe Contracting. Established workforce, specialized mechanical installation equipment, and experienced in-house crews serving Monterey Bay.',
+    'Request a commercial project estimate from Stowe Contracting. Established crews and coordinated site capability serving Monterey Bay.',
   path: '/estimate/commercial',
 });
 
@@ -197,7 +197,7 @@ export default function CommercialEstimatePage() {
             <SectionHeading
               level="h2"
               centered
-              subtitle="Stowe Contracting brings an established workforce and specialized equipment to commercial projects throughout Monterey Bay."
+              subtitle="Stowe Contracting brings an established workforce and coordinated field capability to commercial projects throughout Monterey Bay."
             >
               Built for Commercial Work
             </SectionHeading>
@@ -209,8 +209,8 @@ export default function CommercialEstimatePage() {
                   body: 'Our crews are employed directly — not subcontracted. Long-term employment continuity means consistent quality across phases of your project.',
                 },
                 {
-                  heading: 'Specialized Equipment',
-                  body: 'We operate specialized mechanical installation equipment suited for commercial-scale work, from site preparation through final installation.',
+                  heading: 'Coordinated Field Capability',
+                  body: 'Our team aligns site preparation, placement, and finish around the requirements of the commercial scope.',
                 },
                 {
                   heading: 'Established Local Presence',

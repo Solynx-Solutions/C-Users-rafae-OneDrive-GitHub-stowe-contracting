@@ -116,8 +116,8 @@ export function TrustSection() {
     },
     mechanicalEquipment && {
       icon: <EquipmentIcon />,
-      heading: 'Specialized Equipment',
-      body: 'We operate specialized mechanical installation equipment — the right tools to handle projects of any scale.',
+      heading: 'The Right Field Capability',
+      body: 'Our crews match the installation approach to the site, scope, and approved project requirements.',
     },
     longTermEmployees && {
       icon: <ContinuityIcon />,
@@ -135,7 +135,7 @@ export function TrustSection() {
           <SectionHeading
             level="h2"
             centered
-            subtitle="Nearly 40 years of local experience, backed by the people and equipment to do the work right."
+            subtitle="Nearly 40 years of local experience, backed by accountable people and a disciplined process."
           >
             Built on Local Trust
           </SectionHeading>

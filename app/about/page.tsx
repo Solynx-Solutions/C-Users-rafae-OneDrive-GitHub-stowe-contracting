@@ -165,8 +165,8 @@ export default function AboutPage() {
     },
     mechanicalEquipment && {
       icon: <EquipmentIcon />,
-      heading: mechanicalEquipment,
-      body: 'Stowe operates specialized mechanical installation equipment designed to support applicable residential and commercial projects — bringing the same capability across different project scales.',
+      heading: 'Purpose-built field capability',
+      body: 'Stowe pairs experienced crews with the installation approach appropriate to applicable residential and commercial scopes.',
     },
   ].filter(Boolean) as Array<{ icon: React.ReactNode; heading: string; body: string }>;
 
@@ -215,29 +215,9 @@ export default function AboutPage() {
               <p className="max-w-2xl text-lg leading-relaxed text-white/75">
                 Stowe Contracting is a locally owned hardscape and construction contractor based in
                 {montereyBay ? ` ${montereyBay}` : ' Monterey Bay'}. Dedicated crews and specialized
-                mechanical installation equipment support residential and commercial projects across
-                our three divisions.
+                field capability support residential and commercial projects across our three
+                divisions.
               </p>
-            </div>
-
-            {/* Estimate CTA */}
-            <div className="flex flex-wrap gap-4 pt-2">
-              <Link
-                href="/estimate/residential"
-                id="about-cta-estimate"
-                className={[
-                  'inline-flex items-center justify-center',
-                  'rounded-[var(--radius-md)] px-7 py-3.5',
-                  'bg-[var(--color-brand-primary)] text-white',
-                  'text-base font-bold',
-                  'hover:bg-[var(--color-brand-primary-dark)]',
-                  'transition-colors duration-150',
-                  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
-                  'shadow-[var(--shadow-brand)]',
-                ].join(' ')}
-              >
-                Request an Estimate
-              </Link>
             </div>
           </div>
         </PageContainer>
@@ -341,8 +321,8 @@ export default function AboutPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/estimate/residential"
-                id="about-cta-residential"
+                href="/contact#contact-form"
+                id="about-cta"
                 className={[
                   'inline-flex items-center justify-center',
                   'rounded-[var(--radius-md)] px-8 py-4',
@@ -354,22 +334,7 @@ export default function AboutPage() {
                   'shadow-[0_4px_16px_rgba(0,0,0,0.15)]',
                 ].join(' ')}
               >
-                Residential Estimate
-              </Link>
-              <Link
-                href="/estimate/commercial"
-                id="about-cta-commercial"
-                className={[
-                  'inline-flex items-center justify-center',
-                  'rounded-[var(--radius-md)] px-8 py-4',
-                  'border-2 border-white/40 text-white',
-                  'text-base font-bold',
-                  'hover:border-white hover:bg-white/10',
-                  'transition-colors duration-150',
-                  'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white',
-                ].join(' ')}
-              >
-                Commercial Estimate
+                Request an Estimate
               </Link>
             </div>
           </div>

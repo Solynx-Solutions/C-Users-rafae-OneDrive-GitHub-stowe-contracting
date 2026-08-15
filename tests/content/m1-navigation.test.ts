@@ -27,24 +27,16 @@ describe('M1 — Navigation governance', () => {
     }
   });
 
-  it('Test 2 — Active routes at current milestone include home + M3 estimate + M4 mechanical + M5 contact + M6 services', () => {
+  it('Test 2 — core navigation is Home, Services, Projects, About, and Contact', () => {
     // Updated at M6: /services was activated.
     // Add new active routes here as milestones activate them.
-    const EXPECTED_ACTIVE_PATHS = [
-      '/',
-      '/estimate/residential',
-      '/estimate/commercial',
-      '/mechanical-installation',
-      '/contact',
-      '/services',
-    ];
-    const publishableRoutes = siteRoutes.filter(isPublishable);
-    const activePaths = publishableRoutes.map((r) => r.path);
-    for (const expectedPath of EXPECTED_ACTIVE_PATHS) {
-      expect(activePaths, `Expected "${expectedPath}" to be confirmed+active`).toContain(
-        expectedPath
-      );
-    }
+    expect(getPublishableNavItems()).toEqual([
+      { label: 'Home', href: '/' },
+      { label: 'Services', href: '/services' },
+      { label: 'Projects', href: '/projects' },
+      { label: 'About', href: '/about' },
+      { label: 'Contact', href: '/contact' },
+    ]);
   });
 
   it('Test 3 — Draft routes are not in publishable nav', () => {

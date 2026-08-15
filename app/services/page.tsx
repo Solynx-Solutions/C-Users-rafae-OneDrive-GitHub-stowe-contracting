@@ -37,11 +37,10 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
 import { localBusinessSchema, webPageSchema, breadcrumbSchema } from '@/lib/schema';
-import { resolveControlledClaim, resolveControlledMessage } from '@/lib/content';
+import { resolveControlledClaim } from '@/lib/content';
 
 // ── Components ────────────────────────────────────────────────────────────────
 import { ServiceGrid } from '@/components/services/service-grid';
-import { ServiceEstimateCta } from '@/components/services/service-estimate-cta';
 import { ServiceCapabilityList } from '@/components/services/service-capability-list';
 import { PageContainer } from '@/components/layout/page-container';
 import { ContentSection } from '@/components/layout/content-section';
@@ -68,8 +67,6 @@ export default function ServicesPage() {
   const mechanicalEquipment = resolveControlledClaim('mechanical-equipment');
   const residentialCapability = resolveControlledClaim('residential-capability');
   const commercialCapability = resolveControlledClaim('commercial-capability');
-  const residentialCta = resolveControlledMessage('request-estimate', 'residential');
-  const commercialCta = resolveControlledMessage('request-estimate', 'commercial');
   const customersKnowCrew = resolveControlledClaim('customers-know-crew');
 
   // ── Schema ─────────────────────────────────────────────────────────────────
@@ -125,7 +122,7 @@ export default function ServicesPage() {
 
             {/* Trust signals */}
             <div className="flex flex-wrap gap-6">
-              {[inHouseCrews, mechanicalEquipment, 'Residential & commercial']
+              {[inHouseCrews, 'Coordinated field capability', 'Residential & commercial']
                 .filter(Boolean)
                 .map((signal) => (
                   <span
@@ -191,22 +188,6 @@ export default function ServicesPage() {
                       : ' Our in-house crews work on your property directly.'}
                   </p>
                 </div>
-                <Link
-                  href="/estimate/residential"
-                  id="services-pathway-residential"
-                  className={[
-                    'mt-auto inline-flex w-full items-center justify-center',
-                    'rounded-[var(--radius-md)] px-6 py-3.5',
-                    'bg-[var(--color-brand-primary)] text-white',
-                    'text-sm font-bold',
-                    'hover:bg-[var(--color-brand-primary-dark)]',
-                    'transition-colors duration-150',
-                    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
-                    'shadow-[var(--shadow-brand)]',
-                  ].join(' ')}
-                >
-                  {residentialCta ?? 'Request a Residential Estimate'}
-                </Link>
               </div>
 
               {/* Commercial */}
@@ -226,28 +207,13 @@ export default function ServicesPage() {
                     Commercial & Development Projects
                   </h3>
                   <p className="text-sm leading-relaxed text-[var(--color-neutral-600)]">
-                    Foundations, flatwork, site work, and mechanical installation for commercial
+                    Foundations, flatwork, site work, and coordinated placement for commercial
                     properties and development projects.
                     {inHouseCrews
                       ? ` ${inHouseCrews} — structured for commercial project requirements.`
                       : ' Our crews are structured for commercial project requirements.'}
                   </p>
                 </div>
-                <Link
-                  href="/estimate/commercial"
-                  id="services-pathway-commercial"
-                  className={[
-                    'mt-auto inline-flex w-full items-center justify-center',
-                    'rounded-[var(--radius-md)] px-6 py-3.5',
-                    'border border-[var(--color-brand-secondary)]',
-                    'text-sm font-bold text-[var(--color-brand-secondary)]',
-                    'hover:bg-[var(--color-brand-secondary)] hover:text-white',
-                    'transition-colors duration-150',
-                    'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-secondary)]',
-                  ].join(' ')}
-                >
-                  {commercialCta ?? 'Request a Commercial Estimate'}
-                </Link>
               </div>
             </div>
           </div>
@@ -296,7 +262,7 @@ export default function ServicesPage() {
                 {/* Confirmed capability highlights */}
                 <ServiceCapabilityList
                   highlights={[
-                    'Specialized mechanical equipment',
+                    'Purpose-built placement capability',
                     'In-house crews — not subcontracted',
                     'Residential and commercial applications',
                     'Monterey Bay area service region',
@@ -317,7 +283,7 @@ export default function ServicesPage() {
                     'w-fit',
                   ].join(' ')}
                 >
-                  Learn About Mechanical Installation
+                  Explore the Installation Approach
                   <svg
                     width="14"
                     height="14"
@@ -347,9 +313,8 @@ export default function ServicesPage() {
                   Why it matters
                 </p>
                 <p className="text-sm leading-relaxed text-[var(--color-neutral-700)]">
-                  Mechanical installation equipment allows Stowe Contracting to handle concrete work
-                  that would otherwise require multiple subcontractors. Our in-house crews operate
-                  this equipment directly — giving you a single accountable team.
+                  Stowe aligns the crew, field tools, and installation plan under one accountable
+                  team from preparation through finish.
                 </p>
                 <p className="text-xs text-[var(--color-neutral-500)]">
                   Available for residential and commercial projects in the Monterey Bay area.
@@ -363,7 +328,18 @@ export default function ServicesPage() {
       {/* ── 5. Estimate CTA ───────────────────────────────────────────────── */}
       <ContentSection bg="neutral" aria-label="Request a project estimate">
         <PageContainer>
-          <ServiceEstimateCta audience="both" idPrefix="services-index" />
+          <div className="flex flex-col items-center gap-5 py-6 text-center">
+            <h2 className="text-3xl text-[var(--color-brand-secondary)]">Ready to start?</h2>
+            <p className="max-w-xl text-[var(--color-neutral-600)]">
+              Tell us about the project and our team will direct it to the right division.
+            </p>
+            <Link
+              href="/contact#contact-form"
+              className="inline-flex min-h-14 items-center bg-[var(--color-brand-primary)] px-7 font-semibold text-white transition hover:bg-[var(--color-brand-primary-dark)]"
+            >
+              Request an Estimate
+            </Link>
+          </div>
         </PageContainer>
       </ContentSection>
     </>

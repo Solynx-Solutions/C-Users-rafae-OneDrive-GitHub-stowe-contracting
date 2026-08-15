@@ -28,12 +28,14 @@ export const siteRoutes: RouteRecord[] = [
     type: 'route',
     source: 'priority-1-discovery-interview',
     verificationStatus: 'confirmed',
-    publicationStatus: 'draft',
-    // draft — page not yet built; excluded from sitemap and navigation
+    publicationStatus: 'active',
     path: '/about',
     label: 'About',
     sitemapPriority: 0.8,
     changefreq: 'monthly',
+    verificationNote:
+      'Activated after Rafael review. Public copy remains limited to verified onboarding facts.',
+    lastReviewedAt: '2026-08-14',
   },
   {
     id: 'route-services',
@@ -71,13 +73,15 @@ export const siteRoutes: RouteRecord[] = [
     id: 'route-projects',
     type: 'route',
     source: 'priority-1-discovery-interview',
-    verificationStatus: 'pending',
-    publicationStatus: 'inactive',
-    // pending — no project content verified
+    verificationStatus: 'confirmed',
+    publicationStatus: 'active',
     path: '/projects',
     label: 'Projects',
     sitemapPriority: 0.8,
     changefreq: 'weekly',
+    verificationNote:
+      'Activated as a photography holding page after Rafael review. No project claims or portfolio imagery are published.',
+    lastReviewedAt: '2026-08-14',
   },
   {
     id: 'route-contact',
