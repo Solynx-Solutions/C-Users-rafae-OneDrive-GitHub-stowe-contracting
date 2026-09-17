@@ -126,7 +126,13 @@ export function SiteFooter() {
             aria-label="Powered by SOLYNX LLC"
             className="inline-flex items-center gap-2 text-xs text-[var(--color-neutral-400)] transition-colors duration-150 hover:text-[var(--color-neutral-200)]"
           >
-            <Image src="/solynx-logo.png" alt="SOLYNX logo" width={82} height={24} className="h-6 w-auto object-contain" />
+            <Image
+              src="/solynx-logo.png"
+              alt="SOLYNX logo"
+              width={82}
+              height={24}
+              className="h-6 w-auto object-contain"
+            />
             <span>Powered by SOLYNX LLC</span>
           </a>
 
