@@ -7,6 +7,7 @@
 // =============================================================================
 
 import { FooterBrand } from '@/components/brand/footer-brand';
+import Image from 'next/image';
 import { PageContainer } from './page-container';
 import { TextLink } from '@/components/ui/text-link';
 import { Divider } from '@/components/ui/divider';
@@ -118,22 +119,22 @@ export function SiteFooter() {
           </p>
 
           {/* SOLYNX attribution — required */}
-          <p className="text-xs text-[var(--color-neutral-500)]">
-            Website designed, built &amp; managed by{' '}
-            <a
-              href="https://solynx.solutions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={[
-                'text-[var(--color-neutral-400)]',
-                'hover:text-[var(--color-neutral-200)]',
-                'transition-colors duration-150',
-                'underline underline-offset-2',
-              ].join(' ')}
-            >
-              SOLYNX
-            </a>
-          </p>
+          <a
+            href="https://www.solynx.solutions/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Powered by SOLYNX LLC"
+            className="inline-flex items-center gap-2 text-xs text-[var(--color-neutral-400)] transition-colors duration-150 hover:text-[var(--color-neutral-200)]"
+          >
+            <Image
+              src="/solynx-logo.png"
+              alt="SOLYNX logo"
+              width={82}
+              height={24}
+              className="h-6 w-auto object-contain"
+            />
+            <span>Powered by SOLYNX LLC</span>
+          </a>
 
           {/* Legal nav — only confirmed+active */}
           {footerNavItems.length > 0 && (
