@@ -157,6 +157,14 @@ describe('M3 — EstimateForm schema validation', () => {
       expect(issue, 'preferredContactMethod should reject invalid enum value').toBeDefined();
     }
   });
+
+  it('accepts the visible No preference option as an empty contact method', () => {
+    const result = estimateFormSchema.safeParse({
+      ...VALID_BASE,
+      preferredContactMethod: '',
+    });
+    expect(result.success).toBe(true);
+  });
 });
 
 // ─── Content governance tests ─────────────────────────────────────────────────

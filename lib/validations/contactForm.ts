@@ -44,11 +44,14 @@ export const contactFormSchema = z.object({
     ),
 
   // ── Preferred contact method ───────────────────────────────────────────────
-  preferredContactMethod: z
-    .enum(['phone', 'email', 'either'], {
-      error: 'Please select a preferred contact method',
-    })
-    .optional(),
+  preferredContactMethod: z.preprocess(
+    (value) => (value === '' ? undefined : value),
+    z
+      .enum(['phone', 'email', 'either'], {
+        error: 'Please select a preferred contact method',
+      })
+      .optional()
+  ),
 
   // ── Inquiry type — drives CRM routing at M7+ ──────────────────────────────
   inquiryType: z
