@@ -195,6 +195,14 @@ describe('M5 — Contact form validation', () => {
     expect(result.success).toBe(true);
   });
 
+  it('accepts the visible No preference option as an empty contact method', () => {
+    const result = contactFormSchema.safeParse({
+      ...validBase,
+      preferredContactMethod: '',
+    });
+    expect(result.success).toBe(true);
+  });
+
   it('Test 14 — missing firstName fails validation', () => {
     const result = contactFormSchema.safeParse({ ...validBase, firstName: '' });
     expect(result.success).toBe(false);

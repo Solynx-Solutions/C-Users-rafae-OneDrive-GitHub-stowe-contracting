@@ -1,15 +1,23 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { PageContainer } from '@/components/layout/page-container';
 
-function Media({ label, tall = false }: { label: string; tall?: boolean }) {
+function Media({ label, src, tall = false }: { label: string; src: string; tall?: boolean }) {
   return (
     <div
       role="img"
-      aria-label={`${label}; approved photography pending`}
-      className={`relative flex items-end overflow-hidden bg-[repeating-linear-gradient(90deg,transparent_0,transparent_79px,rgba(36,80,122,.13)_80px,rgba(36,80,122,.13)_82px),repeating-linear-gradient(0deg,transparent_0,transparent_39px,rgba(122,59,69,.09)_40px,rgba(122,59,69,.09)_42px),linear-gradient(145deg,#D6D1C8,#E9E3D8)] p-5 ${tall ? 'min-h-[34rem]' : 'min-h-72'}`}
+      aria-label={label}
+      className={`relative flex items-end overflow-hidden bg-[#D6D1C8] p-5 ${tall ? 'min-h-[34rem]' : 'min-h-72'}`}
     >
-      <span className="bg-[#1D2421] px-3 py-2 text-[.68rem] font-bold tracking-[.16em] text-white uppercase">
+      <Image
+        src={src}
+        alt=""
+        fill
+        sizes="(min-width: 768px) 50vw, 100vw"
+        className="object-cover"
+      />
+      <span className="relative z-10 bg-[#1D2421]/90 px-3 py-2 text-[.68rem] font-bold tracking-[.16em] text-white uppercase">
         {label}
       </span>
     </div>
@@ -63,9 +71,16 @@ export function HomeEditorial() {
                 preparation.
               </p>
               <div className="mt-12 grid gap-5 md:grid-cols-2">
-                <Media label="Paver + PICP driveways" tall />
+                <Media
+                  label="Stowe equipment ready for Monterey Bay projects"
+                  src="/images/home/stowe-service-truck.webp"
+                  tall
+                />
                 <div className="md:pt-24">
-                  <Media label="Backyards + outdoor spaces" />
+                  <Media
+                    label="Stowe production crew on location"
+                    src="/images/home/stowe-production-team.webp"
+                  />
                 </div>
               </div>
             </div>
@@ -95,9 +110,13 @@ export function HomeEditorial() {
               </Link>
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
-              {['Prepare', 'Install', 'Finish'].map((item, index) => (
+              {[
+                ['Prepare', '/images/home/stowe-coastal-site.webp'],
+                ['Install', '/images/home/stowe-dump-truck.webp'],
+                ['Finish', '/images/home/stowe-coastal-project.webp'],
+              ].map(([item, src], index) => (
                 <div key={item}>
-                  <Media label={`0${index + 1} ${item}`} />
+                  <Media label={`0${index + 1} ${item}`} src={src} />
                   <p className="mt-4 border-t border-[#BEB6AA] pt-3 text-xs font-bold tracking-[.16em] uppercase">
                     {item}
                   </p>
@@ -148,15 +167,25 @@ export function HomeEditorial() {
         <PageContainer>
           <SectionTitle eyebrow="Featured work">Let the built work carry the story.</SectionTitle>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#535B57]">
-            The editorial project system is ready for approved Stowe photography and verified
-            project captions. No stock or scraped imagery is used.
+            A field look at the Stowe team, equipment, and Monterey Bay project environment. Every
+            image shown here comes from the client-supplied production-day collection.
           </p>
           <div className="mt-14">
-            <Media label="Featured hardscape project" tall />
+            <Media
+              label="Stowe Contracting on a Monterey Bay project site"
+              src="/images/home/stowe-coastal-project.webp"
+              tall
+            />
           </div>
           <div className="mt-5 grid gap-5 md:grid-cols-2">
-            <Media label="Residential hardscape" />
-            <Media label="Mechanical installation" />
+            <Media
+              label="Stowe crew and branded service truck"
+              src="/images/home/stowe-team-truck.webp"
+            />
+            <Media
+              label="Stowe equipment and field capability"
+              src="/images/home/stowe-dump-truck.webp"
+            />
           </div>
         </PageContainer>
       </section>
@@ -164,7 +193,11 @@ export function HomeEditorial() {
       <section className="bg-[#1D2421] py-24 text-white md:py-32">
         <PageContainer>
           <div className="grid gap-8 lg:grid-cols-[1.25fr_.75fr]">
-            <Media label="Crew + equipment on site" tall />
+            <Media
+              label="Stowe crew and equipment on site"
+              src="/images/home/stowe-production-team.webp"
+              tall
+            />
             <div className="flex flex-col justify-between border-l-4 border-[#24507A] bg-[#222522] p-9 md:p-12">
               <div>
                 <p className="text-xs font-bold tracking-[.22em] text-[#A9C2D9] uppercase">

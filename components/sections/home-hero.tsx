@@ -37,12 +37,28 @@ export function HomeHero() {
 
           <div
             className="relative min-h-[30rem] overflow-hidden border-l-[10px] border-[#7A3B45] lg:min-h-[44rem]"
-            role="img"
-            aria-label="Reserved space for approved large-format hardscape project photography"
+            aria-label="Stowe Contracting production day with drone support"
           >
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(29,36,33,.12),transparent_40%),repeating-linear-gradient(90deg,transparent_0,transparent_79px,rgba(36,80,122,.14)_80px,rgba(36,80,122,.14)_82px),repeating-linear-gradient(0deg,transparent_0,transparent_39px,rgba(36,80,122,.12)_40px,rgba(36,80,122,.12)_42px),linear-gradient(145deg,#D5D0C7,#E9E3D8)]" />
-            <div className="absolute right-5 bottom-5 bg-[#1D2421] px-5 py-4 text-[.68rem] font-bold tracking-[.18em] text-white uppercase">
-              Approved project photography reserved
+            <div
+              className="absolute inset-0 scale-110 bg-cover bg-center opacity-55 blur-2xl"
+              style={{ backgroundImage: "url('/images/home/hero-drone-poster.webp')" }}
+              aria-hidden="true"
+            />
+            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(29,36,33,.78),rgba(36,80,122,.38))]" />
+            <video
+              className="absolute inset-0 h-full w-full object-contain"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              poster="/images/home/hero-drone-poster.webp"
+              aria-label="Behind-the-scenes footage of drone support during a Stowe Contracting production day"
+            >
+              <source src="/media/stowe-drone-production.mp4" type="video/mp4" />
+            </video>
+            <div className="absolute right-5 bottom-5 bg-[#1D2421]/90 px-5 py-4 text-[.68rem] font-bold tracking-[.18em] text-white uppercase backdrop-blur-sm">
+              Built in Monterey Bay · Documented in the field
             </div>
           </div>
         </div>

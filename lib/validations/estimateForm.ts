@@ -36,11 +36,14 @@ export const estimateFormSchema = z.object({
     .refine((val) => /^\+?[\d\s\-().]{7,20}$/.test(val), 'Please enter a valid phone number'),
 
   // ── Preferred contact method ───────────────────────────────────────────
-  preferredContactMethod: z
-    .enum(['phone', 'email', 'either'], {
-      error: 'Please select a preferred contact method',
-    })
-    .optional(),
+  preferredContactMethod: z.preprocess(
+    (value) => (value === '' ? undefined : value),
+    z
+      .enum(['phone', 'email', 'either'], {
+        error: 'Please select a preferred contact method',
+      })
+      .optional()
+  ),
 
   // ── Residential-only ───────────────────────────────────────────────────
   /** Residential property type (single-family, multi-family, etc.) */
