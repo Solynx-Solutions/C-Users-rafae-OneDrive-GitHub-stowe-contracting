@@ -36,29 +36,23 @@ export function HomeHero() {
           </div>
 
           <div
-            className="relative min-h-[30rem] overflow-hidden border-l-[10px] border-[#7A3B45] lg:min-h-[44rem]"
-            aria-label="Stowe Contracting production day with drone support"
+            className="relative min-h-[30rem] overflow-hidden border-l-[10px] border-[#7A3B45] bg-[#1D2421] lg:min-h-[44rem]"
+            aria-label="Stowe Contracting brand panel"
           >
-            <div
-              className="absolute inset-0 scale-110 bg-cover bg-center opacity-55 blur-2xl"
-              style={{ backgroundImage: "url('/images/home/hero-drone-poster.webp')" }}
-              aria-hidden="true"
-            />
-            <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(29,36,33,.78),rgba(36,80,122,.38))]" />
-            <video
-              className="absolute inset-0 h-full w-full object-contain"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="metadata"
-              poster="/images/home/hero-drone-poster.webp"
-              aria-label="Behind-the-scenes footage of drone support during a Stowe Contracting production day"
-            >
-              <source src="/media/stowe-drone-production.mp4" type="video/mp4" />
-            </video>
+            <div className="absolute inset-0 bg-[linear-gradient(145deg,#1D2421_0%,#24507A_62%,#7A3B45_100%)]" />
+            <div className="absolute inset-8 border border-white/20" aria-hidden="true" />
+            <div className="absolute inset-0 flex items-center justify-center p-10 text-center">
+              <div>
+                <p className="text-xs font-bold tracking-[.3em] text-white/60 uppercase">
+                  Stowe Contracting
+                </p>
+                <p className="mt-5 text-[clamp(2.5rem,6vw,5.5rem)] leading-[.88] font-semibold tracking-[-.05em] text-white">
+                  Built for the Monterey Bay.
+                </p>
+              </div>
+            </div>
             <div className="absolute right-5 bottom-5 bg-[#1D2421]/90 px-5 py-4 text-[.68rem] font-bold tracking-[.18em] text-white uppercase backdrop-blur-sm">
-              Built in Monterey Bay · Documented in the field
+              Verified project media coming soon
             </div>
           </div>
         </div>
