@@ -1,4 +1,4 @@
-export type StoweProjectPhoto = { src: string; width: number; height: number; alt: string; title: string; description?: string; source?: string };
+export type StoweProjectPhoto = { src: string; width: number; height: number; alt: string; title: string; description?: string; source?: string; sourceLabel?: string };
 
 const originalPhotos: StoweProjectPhoto[] = [
   {
@@ -50,7 +50,8 @@ const originalPhotos: StoweProjectPhoto[] = [
     "alt": "Remodeled living room with a stone fireplace, wood flooring and recessed lighting.",
     "title": "Interior remodeling",
     "description": "Living-room photograph from Stowe’s original Complete Remodel portfolio.",
-    "source": "https://stowecontracting.com/construction/"
+    "source": "https://stowecontracting.com/construction/",
+    "sourceLabel": "View original construction portfolio"
   },
   {
     "src": "/media/original-stowe/stowe-grass-front-view-original.jpg",

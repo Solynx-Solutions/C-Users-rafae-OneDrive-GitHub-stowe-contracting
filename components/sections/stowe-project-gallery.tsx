@@ -7,6 +7,6 @@ export function ProjectGallery({ featured = false }: { featured?: boolean }) {
  {photos.map((photo,index)=><figure className={styles.figure} key={photo.src}>
  <a className={styles.imageLink} href={photo.src} target="_blank" rel="noopener noreferrer" aria-label={`View full photograph: ${photo.title}`}>
  <Image src={photo.src} width={photo.width} height={photo.height} alt={photo.alt} sizes="(min-width: 900px) 45vw, 100vw"/><span className={styles.enlarge} aria-hidden="true">↗</span></a>
- <figcaption><span className={styles.number}>{String(index+1).padStart(2,'0')}</span><h3>{photo.title}</h3>{photo.description && <p className={styles.detail}>{photo.description}</p>}<span className={styles.full}>View full photograph ↗</span>{photo.source && <a className={styles.source} href={photo.source} target="_blank" rel="noopener noreferrer">View project on Facebook ↗</a>}</figcaption></figure>)}
+ <figcaption><span className={styles.number}>{String(index+1).padStart(2,'0')}</span><h3>{photo.title}</h3>{photo.description && <p className={styles.detail}>{photo.description}</p>}<span className={styles.full}>View full photograph ↗</span>{photo.source && <a className={styles.source} href={photo.source} target="_blank" rel="noopener noreferrer">{photo.sourceLabel ?? 'View project on Facebook'} ↗</a>}</figcaption></figure>)}
  </div>;
 }
