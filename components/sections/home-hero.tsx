@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { HomeHeroFilm } from './home-hero-film';
 import { ArrowRight } from 'lucide-react';
 import { PageContainer } from '@/components/layout/page-container';
 
@@ -35,16 +36,7 @@ export function HomeHero() {
             </div>
           </div>
 
-          <div
-            className="relative min-h-[30rem] overflow-hidden border-l-[10px] border-[#7A3B45] lg:min-h-[44rem]"
-            role="img"
-            aria-label="Reserved space for approved large-format hardscape project photography"
-          >
-            <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(29,36,33,.12),transparent_40%),repeating-linear-gradient(90deg,transparent_0,transparent_79px,rgba(36,80,122,.14)_80px,rgba(36,80,122,.14)_82px),repeating-linear-gradient(0deg,transparent_0,transparent_39px,rgba(36,80,122,.12)_40px,rgba(36,80,122,.12)_42px),linear-gradient(145deg,#D5D0C7,#E9E3D8)]" />
-            <div className="absolute right-5 bottom-5 bg-[#1D2421] px-5 py-4 text-[.68rem] font-bold tracking-[.18em] text-white uppercase">
-              Approved project photography reserved
-            </div>
-          </div>
+          <HomeHeroFilm />
         </div>
       </PageContainer>
     </section>
