@@ -61,6 +61,8 @@ export function StoweDesignReview() {
           <p className="dr-kicker">01 / THE STOWE APPROACH</p>
           <div>
             <h2>Good work begins<br /><em>before the first stone.</em></h2>
+            <p>Stowe Contracting was founded in 1987 by Gary and Debbie Stowe, after their military assignment at Fort Ord. From the beginning, the company was built on professionalism, integrity, and respect — for clients, for crews, and for the work itself.</p>
+            <p>In 2004, Stowe Contracting added a grading division, extending the company's reach beyond hardscape into site preparation and earthwork. Stowe owns its trucks and equipment, giving direct control over scheduling, quality, and the coordination that larger projects require.</p>
             <p>Planning, site preparation, and field coordination come together to shape outdoor spaces that belong to their surroundings.</p>
             <Link className="dr-text-link" href="/about">Get to know Stowe <span aria-hidden="true">↗</span></Link>
           </div>
@@ -71,6 +73,7 @@ export function StoweDesignReview() {
             <p className="dr-kicker">02 / A CLOSER LOOK</p>
             <h2>The difference<br /><em>is in the details.</em></h2>
           </div>
+          <p className="dr-work-intro">Every project starts with materials chosen for the setting. From paver driveways and patios to retaining walls and site preparation, Stowe brings construction and hardscape experience together. Explore Belgard / Oldcastle paver options for your project.</p>
           <figure className="dr-wide-image">
             <Image
               src="/media/stowe-house-poster.jpg"
@@ -103,6 +106,59 @@ export function StoweDesignReview() {
               <figcaption>ROOM TO LIVE OUTDOORS</figcaption>
             </figure>
           </div>
+        <div className="dr-original-projects">
+            <h3>More of our work</h3>
+            <p>Explore Stowe projects in paving, construction, earthwork and landscaping. Select any photograph to see the full image.</p>
+            <div className="dr-original-grid"><figure>
+                <a href="/media/original-stowe/stowe-driveway-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge paver driveways photograph">
+                  <Image src="/media/original-stowe/stowe-driveway-original.jpg" width={800} height={600} alt="Paver driveway bordered by flowering plants leading to a garage." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
+                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
+                </a>
+                <figcaption>Paver driveways</figcaption>
+              </figure>
+<figure>
+                <a href="/media/original-stowe/stowe-patio-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge patios & outdoor spaces photograph">
+                  <Image src="/media/original-stowe/stowe-patio-original.jpg" width={800} height={600} alt="Paver patio with stone fire pit, plant pots, and hillside view." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
+                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
+                </a>
+                <figcaption>Patios & outdoor spaces</figcaption>
+              </figure>
+<figure>
+                <a href="/media/original-stowe/stowe-retaining-wall-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge retaining walls photograph">
+                  <Image src="/media/original-stowe/stowe-retaining-wall-original.jpg" width={600} height={783} alt="Curved block retaining walls and planting beds in front of a house." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
+                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
+                </a>
+                <figcaption>Retaining walls</figcaption>
+              </figure>
+<figure>
+                <a href="/media/original-stowe/stowe-grading-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge grading & site preparation photograph">
+                  <Image src="/media/original-stowe/stowe-grading-original.jpg" width={450} height={600} alt="Excavator on an earth slope beside a partially visible tank." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
+                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
+                </a>
+                <figcaption>Grading & site preparation</figcaption>
+              </figure>
+<figure>
+                <a href="/media/original-stowe/stowe-project-img-0204-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge earthwork photograph">
+                  <Image src="/media/original-stowe/stowe-project-img-0204-original.jpg" width={600} height={450} alt="Excavator and skid steer working inside a large excavation." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
+                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
+                </a>
+                <figcaption>Earthwork</figcaption>
+              </figure>
+<figure>
+                <a href="/media/original-stowe/stowe-project-pict0002-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge construction & hardscape photograph">
+                  <Image src="/media/original-stowe/stowe-project-pict0002-original.jpg" width={435} height={600} alt="Curved block retaining wall beside a paver patio and wooded slope." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
+                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
+                </a>
+                <figcaption>Construction & hardscape</figcaption>
+              </figure>
+<figure>
+                <a href="/media/original-stowe/stowe-grass-front-view-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge synthetic grass photograph">
+                  <Image src="/media/original-stowe/stowe-grass-front-view-original.jpg" width={1400} height={844} alt="Front lawn with curved paver walkway leading to a house." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
+                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
+                </a>
+                <figcaption>Synthetic grass</figcaption>
+              </figure></div>
+          </div>
         </section>
 
         <section className="dr-section dr-capabilities">
@@ -112,9 +168,12 @@ export function StoweDesignReview() {
           </div>
           <div className="dr-service-grid">
             {[
-              ['01', 'Hardscape & outdoor spaces', 'Paver driveways, outdoor spaces, and mechanical installation.', '/services'],
-              ['02', 'Construction & remodeling', 'Construction and remodeling beyond the exterior surface.', '/services'],
-              ['03', 'Sitework & underground', 'Preparation, grading, and underground support for the finished result.', '/services'],
+              ['01', 'Kitchen & bath remodels', 'Interior remodeling for kitchens and bathrooms, built to the same standard as our exterior work.', '/services'],
+              ['02', 'Custom homes', 'Ground-up construction for custom residences across the Monterey Bay area.', '/services'],
+              ['03', 'Commercial tenant improvements', 'Build-outs and improvements for commercial tenant spaces.', '/services'],
+              ['04', 'Paver driveways, patios & walkways', 'Belgard and Oldcastle paver systems, including permeable paver installations.', '/services'],
+              ['05', 'Grading & site preparation', 'Grading, drainage, asphalt paving, and stackable retaining walls.', '/services'],
+              ['06', 'Synthetic grass', 'Low-water, low-maintenance landscapes for residential and commercial sites.', '/services'],
             ].map(([n, title, body, url]) => (
               <Link className="dr-service" href={url} key={n}>
                 <span className="dr-service-num">{n}</span>
@@ -130,8 +189,64 @@ export function StoweDesignReview() {
           <p className="dr-kicker">04 / MECHANICAL INSTALLATION</p>
           <div>
             <h2>Preparation.<br />Precision.<br /><em>A considered finish.</em></h2>
-            <p>People, equipment, and process aligned for larger hardscape scopes.</p>
+            <p>Stowe's grading division, added in 2004, brought site preparation, drainage, and underground work in-house. People, equipment, and process — including Stowe's own trucks and machinery — come together for larger hardscape scopes, from initial grading through the finished installation.</p>
             <Link className="dr-button dr-button-light" href="/mechanical-installation">See the installation approach <span aria-hidden="true">↗</span></Link>
+          </div>
+        </section>
+
+        <section className="dr-section dr-turf">
+          <p className="dr-kicker">05 / SYNTHETIC GRASS</p>
+          <div>
+            <h2>Less water.<br /><em>Less upkeep.</em></h2>
+            <p>Synthetic grass reduces irrigation, mowing, and ongoing yard maintenance, which can mean real savings in water use and time over the life of a landscape.</p>
+            <p>How long a synthetic lawn performs well depends on the product selected and how it's cared for — we'll walk through the options and what to expect for your site.</p>
+            <Link className="dr-text-link" href="/contact#contact-form">Ask about synthetic grass <span aria-hidden="true">↗</span></Link>
+          </div>
+        </section>
+
+        <section className="dr-section dr-materials">
+          <p className="dr-kicker">06 / MATERIALS & PARTNERS</p>
+          <div>
+            <h2>Paver systems<br /><em>built to last.</em></h2>
+            <p>Stowe installs paver systems from Belgard and Oldcastle, including permeable paver options for driveways, patios, and walkways.</p>
+            <a className="dr-text-link" href="https://www.belgard.com/" target="_blank" rel="noopener noreferrer">Visit Belgard <span aria-hidden="true">↗</span></a>
+          </div>
+        </section>
+
+        <section className="dr-section dr-contact" id="stowe-contact">
+          <p className="dr-kicker">07 / GET IN TOUCH</p>
+          <div className="dr-contact-grid">
+            <address className="dr-contact-address">
+              <span>Stowe Contracting, Inc.</span>
+              <span>3338 Paul Davis Drive</span>
+              <span>Marina, CA 93933</span>
+              <a href="tel:+18318840732">(831) 884-0732</a>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=3338+Paul+Davis+Drive%2C+Marina%2C+CA+93933"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View on map <span aria-hidden="true">↗</span>
+              </a>
+            </address>
+            <div className="dr-contact-social">
+              <a href="https://www.facebook.com/stowecontractinginc" target="_blank" rel="noopener noreferrer">Facebook <span aria-hidden="true">↗</span></a>
+              <a href="https://www.linkedin.com/company/stowe-contracting-inc." target="_blank" rel="noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+              <Link className="dr-button dr-button-light" href="/contact#contact-form">Tell us what you have in mind <span aria-hidden="true">↗</span></Link>
+            </div>
+          </div>
+        </section>
+
+        <section className="dr-section dr-resources">
+          <p className="dr-kicker">08 / ASSOCIATIONS & RESOURCES</p>
+          <div>
+            <h2>Industry resources</h2>
+            <p>These organizations offer helpful background on hardscape and remodeling standards for homeowners doing their own research:</p>
+            <ul className="dr-resource-list">
+              <li><a href="https://www.cmha.org/" target="_blank" rel="noopener noreferrer">ICPI / CMHA — Concrete Masonry & Hardscapes Association</a></li>
+              <li><a href="https://www.nari.org/" target="_blank" rel="noopener noreferrer">NARI — National Association of the Remodeling Industry</a></li>
+              <li><a href="https://www.nfib.com/" target="_blank" rel="noopener noreferrer">NFIB — National Federation of Independent Business</a></li>
+            </ul>
           </div>
         </section>
 
@@ -143,6 +258,19 @@ export function StoweDesignReview() {
       </main>
 
       <style jsx>{`
+        .dr-original-projects { margin-top: 3rem; }
+        .dr-original-projects h3 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
+        .dr-original-projects > p { max-width: 42rem; margin: 1rem 0 2rem; }
+        .dr-original-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+        .dr-original-grid figure { margin: 0; min-width: 0; }
+        .dr-original-grid a { display: block; color: inherit; text-decoration: none; background: var(--stone-100); }
+        .dr-original-grid a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+        .dr-original-grid :global(img) { width: 100%; height: 260px; object-fit: contain; }
+        .dr-enlarge { display: block; padding: .6rem .8rem; font-size: .8rem; }
+        .dr-original-grid figcaption { padding-top: .6rem; font-size: .85rem; }
+        @media (max-width: 899px) { .dr-original-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 599px) { .dr-original-grid { grid-template-columns: 1fr; } }
+
         .dr-page {
           --navy-950: #0b1420;
           --navy-900: #101d2c;
@@ -345,6 +473,8 @@ export function StoweDesignReview() {
         }
         .dr-statement p { color: var(--stone-600); max-width: 34rem; }
 
+        .dr-work-intro { color: var(--stone-600); max-width: 42rem; margin: 0 0 2rem; }
+
         .dr-wide-image { position: relative; margin: 0 0 1.5rem; }
         .dr-wide-image figcaption {
           display: flex;
@@ -385,6 +515,60 @@ export function StoweDesignReview() {
         .dr-process p { color: var(--stone-300); margin: 1.25rem 0 2rem; }
         .dr-process .dr-kicker { color: var(--stone-300); }
 
+        .dr-turf, .dr-materials {
+          display: grid;
+          gap: 1.25rem;
+          max-width: 44rem;
+        }
+        .dr-turf p, .dr-materials p { color: var(--stone-600); max-width: 34rem; }
+
+        .dr-contact-grid {
+          display: grid;
+          gap: 2rem;
+          grid-template-columns: 1fr;
+        }
+        .dr-contact-address {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          font-style: normal;
+          color: var(--stone-600);
+        }
+        .dr-contact-address span:first-child {
+          color: var(--ink);
+          font-family: Georgia, 'Times New Roman', serif;
+          font-size: 1.1rem;
+        }
+        .dr-contact-address a {
+          color: inherit;
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+        .dr-contact-social {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.25rem;
+        }
+        .dr-contact-social a {
+          color: var(--ink);
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+        .dr-contact-social .dr-button-light { color: var(--stone-100); text-decoration: none; }
+
+        .dr-resources h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); margin-bottom: 1rem; }
+        .dr-resources p { color: var(--stone-600); max-width: 40rem; }
+        .dr-resource-list {
+          list-style: none;
+          margin: 1.25rem 0;
+          padding: 0;
+          display: grid;
+          gap: 0.6rem;
+        }
+        .dr-resource-list a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+        .dr-resource-note { font-size: 0.78rem; color: var(--stone-600); }
+
         .dr-close {
           text-align: center;
           padding-top: 5rem;
@@ -399,10 +583,25 @@ export function StoweDesignReview() {
           .dr-section { padding: 6rem 2rem; }
           .dr-cinematic .dr-intro { padding: 4rem 3rem 3.5rem; }
           .dr-editorial .dr-intro { padding: 4.5rem 2rem 2.5rem; }
+          .dr-contact-grid { grid-template-columns: 1fr 1fr; align-items: start; }
         }
 
         @media (min-width: 1024px) {
           .dr-statement { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 767px) {
+          .dr-cinematic .dr-hero-scrim { display: none; }
+          .dr-cinematic .dr-intro {
+            position: static;
+            padding: 2rem 1.25rem 2.5rem;
+            max-width: none;
+            color: var(--ink);
+            background: var(--stone-050);
+          }
+          .dr-cinematic .dr-intro h1 { color: var(--navy-900); }
+          .dr-cinematic .dr-lede { color: var(--stone-600); }
+          .dr-cinematic .dr-hero .dr-kicker { color: var(--stone-600); }
         }
 
         @media (prefers-reduced-motion: reduce) {
