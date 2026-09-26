@@ -31,6 +31,7 @@ import { type ZodIssue } from 'zod';
 import { submitContactAction } from '@/lib/actions/submitContactAction';
 import { type SubmitContactResult } from '@/lib/actions/submitContact';
 import { EstimateField, inputClasses } from '@/components/forms/EstimateField';
+import { SmsConsent } from '@/components/forms/SmsConsent';
 import { cn } from '@/lib/utils';
 
 // ── Re-export for barrel convenience ─────────────────────────────────────────
@@ -405,6 +406,7 @@ export function ContactForm({ formId = 'contact-form' }: ContactFormProps) {
       )}
 
       {/* ── Submit button ────────────────────────────────────────────────── */}
+      <SmsConsent error={errors.smsConsent} />
       <div className="flex flex-col gap-3">
         <button
           type="submit"

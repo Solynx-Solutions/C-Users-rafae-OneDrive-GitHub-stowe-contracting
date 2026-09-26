@@ -1,3 +1,4 @@
+import { SMS_CONSENT_VERSION } from '@/lib/validations/smsConsent';
 // =============================================================================
 // CRM INTEGRATION — LEAD MAPPER
 //
@@ -55,6 +56,8 @@ export function mapEstimateLead(
     projectDescription: data.projectDescription,
     source,
     submittedAt: new Date().toISOString(),
+    smsConsent: data.smsConsent === true,
+    smsConsentVersion: SMS_CONSENT_VERSION,
 
     // Optional — only include when present
     ...(data.preferredContactMethod && {
@@ -91,6 +94,8 @@ export function mapContactLead(
     message: data.message,
     source,
     submittedAt: new Date().toISOString(),
+    smsConsent: data.smsConsent === true,
+    smsConsentVersion: SMS_CONSENT_VERSION,
 
     // Optional — only include when present
     ...(data.phone && { phone: data.phone }),

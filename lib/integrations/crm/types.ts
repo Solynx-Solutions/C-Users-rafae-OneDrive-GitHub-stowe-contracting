@@ -101,6 +101,8 @@ export interface EstimateLead {
   // ── Attribution ───────────────────────────────────────────────────────────
   source: LeadSource;
   submittedAt: string; // ISO 8601
+  smsConsent?: boolean;
+  smsConsentVersion?: string;
 }
 
 /**
@@ -123,6 +125,8 @@ export interface ContactLead {
   // ── Attribution ───────────────────────────────────────────────────────────
   source: LeadSource;
   submittedAt: string; // ISO 8601
+  smsConsent?: boolean;
+  smsConsentVersion?: string;
 }
 
 /** Union of all lead payload types */

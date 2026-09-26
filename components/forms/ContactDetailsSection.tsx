@@ -17,6 +17,7 @@
 
 import { type FormErrors } from './EstimateField';
 import { EstimateField, inputClasses } from './EstimateField';
+import { SmsConsent } from '@/components/forms/SmsConsent';
 import { cn } from '@/lib/utils';
 
 // ── Shared select classes ─────────────────────────────────────────────────────
@@ -141,6 +142,8 @@ export function ContactDetailsSection({ errors }: ContactDetailsSectionProps) {
           </select>
         )}
       </EstimateField>
+      <SmsConsent error={errors.smsConsent} />
+
     </fieldset>
   );
 }

@@ -558,23 +558,7 @@ describe('M7 — No secrets exposed in submission results', () => {
 // NO SMS CONSENT
 // =============================================================================
 
-describe('M7 — No SMS consent added', () => {
-  it('Test 42 — estimate lead payload has no SMS consent field', () => {
-    const lead = mapEstimateLead(VALID_ESTIMATE_RESIDENTIAL, 'residential');
-    const serialized = JSON.stringify(lead).toLowerCase();
-    expect(serialized).not.toContain('sms');
-    expect(serialized).not.toContain('consent');
-    expect(serialized).not.toContain('marketing');
-    expect(serialized).not.toContain('text_message');
-    expect(serialized).not.toContain('opt_in');
-  });
-
-  it('Test 43 — contact lead payload has no SMS consent field', () => {
-    const lead = mapContactLead(VALID_CONTACT);
-    const serialized = JSON.stringify(lead).toLowerCase();
-    expect(serialized).not.toContain('sms');
-    expect(serialized).not.toContain('consent');
-    expect(serialized).not.toContain('marketing');
-    expect(serialized).not.toContain('opt_in');
-  });
+describe('SMS consent defaults closed', () => {
+ it('estimate phone does not imply SMS permission', () => { expect(mapEstimateLead(VALID_ESTIMATE_RESIDENTIAL, 'residential').smsConsent).toBe(false); });
+ it('contact phone does not imply SMS permission', () => { expect(mapContactLead(VALID_CONTACT).smsConsent).toBe(false); });
 });

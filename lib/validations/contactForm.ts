@@ -19,8 +19,10 @@
 // =============================================================================
 
 import { z } from 'zod';
+import { smsConsentField, smsPhoneIsValid } from './smsConsent';
 
 export const contactFormSchema = z.object({
+  smsConsent: smsConsentField,
   // ── Contact: split name for CRM compatibility ──────────────────────────────
   firstName: z
     .string()
@@ -44,11 +46,14 @@ export const contactFormSchema = z.object({
     ),
 
   // ── Preferred contact method ───────────────────────────────────────────────
-  preferredContactMethod: z
-    .enum(['phone', 'email', 'either'], {
-      error: 'Please select a preferred contact method',
-    })
-    .optional(),
+  preferredContactMethod: z.preprocess(
+    (value) => (value === '' ? undefined : value),
+    z
+      .enum(['phone', 'email', 'either'], {
+        error: 'Please select a preferred contact method',
+      })
+      .optional()
+  ),
 
   // ── Inquiry type — drives CRM routing at M7+ ──────────────────────────────
   inquiryType: z
@@ -62,6 +67,10 @@ export const contactFormSchema = z.object({
     .string()
     .min(10, 'Please provide at least 10 characters describing your inquiry')
     .max(2000, 'Message must be less than 2000 characters'),
+}).superRefine((data, ctx) => {
+  if (data.smsConsent === true && !smsPhoneIsValid(data.phone)) {
+    ctx.addIssue({ code: "custom", path: ["phone"], message: "Enter a complete valid phone number to receive text updates." });
+  }
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;
