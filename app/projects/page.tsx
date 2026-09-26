@@ -1,67 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
-import { PageContainer } from '@/components/layout/page-container';
+import { ProjectGallery } from '@/components/sections/stowe-project-gallery';
+import { StoweAssociations } from '@/components/sections/stowe-associations';
+export const metadata: Metadata = generatePageMetadata({title:'Projects',description:'Explore Stowe Contracting project photographs: paver driveways, patios, retaining walls, grading, earthwork and synthetic grass.',path:'/projects'});
+export default function ProjectsPage(){return <div className="bg-[#f6f3ec] text-[#16283b]">
+<section className="mx-auto max-w-6xl px-5 pt-16 pb-12 md:px-8 md:pt-24">
+<p className="mb-5 text-xs tracking-[.2em] uppercase text-[#6f6a5e]">Stowe Contracting / Project collection</p>
+<h1 className="max-w-3xl text-[clamp(2.5rem,6vw,5rem)] leading-[1.05] tracking-tight" style={{fontFamily:'Georgia, serif',fontWeight:400}}>Built for the setting.<br/><em className="text-[#97733f]">Made to be lived in.</em></h1>
+<p className="mt-7 max-w-2xl text-lg leading-relaxed text-[#6f6a5e]">A closer look at our paving, outdoor spaces and groundwork. Explore the photographs below, then tell us what you have in mind for your property.</p>
+<Link href="/" className="mt-7 inline-block text-sm underline underline-offset-4">← Back to Stowe</Link></section>
+<section aria-label="Stowe project photographs" className="mx-auto max-w-6xl px-5 pb-20 md:px-8"><ProjectGallery /></section>
+<section className="bg-[#101d2c] px-5 py-20 text-center text-[#f6f3ec]"><h2 className="text-4xl text-[#f6f3ec]" style={{fontFamily:'Georgia, serif',fontWeight:400}}>What would you like to build?</h2><Link href="/contact#contact-form" className="mt-8 inline-flex min-h-12 items-center bg-[#f6f3ec] px-7 text-[#101d2c]">Start a project ↗</Link></section><StoweAssociations className="mx-auto max-w-6xl px-5 py-16 md:px-8" /></div>;}
 
-export const metadata: Metadata = generatePageMetadata({
-  title: 'Projects',
-  description:
-    'A project photography collection is being prepared for Stowe Contracting. Final Stowe project photography and verified captions are coming soon.',
-  path: '/projects',
-});
 
-const projectTypes = ['Paver driveways', 'Outdoor living spaces', 'Sitework and preparation'];
-
-export default function ProjectsPage() {
-  return (
-    <>
-      <section className="bg-[#1D2421] py-20 text-white md:py-28">
-        <PageContainer>
-          <p className="text-xs font-bold tracking-[.22em] text-[#6FA0CA] uppercase">
-            Project journal
-          </p>
-          <h1 className="mt-5 max-w-4xl text-[clamp(3.5rem,8vw,7rem)] leading-[.88] tracking-[-.05em] text-white">
-            The work deserves the frame.
-          </h1>
-          <p className="mt-7 max-w-2xl text-xl leading-8 text-white/70">
-            Final Stowe project photography and verified project captions are being prepared for
-            this collection.
-          </p>
-        </PageContainer>
-      </section>
-
-      <section className="bg-[#F6F3EC] py-20 md:py-28">
-        <PageContainer>
-          <div className="grid gap-6 lg:grid-cols-3">
-            {projectTypes.map((projectType, index) => (
-              <article key={projectType}>
-                <div
-                  className="relative min-h-96 overflow-hidden border-l-4 border-[#7A3B45] bg-[repeating-linear-gradient(90deg,transparent_0,transparent_59px,rgba(36,80,122,.13)_60px,rgba(36,80,122,.13)_62px),repeating-linear-gradient(0deg,transparent_0,transparent_39px,rgba(36,80,122,.1)_40px,rgba(36,80,122,.1)_42px),linear-gradient(145deg,#D6D1C8,#E9E3D8)]"
-                  role="img"
-                  aria-label={`Reserved space for approved Stowe ${projectType.toLowerCase()} photography`}
-                >
-                  <span className="absolute right-4 bottom-4 bg-[#1D2421] px-4 py-3 text-[.65rem] font-bold tracking-[.14em] text-white uppercase">
-                    Final Stowe photography coming soon
-                  </span>
-                </div>
-                <p className="mt-5 text-xs font-bold tracking-[.14em] text-[#24507A] uppercase">
-                  0{index + 1}
-                </p>
-                <h2 className="mt-2 text-2xl text-[#222522]">{projectType}</h2>
-              </article>
-            ))}
-          </div>
-
-          <div className="mt-16 border-t border-[#C9C2B7] pt-10">
-            <Link
-              href="/contact#contact-form"
-              className="inline-flex min-h-14 items-center bg-[#24507A] px-7 font-semibold text-white transition hover:bg-[#183A58]"
-            >
-              Request an Estimate
-            </Link>
-          </div>
-        </PageContainer>
-      </section>
-    </>
-  );
-}

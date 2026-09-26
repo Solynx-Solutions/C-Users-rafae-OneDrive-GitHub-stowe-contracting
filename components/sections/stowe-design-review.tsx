@@ -1,43 +1,21 @@
 'use client';
 
-import { useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
+import { StoweAssociations } from './stowe-associations';
+import { StowePaverSignature } from './stowe-paver-signature';
+import { ProjectGallery } from './stowe-project-gallery';
 import { HomeHeroFilm } from './home-hero-film';
 
 export function StoweDesignReview() {
-  const [direction, setDirection] = useState<'cinematic' | 'editorial'>('cinematic');
 
   return (
-    <div className={`dr-page dr-${direction}`}>
+    <div className="dr-page dr-cinematic">
       <a className="dr-skip" href="#stowe-main">Skip to content</a>
 
-      <div className="dr-review-bar" role="region" aria-label="Design review controls">
-        <span className="dr-review-label">STOWE / DESIGN REVIEW</span>
-        <div className="dr-toggle" role="group" aria-label="Choose homepage direction">
-          <button
-            type="button"
-            className="dr-toggle-btn"
-            aria-pressed={direction === 'cinematic'}
-            onClick={() => setDirection('cinematic')}
-          >
-            A · Cinematic <span className="dr-recommended">(recommended)</span>
-          </button>
-          <button
-            type="button"
-            className="dr-toggle-btn"
-            aria-pressed={direction === 'editorial'}
-            onClick={() => setDirection('editorial')}
-          >
-            B · Editorial
-          </button>
-        </div>
-      </div>
-
-      <main id="stowe-main">
+      <div id="stowe-main">
         <section className="dr-hero" aria-label="Stowe introduction">
           <div className="dr-film">
-            <HomeHeroFilm />
+            <HomeHeroFilm showCaption={false} />
           </div>
           <div className="dr-hero-scrim" aria-hidden="true" />
           <div className="dr-intro">
@@ -46,7 +24,7 @@ export function StoweDesignReview() {
             <p className="dr-lede">Paver driveways, outdoor spaces, and site-ready construction. A considered approach, from the ground up.</p>
             <div className="dr-actions">
               <Link className="dr-button" href="/contact#contact-form">Start a project <span aria-hidden="true">↗</span></Link>
-              <a className="dr-text-link" href="#stowe-work">Explore the details <span aria-hidden="true">↓</span></a>
+              <a className="dr-text-link" href="#stowe-work">Explore our work <span aria-hidden="true">↓</span></a>
             </div>
           </div>
         </section>
@@ -62,11 +40,13 @@ export function StoweDesignReview() {
           <div>
             <h2>Good work begins<br /><em>before the first stone.</em></h2>
             <p>Stowe Contracting was founded in 1987 by Gary and Debbie Stowe, after their military assignment at Fort Ord. From the beginning, the company was built on professionalism, integrity, and respect — for clients, for crews, and for the work itself.</p>
-            <p>In 2004, Stowe Contracting added a grading division, extending the company's reach beyond hardscape into site preparation and earthwork. Stowe owns its trucks and equipment, giving direct control over scheduling, quality, and the coordination that larger projects require.</p>
+            <p>In 2004, Stowe Contracting added a grading division, extending the company’s reach beyond hardscape into site preparation and earthwork. Stowe owns its trucks and equipment, giving direct control over scheduling, quality, and the coordination that larger projects require.</p>
             <p>Planning, site preparation, and field coordination come together to shape outdoor spaces that belong to their surroundings.</p>
             <Link className="dr-text-link" href="/about">Get to know Stowe <span aria-hidden="true">↗</span></Link>
           </div>
         </section>
+
+        <StowePaverSignature />
 
         <section className="dr-section dr-work" id="stowe-work">
           <div className="dr-section-heading">
@@ -74,90 +54,9 @@ export function StoweDesignReview() {
             <h2>The difference<br /><em>is in the details.</em></h2>
           </div>
           <p className="dr-work-intro">Every project starts with materials chosen for the setting. From paver driveways and patios to retaining walls and site preparation, Stowe brings construction and hardscape experience together. Explore Belgard / Oldcastle paver options for your project.</p>
-          <figure className="dr-wide-image">
-            <Image
-              src="/media/stowe-house-poster.jpg"
-              width={1280}
-              height={720}
-              alt="Paver driveway approaching the wood-clad house in Stowe's project film"
-              sizes="100vw"
-            />
-            <figcaption><span>THE APPROACH</span><span>Materials. Setting. Finish.</span></figcaption>
-          </figure>
-          <div className="dr-image-pair">
-            <figure>
-              <Image
-                src="/media/stowe-house-detail.jpg"
-                width={1280}
-                height={720}
-                alt="Architectural detail from the Stowe house project film"
-                sizes="(min-width: 768px) 50vw, 100vw"
-              />
-              <figcaption>DETAILS THAT BELONG</figcaption>
-            </figure>
-            <figure>
-              <Image
-                src="/media/stowe-house-terrace.jpg"
-                width={1280}
-                height={720}
-                alt="Outdoor setting from the Stowe house project film"
-                sizes="(min-width: 768px) 50vw, 100vw"
-              />
-              <figcaption>ROOM TO LIVE OUTDOORS</figcaption>
-            </figure>
-          </div>
-        <div className="dr-original-projects">
-            <h3>More of our work</h3>
-            <p>Explore Stowe projects in paving, construction, earthwork and landscaping. Select any photograph to see the full image.</p>
-            <div className="dr-original-grid"><figure>
-                <a href="/media/original-stowe/stowe-driveway-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge paver driveways photograph">
-                  <Image src="/media/original-stowe/stowe-driveway-original.jpg" width={800} height={600} alt="Paver driveway bordered by flowering plants leading to a garage." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
-                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
-                </a>
-                <figcaption>Paver driveways</figcaption>
-              </figure>
-<figure>
-                <a href="/media/original-stowe/stowe-patio-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge patios & outdoor spaces photograph">
-                  <Image src="/media/original-stowe/stowe-patio-original.jpg" width={800} height={600} alt="Paver patio with stone fire pit, plant pots, and hillside view." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
-                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
-                </a>
-                <figcaption>Patios & outdoor spaces</figcaption>
-              </figure>
-<figure>
-                <a href="/media/original-stowe/stowe-retaining-wall-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge retaining walls photograph">
-                  <Image src="/media/original-stowe/stowe-retaining-wall-original.jpg" width={600} height={783} alt="Curved block retaining walls and planting beds in front of a house." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
-                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
-                </a>
-                <figcaption>Retaining walls</figcaption>
-              </figure>
-<figure>
-                <a href="/media/original-stowe/stowe-grading-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge grading & site preparation photograph">
-                  <Image src="/media/original-stowe/stowe-grading-original.jpg" width={450} height={600} alt="Excavator on an earth slope beside a partially visible tank." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
-                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
-                </a>
-                <figcaption>Grading & site preparation</figcaption>
-              </figure>
-<figure>
-                <a href="/media/original-stowe/stowe-project-img-0204-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge earthwork photograph">
-                  <Image src="/media/original-stowe/stowe-project-img-0204-original.jpg" width={600} height={450} alt="Excavator and skid steer working inside a large excavation." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
-                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
-                </a>
-                <figcaption>Earthwork</figcaption>
-              </figure>
-<figure>
-                <a href="/media/original-stowe/stowe-project-pict0002-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge construction & hardscape photograph">
-                  <Image src="/media/original-stowe/stowe-project-pict0002-original.jpg" width={435} height={600} alt="Curved block retaining wall beside a paver patio and wooded slope." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
-                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
-                </a>
-                <figcaption>Construction & hardscape</figcaption>
-              </figure>
-<figure>
-                <a href="/media/original-stowe/stowe-grass-front-view-original.jpg" target="_blank" rel="noopener noreferrer" aria-label="Enlarge synthetic grass photograph">
-                  <Image src="/media/original-stowe/stowe-grass-front-view-original.jpg" width={1400} height={844} alt="Front lawn with curved paver walkway leading to a house." sizes="(min-width: 900px) 30vw, (min-width: 600px) 45vw, 100vw" />
-                  <span className="dr-enlarge" aria-hidden="true">↗ View full photograph</span>
-                </a>
-                <figcaption>Synthetic grass</figcaption>
-              </figure></div>
+          <div className="dr-project-preview">
+            <ProjectGallery featured />
+            <Link className="dr-button dr-button-light" href="/projects">Explore all project photographs <span aria-hidden="true">↗</span></Link>
           </div>
         </section>
 
@@ -189,7 +88,7 @@ export function StoweDesignReview() {
           <p className="dr-kicker">04 / MECHANICAL INSTALLATION</p>
           <div>
             <h2>Preparation.<br />Precision.<br /><em>A considered finish.</em></h2>
-            <p>Stowe's grading division, added in 2004, brought site preparation, drainage, and underground work in-house. People, equipment, and process — including Stowe's own trucks and machinery — come together for larger hardscape scopes, from initial grading through the finished installation.</p>
+            <p>Stowe’s grading division, added in 2004, brought site preparation, drainage, and underground work in-house. People, equipment, and process — including Stowe’s own trucks and machinery — come together for larger hardscape scopes, from initial grading through the finished installation.</p>
             <Link className="dr-button dr-button-light" href="/mechanical-installation">See the installation approach <span aria-hidden="true">↗</span></Link>
           </div>
         </section>
@@ -199,7 +98,7 @@ export function StoweDesignReview() {
           <div>
             <h2>Less water.<br /><em>Less upkeep.</em></h2>
             <p>Synthetic grass reduces irrigation, mowing, and ongoing yard maintenance, which can mean real savings in water use and time over the life of a landscape.</p>
-            <p>How long a synthetic lawn performs well depends on the product selected and how it's cared for — we'll walk through the options and what to expect for your site.</p>
+            <p>How long a synthetic lawn performs well depends on the product selected and how it’s cared for — we’ll walk through the options and what to expect for your site.</p>
             <Link className="dr-text-link" href="/contact#contact-form">Ask about synthetic grass <span aria-hidden="true">↗</span></Link>
           </div>
         </section>
@@ -237,27 +136,18 @@ export function StoweDesignReview() {
           </div>
         </section>
 
-        <section className="dr-section dr-resources">
-          <p className="dr-kicker">08 / ASSOCIATIONS & RESOURCES</p>
-          <div>
-            <h2>Industry resources</h2>
-            <p>These organizations offer helpful background on hardscape and remodeling standards for homeowners doing their own research:</p>
-            <ul className="dr-resource-list">
-              <li><a href="https://www.cmha.org/" target="_blank" rel="noopener noreferrer">ICPI / CMHA — Concrete Masonry & Hardscapes Association</a></li>
-              <li><a href="https://www.nari.org/" target="_blank" rel="noopener noreferrer">NARI — National Association of the Remodeling Industry</a></li>
-              <li><a href="https://www.nfib.com/" target="_blank" rel="noopener noreferrer">NFIB — National Federation of Independent Business</a></li>
-            </ul>
-          </div>
-        </section>
+        <StoweAssociations className="mx-auto max-w-6xl px-5 py-16 md:px-8" />
 
         <section className="dr-section dr-close">
           <p className="dr-kicker">YOUR PROJECT / OUR NEXT CONVERSATION</p>
-          <h2>Let's build<br /><em>something lasting.</em></h2>
+          <h2>Let’s build<br /><em>something lasting.</em></h2>
           <Link className="dr-button" href="/contact#contact-form">Tell us what you have in mind <span aria-hidden="true">↗</span></Link>
         </section>
-      </main>
+      </div>
 
-      <style jsx>{`
+      <style jsx global>{`
+        .dr-project-preview { display: grid; gap: 2.5rem; }
+        .dr-project-preview > :global(a) { justify-self: start; }
         .dr-original-projects { margin-top: 3rem; }
         .dr-original-projects h3 { font-size: clamp(1.75rem, 3vw, 2.5rem); }
         .dr-original-projects > p { max-width: 42rem; margin: 1rem 0 2rem; }
@@ -291,6 +181,7 @@ export function StoweDesignReview() {
         .dr-page h1, .dr-page h2, .dr-page h3 {
           font-family: Georgia, 'Times New Roman', serif;
           font-weight: 400;
+          color: inherit;
           margin: 0;
           letter-spacing: -0.01em;
         }
@@ -471,7 +362,7 @@ export function StoweDesignReview() {
           gap: 1.25rem;
           max-width: 44rem;
         }
-        .dr-statement p { color: var(--stone-600); max-width: 34rem; }
+        .dr-statement p { margin-bottom: 1.2rem; color: var(--stone-600); max-width: 34rem; }
 
         .dr-work-intro { color: var(--stone-600); max-width: 42rem; margin: 0 0 2rem; }
 
@@ -581,7 +472,7 @@ export function StoweDesignReview() {
           .dr-image-pair { grid-template-columns: 1fr 1fr; }
           .dr-service-grid { grid-template-columns: repeat(3, 1fr); }
           .dr-section { padding: 6rem 2rem; }
-          .dr-cinematic .dr-intro { padding: 4rem 3rem 3.5rem; }
+          .dr-cinematic .dr-intro { padding: 3rem 3rem 6rem; }
           .dr-editorial .dr-intro { padding: 4.5rem 2rem 2.5rem; }
           .dr-contact-grid { grid-template-columns: 1fr 1fr; align-items: start; }
         }
@@ -611,3 +502,4 @@ export function StoweDesignReview() {
     </div>
   );
 }
+

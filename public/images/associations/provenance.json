@@ -1,0 +1,36 @@
+{
+  "retrieved_at_utc": "2026-09-26T20:18:47.2147844Z",
+  "source_page": "https://stowecontracting.com/construction/",
+  "scope": "Authentic image files recovered from the original website at user request. No assertion of current membership or certification added.",
+  "links": {
+    "NFIB": "https://www.nfib.com/",
+    "ICPI": "https://www.cmha.org/",
+    "NARI": "https://nari.org/"
+  },
+  "notes": [
+    "Original icpi.org link verified to redirect to cmha.org.",
+    "Original NARI links nari.org; original NFIB legacy page normalized to official home.",
+    "Original sidebar LinkedIn points to a Gary Stowe profile; component preserves company LinkedIn already present in review page.",
+    "No re-created or AI-generated logo artwork."
+  ],
+  "assets": [
+    {
+      "bytes": 11287,
+      "file": "iciplogo.png",
+      "source": "https://stowecontracting.com/wp-content/uploads/2014/07/iciplogo.png",
+      "sha256": "8cf1fc618fcd4dc3321573b553a763be88a1bdc957a3609134679a36e1206ebf"
+    },
+    {
+      "bytes": 1961,
+      "file": "logo_nari.gif",
+      "source": "https://stowecontracting.com/wp-content/uploads/2014/07/logo_nari.gif",
+      "sha256": "7dd8efab6dafc704035bee01a403b31791d5fda5dea8a255d7bc24b9cee63bc6"
+    },
+    {
+      "bytes": 1679,
+      "file": "logo_nfib.gif",
+      "source": "https://stowecontracting.com/wp-content/uploads/2014/07/logo_nfib.gif",
+      "sha256": "6d417272864133e6a40f4b126b7bdbe794a4ae1e56e9ba27bf6867d38e75b0ae"
+    }
+  ]
+}
