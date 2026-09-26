@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 
 /** Authentic Sean/Amber house film; playback is optional and never blocks the page. */
-export function HomeHeroFilm() {
+export function HomeHeroFilm({ showCaption = true }: { showCaption?: boolean }) {
   const video = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -35,7 +35,7 @@ export function HomeHeroFilm() {
         <source src="/media/stowe-house-hero.mp4" type="video/mp4" />
       </video>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
-      <p className="absolute bottom-6 left-6 max-w-[55%] text-xs font-semibold tracking-[.15em] text-white uppercase">Crafted for life outdoors</p>
+      {showCaption && <p className="absolute bottom-6 left-6 max-w-[55%] text-xs font-semibold tracking-[.15em] text-white uppercase">Crafted for life outdoors</p>}
       {!failed && <button
         type="button"
         className="absolute right-5 bottom-5 min-h-11 rounded-full border border-white/70 bg-black/60 px-5 text-sm font-medium text-white hover:bg-black/80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
