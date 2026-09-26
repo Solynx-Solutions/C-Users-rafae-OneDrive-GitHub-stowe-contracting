@@ -32,10 +32,11 @@ export function FooterBrand() {
       </Link>
 
       {positioningStatement && (
-        <p className="max-w-xs text-sm leading-relaxed text-[var(--color-neutral-500)]">
+        <p className="max-w-xs text-sm leading-relaxed text-[#d9d2c4]">
           {positioningStatement}
         </p>
       )}
     </div>
   );
 }
+

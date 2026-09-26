@@ -55,7 +55,7 @@ export function SiteFooter() {
 
             {/* Company column */}
             <div className="flex flex-col gap-4">
-              <p className="text-xs font-semibold tracking-widest text-[var(--color-neutral-400)] uppercase">
+              <p className="text-xs font-semibold tracking-widest text-[#d9d2c4] uppercase">
                 Company
               </p>
               {/* Only confirmed+active routes appear here. During M1, Home only. */}
@@ -86,11 +86,11 @@ export function SiteFooter() {
 
             {/* Contact column */}
             <div className="flex flex-col gap-4">
-              <p className="text-xs font-semibold tracking-widest text-[var(--color-neutral-400)] uppercase">
+              <p className="text-xs font-semibold tracking-widest text-[#d9d2c4] uppercase">
                 Contact
               </p>
               {/* Contact details blocked — pending vr-contact-information */}
-              <p className="text-sm leading-relaxed text-[var(--color-neutral-400)]">
+              <p className="text-sm leading-relaxed text-[#d9d2c4]">
                 Serving Monterey Bay.
                 {/* Phone/email/address added once vr-contact-information resolves. */}
               </p>
@@ -113,19 +113,19 @@ export function SiteFooter() {
         {/* Footer bottom bar */}
         <Divider className="border-[var(--color-neutral-700)]" />
         <div className="flex flex-col gap-3 py-5 md:flex-row md:items-center md:justify-between">
-          <p className="text-xs text-[var(--color-neutral-400)]">
+          <p className="text-xs text-[#d9d2c4]">
             &copy; {currentYear} Stowe Contracting. All rights reserved.
           </p>
 
           {/* SOLYNX attribution — required */}
-          <p className="text-xs text-[var(--color-neutral-500)]">
+          <p className="text-xs text-[#d9d2c4]">
             Website designed, built &amp; managed by{' '}
             <a
               href="https://solynx.solutions"
               target="_blank"
               rel="noopener noreferrer"
               className={[
-                'text-[var(--color-neutral-400)]',
+                'text-[#d9d2c4]',
                 'hover:text-[var(--color-neutral-200)]',
                 'transition-colors duration-150',
                 'underline underline-offset-2',
@@ -144,7 +144,7 @@ export function SiteFooter() {
                     <TextLink
                       href={item.href}
                       variant="subtle"
-                      className="text-xs text-[var(--color-neutral-400)] hover:text-[var(--color-neutral-200)]"
+                      className="text-xs text-[#d9d2c4] hover:text-[var(--color-neutral-200)]"
                     >
                       {item.label}
                     </TextLink>
@@ -158,3 +158,4 @@ export function SiteFooter() {
     </footer>
   );
 }
+
