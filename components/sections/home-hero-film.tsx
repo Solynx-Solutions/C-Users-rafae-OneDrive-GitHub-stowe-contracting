@@ -25,14 +25,15 @@ export function HomeHeroFilm({ showCaption = true }: { showCaption?: boolean }) 
       <video
         ref={video}
         className="absolute inset-0 h-full w-full object-contain"
-        poster="/media/stowe-house-poster.jpg"
+        poster="/media/stowe-house-poster-hd.jpg"
         muted loop playsInline preload="none"
         aria-label="Stowe Contracting house and outdoor living project film"
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         onError={() => setFailed(true)}
       >
-        <source src="/media/stowe-house-hero.mp4" type="video/mp4" />
+        <source src="/media/stowe-house-hero-mobile.mp4" media="(max-width: 767px)" type="video/mp4" />
+        <source src="/media/stowe-house-hero-hd.mp4" type="video/mp4" />
       </video>
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
       {showCaption && <p className="absolute bottom-6 left-6 max-w-[55%] text-xs font-semibold tracking-[.15em] text-white uppercase">Crafted for life outdoors</p>}
