@@ -101,6 +101,9 @@ export interface EstimateLead {
   // ── Attribution ───────────────────────────────────────────────────────────
   source: LeadSource;
   submittedAt: string; // ISO 8601
+  submissionId?: string;
+  submittedPhone?: string;
+  smsConsentBinding?: { submissionId: string; phone: string | null; granted: boolean };
   smsConsent?: boolean;
   smsConsentVersion?: string;
 }
@@ -125,6 +128,9 @@ export interface ContactLead {
   // ── Attribution ───────────────────────────────────────────────────────────
   source: LeadSource;
   submittedAt: string; // ISO 8601
+  submissionId?: string;
+  submittedPhone?: string;
+  smsConsentBinding?: { submissionId: string; phone: string | null; granted: boolean };
   smsConsent?: boolean;
   smsConsentVersion?: string;
 }

@@ -1,4 +1,5 @@
-import { SMS_CONSENT_VERSION } from '@/lib/validations/smsConsent';
+import { randomUUID } from 'node:crypto';
+import { SMS_CONSENT_VERSION, smsPhoneIsValid } from '@/lib/validations/smsConsent';
 // =============================================================================
 // CRM INTEGRATION — LEAD MAPPER
 //
@@ -31,6 +32,24 @@ function stripEmpty<T extends object>(obj: T): T {
 
 // ─── Estimate lead mapping ────────────────────────────────────────────────────
 
+// Bind permission to this submission, never to a previously matched CRM contact.
+function submissionIdentity(phone: string | undefined, consent: boolean | undefined) {
+  const submissionId = randomUUID();
+  const digits = phone?.replace(/\D/g, '') ?? '';
+  const submittedPhone = smsPhoneIsValid(phone)
+    ? `+${digits.length === 10 && !phone?.startsWith('+') ? '1' : ''}${digits}`
+    : '';
+  return {
+    submissionId,
+    submittedPhone,
+    smsConsentBinding: {
+      submissionId,
+      phone: consent === true ? submittedPhone : null,
+      granted: consent === true,
+    },
+  };
+}
+
 /**
  * Map validated estimate form values to a normalized EstimateLead payload.
  *
@@ -47,6 +66,7 @@ export function mapEstimateLead(
     : 'commercial-estimate'
 ): EstimateLead {
   const raw: EstimateLead = {
+    ...submissionIdentity(data.phone, data.smsConsent),
     firstName: data.firstName,
     lastName: data.lastName,
     email: data.email,
@@ -88,6 +108,7 @@ export function mapContactLead(
   source: LeadSource = 'contact'
 ): ContactLead {
   const raw: ContactLead = {
+    ...submissionIdentity(data.phone, data.smsConsent),
     firstName: data.firstName,
     lastName: data.lastName,
     email: data.email,
