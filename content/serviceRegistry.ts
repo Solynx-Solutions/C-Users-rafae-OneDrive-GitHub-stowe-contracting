@@ -206,7 +206,7 @@ export const serviceRegistry: ServiceRecord[] = [
     description: 'Kitchen and bathroom remodels, custom homes and commercial improvements.',
     summary: 'Stowe’s construction crew handles projects from kitchen and bathroom remodels to complete custom homes and commercial improvements. Construction, site preparation and exterior work can be discussed together when planning the scope of a property project.',
     capabilityHighlights: ['Kitchen and bathroom remodels', 'Custom home construction', 'Commercial construction and improvements', 'Exterior construction and hardscape coordination'],
-    photos: servicePhotos('curved-garden-walls.jpg', 'stowe-project-pict0002-original.jpg'),
+    photos: servicePhotos('stowe-remodel-living-room-original.jpg'),
     relatedServices: ['grading-site-preparation', 'paving-stones'],
     cta: { label: 'Explore construction', href: '/services/construction-remodeling' },
   },

@@ -44,6 +44,15 @@ const originalPhotos: StoweProjectPhoto[] = [
     "title": "Construction & hardscape"
   },
   {
+    "src": "/media/original-stowe/stowe-remodel-living-room-original.jpg",
+    "width": 870,
+    "height": 1200,
+    "alt": "Remodeled living room with a stone fireplace, wood flooring and recessed lighting.",
+    "title": "Interior remodeling",
+    "description": "Living-room photograph from Stowe’s original Complete Remodel portfolio.",
+    "source": "https://stowecontracting.com/construction/"
+  },
+  {
     "src": "/media/original-stowe/stowe-grass-front-view-original.jpg",
     "width": 1400,
     "height": 844,

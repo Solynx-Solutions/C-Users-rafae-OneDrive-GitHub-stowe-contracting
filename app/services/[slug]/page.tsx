@@ -219,7 +219,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           <PageContainer>
             <div className="flex flex-col gap-6">
               <SectionHeading level="h2">Our Work</SectionHeading>
-              <p className="max-w-2xl leading-relaxed text-[var(--color-neutral-600)]">{service.serviceKey === 'construction-remodeling' ? 'Exterior construction and hardscape work from Stowe’s project collection.' : 'Selected photographs from Stowe’s project collection. Open any image to see the full photograph.'}</p>
+              <p className="max-w-2xl leading-relaxed text-[var(--color-neutral-600)]">{service.serviceKey === 'construction-remodeling' ? 'Interior remodeling from Stowe’s original project collection.' : 'Selected photographs from Stowe’s project collection. Open any image to see the full photograph.'}</p>
               <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 {service.photos.map((photo) => <figure key={photo.src} className="overflow-hidden border border-[var(--color-neutral-200)] bg-white">
                   <a href={photo.src} target="_blank" rel="noopener noreferrer" className="relative block aspect-[4/3] overflow-hidden" aria-label={`View full photograph: ${photo.title}`}>
