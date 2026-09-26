@@ -16,6 +16,7 @@
 // =============================================================================
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { type ServiceRecord } from '@/content/serviceRegistry';
 import { ServiceAudienceBadge } from './service-audience-badge';
 
@@ -43,7 +44,7 @@ export function ServiceCard({ service, showAudience = true }: ServiceCardProps) 
 
   // ── CTA resolution ─────────────────────────────────────────────────────────
   // Priority: canonicalPath > service detail slug > registry cta
-  const ctaHref = service.canonicalPath ?? service.cta.href;
+  const ctaHref = service.canonicalPath ?? (service.slug ? `/services/${service.slug}` : service.cta.href);
   const ctaLabel = service.canonicalPath ? 'Learn More' : service.cta.label;
 
   return (
@@ -52,12 +53,17 @@ export function ServiceCard({ service, showAudience = true }: ServiceCardProps) 
         'group relative flex flex-col gap-5',
         'rounded-[var(--radius-xl)]',
         'border border-[var(--color-neutral-200)]',
-        'bg-white p-6',
+        'overflow-hidden bg-white p-6',
         'hover:border-[var(--color-brand-primary)]/30',
         'hover:shadow-[var(--shadow-md)]',
         'transition-all duration-150',
       ].join(' ')}
     >
+      {service.photos?.[0] && (
+        <Link href={ctaHref} className="relative -mx-6 -mt-6 block aspect-[4/3] overflow-hidden" aria-label={`Explore ${service.name}`}>
+          <Image src={service.photos[0].src} alt={service.photos[0].alt} fill sizes="(min-width: 1024px) 42vw, 90vw" className="object-cover transition-transform duration-500 group-hover:scale-[1.025]" />
+        </Link>
+      )}
       {/* Audience badge */}
       {showAudience && <ServiceAudienceBadge audience={service.audience} />}
 

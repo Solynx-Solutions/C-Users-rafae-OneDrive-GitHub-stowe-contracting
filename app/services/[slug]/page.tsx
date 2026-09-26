@@ -36,6 +36,7 @@
 // =============================================================================
 
 import { notFound, redirect } from 'next/navigation';
+import Image from 'next/image';
 import type { Metadata } from 'next';
 import { generateMetadata as generatePageMetadata } from '@/lib/metadata';
 import { webPageSchema, localBusinessSchema, breadcrumbSchema } from '@/lib/schema';
@@ -213,15 +214,20 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
 
       {/* ── Media section ─────────────────────────────────────────────────── */}
       {/* Only rendered when mediaStatus === 'ready' (photography available) */}
-      {/* Hidden at M6 — all services have mediaStatus: 'pending' */}
-      {service.mediaStatus === 'ready' && (
+      {service.mediaStatus === 'ready' && !!service.photos?.length && (
         <ContentSection bg="white" aria-label="Service photography">
           <PageContainer>
             <div className="flex flex-col gap-6">
               <SectionHeading level="h2">Our Work</SectionHeading>
-              {/* Media grid — activated when photography is delivered */}
-              <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
-                {/* Photography slots — populated by CMS/assets once available */}
+              <p className="max-w-2xl leading-relaxed text-[var(--color-neutral-600)]">{service.serviceKey === 'construction-remodeling' ? 'Exterior construction and hardscape work from Stowe’s project collection.' : 'Selected photographs from Stowe’s project collection. Open any image to see the full photograph.'}</p>
+              <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+                {service.photos.map((photo) => <figure key={photo.src} className="overflow-hidden border border-[var(--color-neutral-200)] bg-white">
+                  <a href={photo.src} target="_blank" rel="noopener noreferrer" className="relative block aspect-[4/3] overflow-hidden" aria-label={`View full photograph: ${photo.title}`}>
+                    <Image src={photo.src} alt={photo.alt} fill sizes="(min-width: 900px) 44vw, 90vw" className="object-contain bg-[var(--color-neutral-50)]" />
+                    <span aria-hidden="true" className="absolute right-3 bottom-3 bg-white px-3 py-2 text-sm">View full photograph ↗</span>
+                  </a>
+                  <figcaption className="p-5"><h3 className="text-xl text-[var(--color-brand-secondary)]">{photo.title}</h3>{photo.description && <p className="mt-2 text-sm leading-relaxed text-[var(--color-neutral-600)]">{photo.description}</p>}</figcaption>
+                </figure>)}
               </div>
             </div>
           </PageContainer>

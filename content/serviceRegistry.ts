@@ -27,6 +27,7 @@
 // =============================================================================
 
 import { type GovernedContent } from '@/lib/content/types';
+import { stoweProjectPhotos, type StoweProjectPhoto } from '@/data/stowe-project-photos';
 
 // ── Service Audience ──────────────────────────────────────────────────────────
 
@@ -133,6 +134,7 @@ export interface ServiceRecord extends GovernedContent {
    * Media sections are hidden when status !== 'ready'.
    */
   mediaStatus?: ServiceMediaStatus;
+  photos?: StoweProjectPhoto[];
 
   // ── SEO ───────────────────────────────────────────────────────────────────
   /**
@@ -161,8 +163,8 @@ export interface ServiceRecord extends GovernedContent {
 /**
  * Stowe Contracting service registry.
  *
- * All service records except mechanical-installation are pending
- * vr-service-list verification. To activate a service:
+ * Four original-site service groups are confirmed through Rafael’s September 26 direction.
+ * Earlier unverified draft records below remain withheld. To activate a service:
  *   1. verificationStatus: 'confirmed'
  *   2. publicationStatus: 'active'
  *   3. Add verificationNote with source and date
@@ -173,7 +175,65 @@ export interface ServiceRecord extends GovernedContent {
  * The registry is the single source of truth for service content.
  * Components read from this registry — no hardcoded service content anywhere.
  */
+const verifiedServiceSource = {
+  type: 'service' as const,
+  source: 'priority-4-existing-website-verified' as const,
+  verificationStatus: 'confirmed' as const,
+  publicationStatus: 'active' as const,
+  audience: 'both' as const,
+  mediaStatus: 'ready' as const,
+  verificationNote: 'Original Stowe website service copy and recovered project photos; Rafael explicitly authorized integration September 26, 2026. Belgard / Oldcastle naming supplied by Rafael. No new performance guarantees or invented projects.',
+  lastReviewedAt: '2026-09-26',
+};
+const servicePhotos = (...names: string[]) => names.flatMap((name) => stoweProjectPhotos.filter((photo) => photo.src.endsWith(name)));
+
 export const serviceRegistry: ServiceRecord[] = [
+  {
+    ...verifiedServiceSource,
+    id: 'service-paving-stones', serviceKey: 'paving-stones', slug: 'paving-stones',
+    name: 'Paving Stones & Hardscapes', category: 'general',
+    description: 'Paver driveways, patios and walkways, with careful detailing for outdoor living spaces.',
+    summary: 'Stowe’s paving-stone division creates driveways, patios and walkways for residential and commercial properties. From a welcoming approach to a courtyard built for gathering, the work brings structure and character to outdoor spaces.',
+    capabilityHighlights: ['Paver driveways and entrance approaches', 'Patios and outdoor gathering areas', 'Walkways, borders and custom inlay details', 'Belgard / Oldcastle paving products'],
+    photos: servicePhotos('rancho-cielo-courtyard.jpg', 'rancho-cielo-inlay.jpg', 'stowe-driveway-original.jpg', 'stowe-patio-original.jpg'),
+    relatedServices: ['grading-site-preparation', 'synthetic-grass', 'construction-remodeling'],
+    cta: { label: 'Explore paving stones', href: '/services/paving-stones' },
+  },
+  {
+    ...verifiedServiceSource,
+    id: 'service-construction-remodeling', serviceKey: 'construction-remodeling', slug: 'construction-remodeling',
+    name: 'Construction & Remodeling', category: 'general',
+    description: 'Kitchen and bathroom remodels, custom homes and commercial improvements.',
+    summary: 'Stowe’s construction crew handles projects from kitchen and bathroom remodels to complete custom homes and commercial improvements. Construction, site preparation and exterior work can be discussed together when planning the scope of a property project.',
+    capabilityHighlights: ['Kitchen and bathroom remodels', 'Custom home construction', 'Commercial construction and improvements', 'Exterior construction and hardscape coordination'],
+    photos: servicePhotos('curved-garden-walls.jpg', 'stowe-project-pict0002-original.jpg'),
+    relatedServices: ['grading-site-preparation', 'paving-stones'],
+    cta: { label: 'Explore construction', href: '/services/construction-remodeling' },
+  },
+  {
+    ...verifiedServiceSource,
+    id: 'service-grading-site-preparation', serviceKey: 'grading-site-preparation', slug: 'grading-site-preparation',
+    name: 'Grading & Site Preparation', category: 'site-preparation',
+    description: 'Earthwork, drainage, asphalt and retaining walls, supported by Stowe’s own trucks and equipment.',
+    summary: 'Stowe added its grading and earthwork division in 2004. Using its own trucks and equipment, the team provides lot grading, site preparation, drainage work, asphalt and retaining walls for property and construction projects.',
+    capabilityHighlights: ['Lot grading and site preparation', 'Excavation and earthwork', 'Drainage work', 'Asphalt work', 'Stackable retaining walls'],
+    photos: servicePhotos('stowe-grading-original.jpg', 'stowe-project-img-0204-original.jpg', 'stowe-retaining-wall-original.jpg'),
+    relatedServices: ['construction-remodeling', 'paving-stones'],
+    cta: { label: 'Explore site preparation', href: '/services/grading-site-preparation' },
+  },
+  {
+    ...verifiedServiceSource,
+    id: 'service-synthetic-grass', serviceKey: 'synthetic-grass', slug: 'synthetic-grass',
+    name: 'Synthetic Grass', category: 'general',
+    description: 'Low-maintenance lawn areas that complement paving, paths and outdoor spaces.',
+    summary: 'Synthetic grass provides an alternative to a traditional lawn for homeowners considering a lower-maintenance landscape. It can be planned alongside a walkway, patio or other hardscape improvements for a cohesive outdoor space.',
+    capabilityHighlights: ['Synthetic lawn areas', 'Lawn transitions beside paving and walkways', 'Integration with outdoor landscape improvements'],
+    benefits: ['Less routine watering than a traditional lawn', 'No mowing or fertilizing the synthetic surface', 'Less time spent on routine lawn maintenance'],
+    photos: servicePhotos('stowe-grass-front-view-original.jpg'),
+    relatedServices: ['paving-stones', 'grading-site-preparation'],
+    cta: { label: 'Explore synthetic grass', href: '/services/synthetic-grass' },
+  },
+
   // ── Mechanical Installation ─────────────────────────────────────────────────
   // Confirmed at the general capability level (mechanical-equipment claim).
   // Canonical authority page: /mechanical-installation

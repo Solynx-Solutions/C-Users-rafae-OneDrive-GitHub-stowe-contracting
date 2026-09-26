@@ -15,7 +15,7 @@
 //
 //   Service registry governance:
 //     Test 8: No services are currently publishable (all draft/pending)
-//     Test 9: getPublishableServices() returns empty array
+//     Test 9: getPublishableServices() returns the four authorized groups
 //     Test 10: serviceRegistry entries are non-empty
 //     Test 11: Each service record has required fields
 //     Test 12: No service description contains prohibited claims
@@ -124,16 +124,16 @@ describe('M4 — Mechanical installation governance', () => {
 // =============================================================================
 
 describe('M4 — Service registry governance', () => {
-  it('Test 8 — no services are currently publishable (vr-service-list pending)', () => {
+  it('Test 8 — four original-site services are now publishable', () => {
     // All services are in draft/pending until vr-service-list resolves
     const publishable = getPublishableServices();
-    expect(publishable).toHaveLength(0);
+    expect(publishable).toHaveLength(4);
   });
 
-  it('Test 9 — getPublishableServices() returns empty array', () => {
+  it('Test 9 — getPublishableServices() returns the four authorized groups', () => {
     const result = getPublishableServices();
     expect(Array.isArray(result)).toBe(true);
-    expect(result).toHaveLength(0);
+    expect(result).toHaveLength(4);
   });
 
   it('Test 10 — serviceRegistry is non-empty and contains entries', () => {
@@ -182,6 +182,7 @@ describe('M4 — Service registry governance', () => {
     // All other services link to estimate routes.
     const VALID_CTA_LINKS = [
       ...VALID_ESTIMATE_ROUTES,
+      ...getPublishableServices().map((service) => `/services/${service.slug}`),
       '/mechanical-installation', // canonical authority page for that service
     ];
     for (const service of serviceRegistry) {

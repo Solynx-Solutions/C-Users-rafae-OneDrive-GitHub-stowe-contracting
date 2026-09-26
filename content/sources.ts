@@ -7,11 +7,19 @@
 // =============================================================================
 
 import { type RouteRecord } from '@/lib/content/types';
+import { getPublishableServices } from './serviceRegistry';
 
 // ── Site Route Records ────────────────────────────────────────────────────────
 // Only confirmed + active routes enter the sitemap and navigation.
 
 export const siteRoutes: RouteRecord[] = [
+  ...getPublishableServices().filter((service) => !service.canonicalPath).map((service): RouteRecord => ({
+    id: `route-service-${service.serviceKey}`, type: 'route', source: service.source,
+    verificationStatus: 'confirmed', publicationStatus: 'active',
+    path: `/services/${service.slug ?? service.serviceKey}`, label: service.name,
+    sitemapPriority: 0.75, changefreq: 'monthly',
+    verificationNote: service.verificationNote, lastReviewedAt: service.lastReviewedAt,
+  })),
   {
     id: 'route-home',
     type: 'route',
@@ -51,7 +59,7 @@ export const siteRoutes: RouteRecord[] = [
     sitemapPriority: 0.9,
     changefreq: 'monthly',
     verificationNote:
-      'Activated in M6 — service discovery experience. Service detail pages remain draft pending vr-service-list.',
+      'Activated in M6 — service discovery experience. Four original-site service detail pages populated under Rafael’s September 26 direction; other draft records remain gated.',
     lastReviewedAt: '2026-08-09',
   },
   {

@@ -33,8 +33,8 @@ export const VERIFICATION_REQUIRED_ITEMS = [
   },
   {
     id: 'vr-service-list',
-    description: 'Complete, verified list of services offered.',
-    requiredFor: 'Activating service records in data/services.ts and navigation/services subnav.',
+    description: 'Additional services beyond the four original-site groups Rafael authorized September 26 remain pending.',
+    requiredFor: 'Activating remaining draft mechanical-installation, concrete-flatwork, foundations and site-work registry records. Four authorized groups are already active.',
     requiredSourceTier: 'priority-1-discovery-interview',
   },
   {

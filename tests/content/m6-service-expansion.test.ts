@@ -48,6 +48,8 @@
 // =============================================================================
 
 import { describe, it, expect } from 'vitest';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
 import {
   serviceRegistry,
   getPublishableServices,
@@ -105,10 +107,10 @@ describe('M6 — Route governance', () => {
 // =============================================================================
 
 describe('M6 — Service registry governance', () => {
-  it('Test 3 — getPublishableServices() returns empty array (vr-service-list pending)', () => {
+  it('Test 3 — four original-site services are authorized', () => {
     // No individual service is confirmed + active yet
     const publishable = getPublishableServices();
-    expect(publishable).toHaveLength(0);
+    expect(publishable).toHaveLength(4);
   });
 
   it('Test 4 — All pending/draft services do not appear in publishable list', () => {
@@ -275,11 +277,11 @@ describe('M6 — Service registry helpers', () => {
     expect(related).toHaveLength(0);
   });
 
-  it('Test 23 — getPublishableServicesByAudience returns empty array (none active)', () => {
+  it('Test 23 — both audiences can discover the four authorized services', () => {
     const residential = getPublishableServicesByAudience('residential');
     const commercial = getPublishableServicesByAudience('commercial');
-    expect(residential).toHaveLength(0);
-    expect(commercial).toHaveLength(0);
+    expect(residential).toHaveLength(4);
+    expect(commercial).toHaveLength(4);
   });
 
   it('Test 24 — getPublishableServicesByCategory returns empty array (none active)', () => {
@@ -316,13 +318,13 @@ describe('M6 — Sitemap governance', () => {
     expect(activePaths).toContain('/services');
   });
 
-  it('Test 28 — No /services/[slug] paths are in the route registry as active', () => {
+  it('Test 28 — all four authorized service details enter the route registry', () => {
     // Service detail slug routes are not in siteRoutes — they use generateStaticParams
     // which returns empty array when no services are confirmed+active.
     // This test confirms no slug paths exist in the registry unexpectedly.
     const publishableRoutes = siteRoutes.filter(isPublishable);
     const slugPaths = publishableRoutes.filter((r) => r.path.startsWith('/services/'));
-    expect(slugPaths).toHaveLength(0);
+    expect(slugPaths.map((route) => route.path).sort()).toEqual(getPublishableServices().map((service) => `/services/${service.slug}`).sort());
   });
 });
 
@@ -337,7 +339,9 @@ describe('M6 — Audience routing governance', () => {
     );
     for (const service of residentialServices) {
       // CTA must link to residential estimate (unless it has a canonical)
-      if (!service.canonicalPath) {
+      if (service.publicationStatus === 'active' && service.slug) {
+        expect(service.cta.href).toBe(`/services/${service.slug}`);
+      } else if (!service.canonicalPath) {
         expect(
           service.cta.href,
           `Service "${service.serviceKey}" with residential audience must link to residential estimate`
@@ -350,5 +354,29 @@ describe('M6 — Audience routing governance', () => {
     const siteWork = getServiceByKey('site-work');
     expect(siteWork?.audience).toBe('commercial');
     expect(siteWork?.cta.href).toBe('/estimate/commercial');
+  });
+});
+
+
+describe('September 26 service restoration', () => {
+  it('every card destination has populated detail content, real local photos and a sitemap route', () => {
+    for (const service of getPublishableServices()) {
+      expect(getServiceBySlug(service.slug!)).toBe(service);
+      expect(service.summary?.length).toBeGreaterThan(80);
+      expect(service.capabilityHighlights?.length).toBeGreaterThan(2);
+      expect(service.photos?.length).toBeGreaterThan(0);
+      expect(service.mediaStatus).toBe('ready');
+      for (const photo of service.photos ?? []) {
+        expect(existsSync(join(process.cwd(), 'public', photo.src))).toBe(true);
+        expect(photo.alt.length).toBeGreaterThan(10);
+      }
+      expect(getRoute(`/services/${service.slug}`)?.publicationStatus).toBe('active');
+    }
+  });
+  it('keeps earlier unverified draft records withheld', () => {
+    const active = getPublishableServices().map((service) => service.serviceKey);
+    for (const key of ['mechanical-installation', 'foundations', 'concrete-flatwork', 'site-work']) {
+      expect(active).not.toContain(key);
+    }
   });
 });
