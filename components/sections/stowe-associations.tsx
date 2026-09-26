@@ -2,6 +2,14 @@
 // alongside the assets. These are resource links, not new membership claims.
 const associations = [
   {
+    name: 'BXCC',
+    description: 'Builders Exchange of the Central Coast, Inc.',
+    image: '/images/associations/bxccweb.jpg',
+    href: 'http://www.constructionexchange.com/',
+    width: 143,
+    height: 96,
+  },
+  {
     name: 'ICPI',
     description: 'Interlocking Concrete Pavement Institute — now CMHA',
     image: '/images/associations/iciplogo.png',
@@ -34,7 +42,7 @@ export function StoweAssociations({ className = '' }: { className?: string }) {
       <p className="mb-5 text-xs font-semibold uppercase tracking-[0.18em] text-current/70">
         Industry resources
       </p>
-      <div className="grid grid-cols-3 gap-3 sm:gap-5">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-5">
         {associations.map((association) => (
           <a
             key={association.name}

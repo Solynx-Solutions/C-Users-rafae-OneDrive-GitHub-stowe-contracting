@@ -5,13 +5,15 @@
   "links": {
     "NFIB": "https://www.nfib.com/",
     "ICPI": "https://www.cmha.org/",
-    "NARI": "https://nari.org/"
+    "NARI": "https://nari.org/",
+    "BXCC": "http://www.constructionexchange.com/"
   },
   "notes": [
     "Original icpi.org link verified to redirect to cmha.org.",
     "Original NARI links nari.org; original NFIB legacy page normalized to official home.",
     "Original sidebar LinkedIn points to a Gary Stowe profile; component preserves company LinkedIn already present in review page.",
-    "No re-created or AI-generated logo artwork."
+    "No re-created or AI-generated logo artwork.",
+    "September 26 BXCC restored first, matching original construction-page sidebar and Rafael screenshot. Original anchor title: Member - Builders Exchange of the Central Coast; alt: Builders Exchange of the Central Coast, Inc. Retains exact historical http://www.constructionexchange.com/ target. HTTP and HTTPS destination requests timed out; current destination availability is not verified. No replacement association inferred from similarly named organizations."
   ],
   "assets": [
     {
@@ -31,6 +33,15 @@
       "file": "logo_nfib.gif",
       "source": "https://stowecontracting.com/wp-content/uploads/2014/07/logo_nfib.gif",
       "sha256": "6d417272864133e6a40f4b126b7bdbe794a4ae1e56e9ba27bf6867d38e75b0ae"
+    },
+    {
+      "file": "bxccweb.jpg",
+      "source": "https://stowecontracting.com/wp-content/uploads/2014/07/bxccweb.jpg",
+      "bytes": 6765,
+      "width": 143,
+      "height": 96,
+      "sha256": "d6a0442b82690fdeec79d312029a3ce86465f9a512ccc6a42f32f4733226a052"
     }
-  ]
+  ],
+  "bxcc_restored_at_utc": "2026-09-26T22:20:44.295844+00:00"
 }
