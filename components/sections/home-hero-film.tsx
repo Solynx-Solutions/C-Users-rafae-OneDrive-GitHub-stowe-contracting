@@ -21,10 +21,10 @@ export function HomeHeroFilm() {
   }, []);
 
   return (
-    <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#222522] lg:aspect-auto lg:min-h-[44rem]">
+    <div className="relative aspect-video w-full overflow-hidden bg-[#222522]">
       <video
         ref={video}
-        className="absolute inset-0 h-full w-full object-cover"
+        className="absolute inset-0 h-full w-full object-contain"
         poster="/media/stowe-house-poster.jpg"
         muted loop playsInline preload="none"
         aria-label="Stowe Contracting house and outdoor living project film"
@@ -45,3 +45,4 @@ export function HomeHeroFilm() {
     </div>
   );
 }
+

@@ -6,8 +6,9 @@ import { PageContainer } from '@/components/layout/page-container';
 export function HomeHero() {
   return (
     <section className="overflow-hidden bg-[#F6F3EC]" aria-label="Stowe Contracting introduction">
+      <HomeHeroFilm />
       <PageContainer>
-        <div className="grid min-h-[calc(100svh-4rem)] items-center gap-12 py-14 lg:grid-cols-[.78fr_1.22fr] lg:py-20">
+        <div className="py-10 lg:py-14">
           <div className="relative z-10">
             <p className="text-xs font-bold tracking-[.22em] text-[#24507A] uppercase">
               Monterey Bay Area · Since 1987
@@ -36,9 +37,9 @@ export function HomeHero() {
             </div>
           </div>
 
-          <HomeHeroFilm />
         </div>
       </PageContainer>
     </section>
   );
 }
+
