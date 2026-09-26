@@ -6,7 +6,7 @@
 
 'use client';
 
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { type NavItem } from '@/types';
 import { FocusBoundary } from '@/components/ui/focus-boundary';
@@ -29,8 +29,12 @@ interface MobileNavigationProps {
  */
 export function MobileNavigation({ items, ctaHref, ctaLabel }: MobileNavigationProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
-  const close = useCallback(() => setIsOpen(false), []);
+  const close = useCallback(() => {
+    setIsOpen(false);
+    toggleRef.current?.focus();
+  }, []);
   const toggle = useCallback(() => setIsOpen((prev) => !prev), []);
 
   // Lock body scroll when menu is open
@@ -49,6 +53,7 @@ export function MobileNavigation({ items, ctaHref, ctaLabel }: MobileNavigationP
     <div className="lg:hidden">
       {/* Hamburger / Close toggle */}
       <button
+        ref={toggleRef}
         type="button"
         onClick={toggle}
         aria-expanded={isOpen}
