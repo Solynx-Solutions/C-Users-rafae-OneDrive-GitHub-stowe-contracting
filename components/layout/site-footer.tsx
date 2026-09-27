@@ -120,7 +120,7 @@ export function SiteFooter() {
 
           {/* SOLYNX attribution â€” required */}
           <a href="https://solynx.solutions" target="_blank" rel="noopener noreferrer"
-            aria-label="Powered by SOLYNX — website design and management"
+            aria-label="Powered by SOLYNX - website design and management"
             className="inline-flex min-h-11 flex-wrap items-center justify-center gap-3 rounded text-xs text-[#d9d2c4] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
             <span>Powered by</span>
             <span className="relative block h-10 w-[168px] overflow-hidden rounded bg-white">
