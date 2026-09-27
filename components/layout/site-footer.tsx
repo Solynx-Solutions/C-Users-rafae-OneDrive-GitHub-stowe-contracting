@@ -1,3 +1,4 @@
+import Image from 'next/image';
 // =============================================================================
 // SITE FOOTER
 // Global site footer with brand lockup, legal nav links, and governed claims.
@@ -118,22 +119,14 @@ export function SiteFooter() {
           </p>
 
           {/* SOLYNX attribution — required */}
-          <p className="text-xs text-[#d9d2c4]">
-            Website designed, built &amp; managed by{' '}
-            <a
-              href="https://solynx.solutions"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={[
-                'text-[#d9d2c4]',
-                'hover:text-[var(--color-neutral-200)]',
-                'transition-colors duration-150',
-                'underline underline-offset-2',
-              ].join(' ')}
-            >
-              SOLYNX
-            </a>
-          </p>
+          <a href="https://solynx.solutions" target="_blank" rel="noopener noreferrer"
+            aria-label="Powered by SOLYNX � website design and management"
+            className="inline-flex min-h-11 flex-wrap items-center justify-center gap-3 rounded text-xs text-[#d9d2c4] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+            <span>Powered by</span>
+            <span className="relative block h-10 w-[168px] overflow-hidden rounded bg-white">
+              <Image src="/solynx-wordmark.png" alt="SOLYNX" width={270} height={79} className="absolute -left-[82px] -top-[17px] h-[79px] w-[270px] max-w-none" />
+            </span>
+          </a>
 
           {/* Legal nav — only confirmed+active */}
           {footerNavItems.length > 0 && (
