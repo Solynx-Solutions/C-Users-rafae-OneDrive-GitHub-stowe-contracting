@@ -82,15 +82,6 @@ export const stoweProjectPhotos: StoweProjectPhoto[] = [
     "alt": "Circular dark-brick inlay with contrasting RC initials within a paver courtyard.",
     "description": "Stowe identifies this custom work as a Belgard permeable Quarrystone field with a Brooklyn circle and accent.",
     "source": "https://www.facebook.com/photo/?fbid=1608748141262922&set=a.466575485480199"
-  },
-  {
-    "src": "/media/facebook-stowe/curved-garden-walls.jpg",
-    "width": 2048,
-    "height": 1468,
-    "title": "Curved garden walls",
-    "alt": "Curved masonry garden walls with capped piers and planting beside a home.",
-    "description": "Sweeping curves, stepped heights and planted spaces bring structure to this garden frontage.",
-    "source": "https://www.facebook.com/photo/?fbid=1608750904595979&set=a.466575485480199"
   }
 ],
 ...originalPhotos
