@@ -123,8 +123,8 @@ export function SiteFooter() {
             aria-label="Powered by SOLYNX - website design and management"
             className="inline-flex min-h-11 flex-wrap items-center justify-center gap-3 rounded text-xs text-[#d9d2c4] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
             <span>Powered by</span>
-            <span className="relative block h-10 w-[168px] overflow-hidden rounded bg-white">
-              <Image src="/solynx-wordmark.png" alt="SOLYNX" width={270} height={79} className="absolute -left-[82px] -top-[17px] h-[79px] w-[270px] max-w-none" />
+            <span className="block h-[54px] w-[184px] rounded bg-white">
+              <Image src="/solynx-wordmark.png" alt="SOLYNX" width={184} height={54} className="h-[54px] w-[184px] object-contain" />
             </span>
           </a>
 
