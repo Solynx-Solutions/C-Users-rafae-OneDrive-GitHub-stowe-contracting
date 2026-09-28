@@ -50,8 +50,8 @@ const originalPhotos: StoweProjectPhoto[] = [
     "alt": "Remodeled living room with a stone fireplace, wood flooring and recessed lighting.",
     "title": "Interior remodeling",
     "description": "Living-room photograph from Stowe’s original Complete Remodel portfolio.",
-    "source": "https://stowecontracting.com/construction/",
-    "sourceLabel": "View original construction portfolio"
+    "source": "/services/construction-remodeling",
+    "sourceLabel": "Explore construction & remodeling"
   },
   {
     "src": "/media/original-stowe/stowe-grass-front-view-original.jpg",
