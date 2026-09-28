@@ -32,7 +32,17 @@ const nextConfig: NextConfig = {
   // ── Redirects ────────────────────────────────────────────────────────────────
   // Add URL redirects here (e.g., old page slugs after rebrand)
   async redirects() {
-    return [];
+    return [
+      { source: '/us', destination: '/about', permanent: true },
+      { source: '/construction', destination: '/services/construction-remodeling', permanent: true },
+      { source: '/paving-stones', destination: '/services/paving-stones', permanent: true },
+      { source: '/synthetic-grass', destination: '/services/synthetic-grass', permanent: true },
+      { source: '/grading', destination: '/services/grading-site-preparation', permanent: true },
+      { source: '/portfolio/construction-1', destination: '/services/construction-remodeling', permanent: true },
+      { source: '/portfolio/construction-2', destination: '/services/construction-remodeling', permanent: true },
+      { source: '/portfolio/construction-3', destination: '/services/construction-remodeling', permanent: true },
+      { source: '/portfolio/commercial-tenant-improvement', destination: '/services/construction-remodeling', permanent: true },
+    ];
   },
 
   // ── Compiler ─────────────────────────────────────────────────────────────────
