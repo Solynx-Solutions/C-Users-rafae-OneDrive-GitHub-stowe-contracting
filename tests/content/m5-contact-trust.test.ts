@@ -47,6 +47,7 @@ import {
   resolveHours,
   resolveServiceAreaIdentity,
 } from '../../content/contact';
+import { mapContactLead, resolveContactRouting } from '../../lib/integrations/crm/lead-mapper';
 import { contactFormSchema } from '../../lib/validations/contactForm';
 import { contactPageSchema } from '../../lib/schema';
 import { siteRoutes } from '../../content/sources';
@@ -189,6 +190,15 @@ describe('M5 — Contact form validation', () => {
     email: 'jane.smith@example.com',
     message: 'I have a question about a residential project on my property.',
   };
+
+  it('accepts empty browser inquiry type and routes to general contact without SMS consent', () => {
+    const data = contactFormSchema.parse({ ...validBase, phone: '', inquiryType: '', preferredContactMethod: '' });
+    const lead = mapContactLead(data);
+    expect(data.inquiryType).toBeUndefined();
+    expect(lead).not.toHaveProperty('inquiryType');
+    expect(resolveContactRouting(lead.inquiryType)).toBe('general-contact');
+    expect(lead.smsConsent).toBe(false);
+  });
 
   it('Test 13 — valid minimal contact form data passes Zod schema', () => {
     const result = contactFormSchema.safeParse(validBase);

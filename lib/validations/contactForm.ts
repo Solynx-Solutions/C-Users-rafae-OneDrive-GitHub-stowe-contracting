@@ -56,11 +56,12 @@ export const contactFormSchema = z.object({
   ),
 
   // ── Inquiry type — drives CRM routing at M7+ ──────────────────────────────
-  inquiryType: z
-    .enum(['general', 'estimate-residential', 'estimate-commercial'], {
+  inquiryType: z.preprocess(
+    (value) => (value === '' ? undefined : value),
+    z.enum(['general', 'estimate-residential', 'estimate-commercial'], {
       error: 'Please select an inquiry type',
-    })
-    .optional(),
+    }).optional()
+  ),
 
   // ── Message ────────────────────────────────────────────────────────────────
   message: z
