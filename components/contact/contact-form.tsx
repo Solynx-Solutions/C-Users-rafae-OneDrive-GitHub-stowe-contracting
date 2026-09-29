@@ -437,8 +437,7 @@ export function ContactForm({ formId = 'contact-form' }: ContactFormProps) {
 
         {/* Privacy note */}
         <p className="text-center text-xs text-[var(--color-neutral-400)]">
-          Your information is used only to respond to your inquiry. We do not sell or share your
-          data.
+          Your information is used to process your inquiry and communicate with you, as described in our Privacy Policy.
         </p>
       </div>
     </form>

@@ -260,8 +260,7 @@ export function EstimateForm({ estimateType, serviceOptions, formId }: EstimateF
 
         {/* Privacy note */}
         <p className="text-center text-xs text-[var(--color-neutral-400)]">
-          Your information is used only to respond to your estimate request. We do not sell or share
-          your data.
+          Your information is used to process your request and communicate with you about your project, as described in our Privacy Policy.
         </p>
       </div>
     </form>
