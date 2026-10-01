@@ -46,9 +46,9 @@ export function ContactHero() {
         <div className="flex flex-col gap-8">
           {/* Eyebrow */}
           {locallyOwned && (
-            <p className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.25em] text-[var(--color-brand-primary)] uppercase">
+            <p className="inline-flex items-center gap-3 text-xs font-bold tracking-[0.25em] text-[var(--color-neutral-50)] uppercase">
               <span
-                className="inline-block h-px w-10 bg-[var(--color-brand-primary)]"
+                className="inline-block h-px w-10 bg-[var(--color-neutral-50)]"
                 aria-hidden="true"
               />
               {locallyOwned}
@@ -65,7 +65,7 @@ export function ContactHero() {
             >
               Let&apos;s Talk About
               <br />
-              <span className="text-[var(--color-brand-primary)]">Your Project</span>
+              <span className="text-[var(--color-neutral-50)]">Your Project</span>
             </h1>
 
             <p className="max-w-2xl text-lg leading-relaxed text-white/70">

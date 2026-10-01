@@ -87,7 +87,7 @@ export function MechanicalHero() {
               className={[
                 'inline-flex items-center gap-3',
                 'text-xs font-bold tracking-[0.25em] uppercase',
-                'text-[var(--color-brand-primary)]',
+                'text-[var(--color-neutral-50)]',
               ].join(' ')}
             >
               <span
@@ -108,7 +108,7 @@ export function MechanicalHero() {
             >
               Built for
               <br />
-              <span className="text-[var(--color-brand-primary)]">Demanding</span>
+              <span className="text-[var(--color-neutral-50)]">Demanding</span>
               <br />
               Hardscape
             </h1>
@@ -131,7 +131,7 @@ export function MechanicalHero() {
               { label: inHouseCrews ?? 'In-house crews', icon: 'crew' },
               { label: 'Crew-led execution', icon: 'equipment' },
               {
-                label: yearsInBusiness ? `${yearsInBusiness} of experience` : 'Established company',
+                label: yearsInBusiness ?? 'Established company',
                 icon: 'years',
               },
             ].map((indicator) => (
@@ -167,7 +167,7 @@ export function MechanicalHero() {
                 'text-base font-bold',
                 'hover:bg-[var(--color-brand-primary-dark)]',
                 'transition-colors duration-150',
-                'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-brand-primary)]',
+                'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-neutral-50)]',
                 'shadow-[var(--shadow-brand)]',
               ].join(' ')}
             >

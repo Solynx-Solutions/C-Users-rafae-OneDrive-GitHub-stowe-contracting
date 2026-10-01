@@ -154,7 +154,7 @@ export function StoweDesignReview() {
         .dr-original-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
         .dr-original-grid figure { margin: 0; min-width: 0; }
         .dr-original-grid a { display: block; color: inherit; text-decoration: none; background: var(--stone-100); }
-        .dr-original-grid a:focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+        .dr-original-grid a:focus-visible { outline: 3px solid currentColor; outline-offset: 4px; }
         .dr-original-grid :global(img) { width: 100%; height: 260px; object-fit: contain; }
         .dr-enlarge { display: block; padding: .6rem .8rem; font-size: .8rem; }
         .dr-original-grid figcaption { padding-top: .6rem; font-size: .85rem; }
@@ -170,7 +170,7 @@ export function StoweDesignReview() {
           --stone-300: #d9d2c4;
           --stone-600: #6f6a5e;
           --ink: #16283b;
-          --gold: #b08d57;
+          --brand-emphasis: var(--color-brand-punctuation);
           background: var(--stone-050);
           color: var(--ink);
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
@@ -185,7 +185,7 @@ export function StoweDesignReview() {
           margin: 0;
           letter-spacing: -0.01em;
         }
-        .dr-page em { font-style: italic; color: var(--gold); }
+        .dr-page em { font-style: italic; color: var(--brand-emphasis); }
 
         .dr-skip {
           position: absolute;
@@ -238,7 +238,7 @@ export function StoweDesignReview() {
         }
         .dr-toggle-btn:hover { border-color: var(--stone-100); }
         .dr-toggle-btn:focus-visible {
-          outline: 2px solid var(--gold);
+          outline: 2px solid currentColor;
           outline-offset: 2px;
         }
         .dr-recommended { opacity: 0.75; font-size: 0.62rem; }
@@ -279,6 +279,7 @@ export function StoweDesignReview() {
           max-width: 44rem;
         }
         .dr-cinematic .dr-intro h1 { font-size: clamp(2.1rem, 5.2vw, 3.6rem); color: var(--stone-050); }
+        .dr-cinematic .dr-intro h1 em { color: var(--stone-050); }
         .dr-cinematic .dr-lede { color: var(--stone-300); }
 
         .dr-editorial .dr-hero {
@@ -320,9 +321,9 @@ export function StoweDesignReview() {
           transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
         .dr-button:hover { background: var(--stone-050); box-shadow: 0 6px 18px rgba(0,0,0,0.18); transform: translateY(-1px); }
-        .dr-button:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
-        .dr-button-light { background: var(--navy-900); color: var(--stone-100); }
-        .dr-button-light:hover { background: var(--navy-800); }
+        .dr-button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+        .dr-button-light { background: var(--color-brand-primary); color: var(--stone-100); }
+        .dr-button-light:hover { background: var(--color-brand-primary-dark); }
 
         .dr-text-link {
           display: inline-flex;
@@ -333,7 +334,7 @@ export function StoweDesignReview() {
           text-underline-offset: 3px;
           font-size: 0.9rem;
         }
-        .dr-text-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+        .dr-text-link:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
 
         .dr-trust {
           display: flex;
@@ -390,7 +391,7 @@ export function StoweDesignReview() {
           transition: border-color 0.2s ease, transform 0.2s ease;
         }
         .dr-service:hover { border-color: var(--navy-900); transform: translateY(-2px); }
-        .dr-service:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+        .dr-service:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
         .dr-service-num { display: block; font-size: 0.75rem; color: var(--stone-600); margin-bottom: 0.75rem; }
         .dr-service h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
         .dr-service p { margin: 0; color: var(--stone-600); font-size: 0.92rem; }
@@ -403,6 +404,7 @@ export function StoweDesignReview() {
           padding: 5rem 1.25rem;
         }
         .dr-process > div { max-width: 40rem; margin: 0 auto; }
+        .dr-process h2 em { color: var(--stone-050); }
         .dr-process p { color: var(--stone-300); margin: 1.25rem 0 2rem; }
         .dr-process .dr-kicker { color: var(--stone-300); }
 
@@ -491,6 +493,7 @@ export function StoweDesignReview() {
             background: var(--stone-050);
           }
           .dr-cinematic .dr-intro h1 { color: var(--navy-900); }
+          .dr-cinematic .dr-intro h1 em { color: var(--brand-emphasis); }
           .dr-cinematic .dr-lede { color: var(--stone-600); }
           .dr-cinematic .dr-hero .dr-kicker { color: var(--stone-600); }
         }

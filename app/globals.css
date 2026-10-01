@@ -11,15 +11,15 @@
      TODO: Update with client-approved brand colors from branding guidelines.
      Placeholder palette — warm neutrals with a strong accent.
   ───────────────────────────────────────────────────────────────────────── */
-  --color-brand-primary: #24507a;
-  --color-brand-primary-light: #356a98;
-  --color-brand-primary-dark: #183a58;
+  --color-brand-primary: #2446a6;
+  --color-brand-primary-light: #4169e1;
+  --color-brand-primary-dark: #19347c;
 
   --color-brand-secondary: #222522;
   --color-brand-secondary-light: #565b57;
 
-  --color-brand-accent: #24507a;
-  --color-brand-punctuation: #7a3b45;
+  --color-brand-accent: #2446a6;
+  --color-brand-punctuation: #800020;
 
   /* ── Neutral Scale ────────────────────────────────────────────────────────── */
   --color-neutral-50: #f6f3ec;
