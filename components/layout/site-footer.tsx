@@ -113,7 +113,7 @@ export function SiteFooter() {
 
         {/* Footer bottom bar */}
         <Divider className="border-[var(--color-neutral-700)]" />
-        <div className="flex flex-col gap-3 py-5 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-3 py-5">
           <p className="text-xs text-[#d9d2c4]">
             &copy; {currentYear} Stowe Contracting. All rights reserved.
           </p>
@@ -121,9 +121,9 @@ export function SiteFooter() {
           {/* SOLYNX attribution — required */}
           <a href="https://solynx.solutions" target="_blank" rel="noopener noreferrer"
             aria-label="Powered by SOLYNX - website design and management"
-            className="inline-flex min-h-11 flex-wrap items-center justify-center gap-3 rounded text-xs text-[#d9d2c4] transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white">
+            className="flex w-full min-h-11 flex-wrap items-center justify-center gap-3 bg-[#f4f1e9] px-4 py-3 text-xs text-[#173a3d] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#173a3d]">
             <span>Powered by</span>
-            <span className="block h-[54px] w-[184px] rounded bg-white">
+            <span className="block h-[54px] w-[184px]">
               <Image src="/solynx-wordmark.png" alt="SOLYNX" width={184} height={54} className="h-[54px] w-[184px] object-contain" />
             </span>
           </a>
@@ -151,4 +151,3 @@ export function SiteFooter() {
     </footer>
   );
 }
-
