@@ -139,8 +139,8 @@ export function ContactInformation() {
           <div className="rounded-[var(--radius-xl)] border border-[var(--color-neutral-200)] bg-white p-5">
             <h3 className="text-lg font-semibold text-[var(--color-brand-secondary)]">Construction Estimates</h3>
             <p className="mt-2 text-sm">Contact Nick Stowe to discuss your construction estimate.</p>
-            <a href="tel:+18315957186" className="mt-2 inline-block font-semibold text-[var(--color-brand-primary)] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2">
-              Nick Stowe: 831-595-7186
+            <a href="tel:+18318840732" className="mt-2 inline-block font-semibold text-[var(--color-brand-primary)] underline underline-offset-4 focus-visible:outline-2 focus-visible:outline-offset-2">
+              Stowe Office: 831-884-0732
             </a>
           </div>
 
