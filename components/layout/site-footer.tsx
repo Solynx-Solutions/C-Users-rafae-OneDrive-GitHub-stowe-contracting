@@ -119,13 +119,21 @@ export function SiteFooter() {
           </p>
 
           {/* SOLYNX attribution — required */}
-          <a href="https://solynx.solutions" target="_blank" rel="noopener noreferrer"
-            aria-label="Powered by SOLYNX - website design and management"
-            className="flex w-full min-h-11 flex-wrap items-center justify-center gap-3 bg-[#f4f1e9] px-4 py-3 text-xs text-[#173a3d] hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#173a3d]">
-            <span>Powered by</span>
-            <span className="block h-[54px] w-[184px]">
-              <Image src="/solynx-wordmark.png" alt="SOLYNX" width={184} height={54} className="h-[54px] w-[184px] object-contain" />
-            </span>
+          <a
+            href="https://www.solynx.solutions/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Powered by SOLYNX LLC"
+            className="inline-flex min-h-11 max-w-full flex-wrap items-center justify-center gap-2 self-start border-0 bg-transparent p-0 text-[0.8rem] text-[#cfc4b2] no-underline transition-colors duration-150 hover:text-white focus-visible:outline-[3px] focus-visible:outline-offset-[5px] focus-visible:outline-[#d7b56d] md:self-auto"
+          >
+            <Image
+              src="/solynx-logo.png"
+              alt="SOLYNX logo"
+              width={1024}
+              height={300}
+              className="h-auto w-[120px] bg-transparent object-contain p-0 [filter:drop-shadow(0_0_0.7px_#cfc4b2)_drop-shadow(0_0_0.7px_#cfc4b2)_drop-shadow(0_0_0.7px_#cfc4b2)]"
+            />
+            <span>Powered by SOLYNX LLC</span>
           </a>
 
           {/* Legal nav — only confirmed+active */}
