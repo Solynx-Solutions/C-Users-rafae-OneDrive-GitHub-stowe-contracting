@@ -22,7 +22,7 @@ export function HeaderBrand() {
       ].join(' ')}
       aria-label="Stowe Contracting — Home"
     >
-      <BrandLogo />
+      <BrandLogo className="lg:h-14" />
     </Link>
   );
 }

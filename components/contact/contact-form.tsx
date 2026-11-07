@@ -313,12 +313,8 @@ export function ContactForm({ formId = 'contact-form' }: ContactFormProps) {
         )}
       </EstimateField>
 
-      {/* ── Phone (optional) ─────────────────────────────────────────────── */}
-      <EstimateField
-        label="Phone Number"
-        hint="Optional — include if you prefer a phone call."
-        error={errors.phone}
-      >
+      {/* ── Phone ────────────────────────────────────────────────────────── */}
+      <EstimateField label="Phone Number" error={errors.phone} required>
         {(id, describedBy) => (
           <input
             id={id}
@@ -328,6 +324,7 @@ export function ContactForm({ formId = 'contact-form' }: ContactFormProps) {
             aria-invalid={!!errors.phone}
             autoComplete="tel"
             placeholder="(831) 555-0000"
+            required
             className={inputClasses(!!errors.phone)}
           />
         )}

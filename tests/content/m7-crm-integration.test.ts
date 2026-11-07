@@ -110,6 +110,7 @@ const VALID_CONTACT: ContactFormValues = {
   firstName: 'Alice',
   lastName: 'Brown',
   email: 'alice@example.com',
+  phone: '8315550003',
   message: 'I have a question about a residential project on my property.',
   inquiryType: 'general',
   preferredContactMethod: 'either',
@@ -292,11 +293,9 @@ describe('M7 — Lead mapper (contact)', () => {
     expect(lead.message).toBe(VALID_CONTACT.message);
   });
 
-  it('Test 16 — optional phone is stripped when not provided', () => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { phone: _omit, ...withoutPhone } = { ...VALID_CONTACT, phone: undefined };
-    const lead = mapContactLead(withoutPhone as ContactFormValues);
-    expect(lead).not.toHaveProperty('phone');
+  it('Test 16 — required phone is included in the mapped contact lead', () => {
+    const lead = mapContactLead(VALID_CONTACT);
+    expect(lead.phone).toBe('8315550003');
   });
 
   it('Test 17 — inquiryType is included when provided', () => {

@@ -24,7 +24,7 @@ export default function ServicesPage() {
     <section aria-label="Services overview" className="bg-[var(--color-brand-secondary)] py-20 md:py-28">
       <PageContainer>
         <p className="mb-6 text-xs tracking-[.22em] text-white/70 uppercase">Stowe Contracting · Monterey Bay · Since 1987</p>
-        <h1 className="max-w-4xl text-5xl leading-tight text-white md:text-6xl">From the ground up.<br />Down to the finishing detail.</h1>
+        <h1 className="max-w-4xl text-5xl leading-tight text-white md:text-6xl">From The Ground Up<br />Down To The Finish Grade</h1>
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-white/75">Paving stones, construction, earthwork and outdoor improvements. Explore the work our crews bring together for homes and commercial properties.</p>
         <a href="#service-collection" className="mt-8 inline-flex min-h-12 items-center border-b border-white/50 text-white">Explore our services ↓</a>
       </PageContainer>
@@ -32,7 +32,7 @@ export default function ServicesPage() {
     <ContentSection bg="neutral" aria-label="Available services">
       <PageContainer>
         <div id="service-collection" className="scroll-mt-28 space-y-10">
-          <SectionHeading level="h2" subtitle="Find the right starting point for your property. Each service includes scope, real project photography and a path to discuss your plans.">Four capabilities. One considered approach.</SectionHeading>
+          <SectionHeading level="h2" subtitle="Find the right starting point for your property. Each service includes scope, real project photography and a path to discuss your plans.">Paving Stones, Construction, Earthwork and Outdoor Improvements</SectionHeading>
           <ServiceGrid />
         </div>
       </PageContainer>

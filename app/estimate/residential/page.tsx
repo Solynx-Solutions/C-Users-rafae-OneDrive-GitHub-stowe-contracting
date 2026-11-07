@@ -59,7 +59,7 @@ export const metadata: Metadata = generatePageMetadata({
 // =============================================================================
 
 const RESIDENTIAL_SERVICE_OPTIONS: ServiceOption[] = [
-  { value: 'concrete-flatwork', label: 'Concrete Flatwork (driveways, patios, walkways)' },
+  { value: 'concrete-flatwork', label: 'Pavers, Hardscape & Concrete Flatwork' },
   { value: 'concrete-foundation', label: 'Foundation Work' },
   { value: 'retaining-walls', label: 'Retaining Walls' },
   { value: 'site-preparation', label: 'Site Preparation' },

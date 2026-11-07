@@ -105,8 +105,8 @@ export interface ContactInformationRegistry {
 /**
  * Stowe Contracting contact information registry.
  *
- * All fields are pending vr-contact-information / vr-business-hours /
- * vr-service-areas. Do not set any field to active until verified.
+ * Phone and email were confirmed in Adam Cox's October 19, 2026 website notes.
+ * Address and hours remain pending and must not be published.
  *
  * The only confirmed identity marker is "Monterey Bay" — used in the
  * service area record's primaryIdentity.
@@ -116,22 +116,22 @@ export const contactInformation: ContactInformationRegistry = {
   phone: {
     id: 'contact-phone',
     source: 'priority-1-discovery-interview',
-    verificationStatus: 'pending',
-    publicationStatus: 'inactive',
-    value: '',
-    verificationNote: 'Pending vr-contact-information. Do not display until confirmed.',
-    lastReviewedAt: '2026-08-07',
+    verificationStatus: 'confirmed',
+    publicationStatus: 'active',
+    value: '(831) 884-0732',
+    verificationNote: 'Confirmed in Adam Cox website notes dated 2026-10-19.',
+    lastReviewedAt: '2026-10-19',
   },
 
   // ── Email ─────────────────────────────────────────────────────────────────
   email: {
     id: 'contact-email',
     source: 'priority-1-discovery-interview',
-    verificationStatus: 'pending',
-    publicationStatus: 'inactive',
-    value: '',
-    verificationNote: 'Pending vr-contact-information. Do not display until confirmed.',
-    lastReviewedAt: '2026-08-07',
+    verificationStatus: 'confirmed',
+    publicationStatus: 'active',
+    value: 'info@stowecontracting.com',
+    verificationNote: 'Confirmed in Adam Cox website notes dated 2026-10-19.',
+    lastReviewedAt: '2026-10-19',
   },
 
   // ── Address ───────────────────────────────────────────────────────────────

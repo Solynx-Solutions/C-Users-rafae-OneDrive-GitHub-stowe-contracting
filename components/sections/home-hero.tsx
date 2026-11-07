@@ -14,13 +14,13 @@ export function HomeHero() {
               Monterey Bay Area · Since 1987
             </p>
             <h1 className="mt-7 max-w-2xl text-[clamp(3.25rem,7vw,6.6rem)] leading-[.82] font-semibold tracking-[-.055em] text-[#222522]">
-              Monterey Built.
-              <span className="mt-2 block text-[#24507A]">Hardscape First.</span>
+              Monterey Built
+              <span className="mt-2 block text-[#24507A]">Hardscape First</span>
             </h1>
             <p className="mt-8 max-w-xl text-xl leading-8 text-[#535B57]">
-              Paver driveways, outdoor spaces, and site-ready construction delivered by dedicated
-              local crews—with the planning, placement capability, and field coordination demanding
-              scopes require.
+              Paver driveways, outdoor spaces, remodels, and site-ready construction delivered by
+              dedicated local crews—with the planning, placement capability, and field coordination
+              demanding scopes require.
             </p>
             <div className="mt-10 flex flex-wrap gap-4">
               <Link

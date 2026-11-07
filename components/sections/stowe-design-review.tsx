@@ -20,8 +20,8 @@ export function StoweDesignReview() {
           <div className="dr-hero-scrim" aria-hidden="true" />
           <div className="dr-intro">
             <p className="dr-kicker">STOWE CONTRACTING / MONTEREY BAY</p>
-            <h1>Monterey built.<br /><em>Hardscape first.</em></h1>
-            <p className="dr-lede">Paver driveways, outdoor spaces, and site-ready construction. A considered approach, from the ground up.</p>
+            <h1>Monterey built<br /><em>Hardscape first</em></h1>
+            <p className="dr-lede">Paver driveways, outdoor spaces, remodels, and site-ready construction—a considered approach from the ground up.</p>
             <div className="dr-actions">
               <Link className="dr-button" href="/contact#contact-form">Start a project <span aria-hidden="true">↗</span></Link>
               <a className="dr-text-link" href="#stowe-work">Explore our work <span aria-hidden="true">↓</span></a>
@@ -38,7 +38,7 @@ export function StoweDesignReview() {
         <section className="dr-section dr-statement">
           <p className="dr-kicker">01 / THE STOWE APPROACH</p>
           <div>
-            <h2>Good work begins<br /><em>before the first stone.</em></h2>
+            <h2>Good work begins<br /><em>before the first stone</em></h2>
             <p>Stowe Contracting was founded in 1987 by Gary and Debbie Stowe, after their military assignment at Fort Ord. From the beginning, the company was built on professionalism, integrity, and respect — for clients, for crews, and for the work itself.</p>
             <p>In 2004, Stowe Contracting added a grading division, extending the company’s reach beyond hardscape into site preparation and earthwork. Stowe owns its trucks and equipment, giving direct control over scheduling, quality, and the coordination that larger projects require.</p>
             <p>Planning, site preparation, and field coordination come together to shape outdoor spaces that belong to their surroundings.</p>
@@ -51,7 +51,7 @@ export function StoweDesignReview() {
         <section className="dr-section dr-work" id="stowe-work">
           <div className="dr-section-heading">
             <p className="dr-kicker">02 / A CLOSER LOOK</p>
-            <h2>The difference<br /><em>is in the details.</em></h2>
+            <h2>The difference<br /><em>is in the details</em></h2>
           </div>
           <p className="dr-work-intro">Every project starts with materials chosen for the setting. From paver driveways and patios to retaining walls and site preparation, Stowe brings construction and hardscape experience together. Explore Belgard / Oldcastle paver options for your project.</p>
           <div className="dr-project-preview">
@@ -63,16 +63,15 @@ export function StoweDesignReview() {
         <section className="dr-section dr-capabilities">
           <div className="dr-section-heading">
             <p className="dr-kicker">03 / CAPABILITIES</p>
-            <h2>One project.<br /><em>A connected approach.</em></h2>
+            <h2>One project<br /><em>A connected approach</em></h2>
           </div>
           <div className="dr-service-grid">
             {[
               ['01', 'Kitchen & bath remodels', 'Interior remodeling for kitchens and bathrooms, built to the same standard as our exterior work.', '/services'],
               ['02', 'Custom homes', 'Ground-up construction for custom residences across the Monterey Bay area.', '/services'],
               ['03', 'Commercial tenant improvements', 'Build-outs and improvements for commercial tenant spaces.', '/services'],
-              ['04', 'Paver driveways, patios & walkways', 'Belgard and Oldcastle paver systems, including permeable paver installations.', '/services'],
-              ['05', 'Grading & site preparation', 'Grading, drainage, asphalt paving, and stackable retaining walls.', '/services'],
-              ['06', 'Synthetic grass', 'Low-water, low-maintenance landscapes for residential and commercial sites.', '/services'],
+              ['04', 'Pavers, outdoor surfaces & synthetic grass', 'Belgard and Oldcastle paver systems, permeable installations, and synthetic grass planned together.', '/services'],
+              ['05', 'Grading & site preparation', 'Grading, drainage, asphalt paving, and structural retaining walls.', '/services'],
             ].map(([n, title, body, url]) => (
               <Link className="dr-service" href={url} key={n}>
                 <span className="dr-service-num">{n}</span>
@@ -87,26 +86,26 @@ export function StoweDesignReview() {
         <section className="dr-section dr-process">
           <p className="dr-kicker">04 / MECHANICAL INSTALLATION</p>
           <div>
-            <h2>Preparation.<br />Precision.<br /><em>A considered finish.</em></h2>
+            <h2>Preparation<br />Precision<br /><em>A considered finish</em></h2>
             <p>Stowe’s grading division, added in 2004, brought site preparation, drainage, and underground work in-house. People, equipment, and process — including Stowe’s own trucks and machinery — come together for larger hardscape scopes, from initial grading through the finished installation.</p>
             <Link className="dr-button dr-button-light" href="/mechanical-installation">See the installation approach <span aria-hidden="true">↗</span></Link>
           </div>
         </section>
 
         <section className="dr-section dr-turf">
-          <p className="dr-kicker">05 / SYNTHETIC GRASS</p>
+          <p className="dr-kicker">05 / OUTDOOR SURFACES</p>
           <div>
-            <h2>Less water.<br /><em>Less upkeep.</em></h2>
-            <p>Synthetic grass reduces irrigation, mowing, and ongoing yard maintenance, which can mean real savings in water use and time over the life of a landscape.</p>
-            <p>How long a synthetic lawn performs well depends on the product selected and how it’s cared for — we’ll walk through the options and what to expect for your site.</p>
-            <Link className="dr-text-link" href="/contact#contact-form">Ask about synthetic grass <span aria-hidden="true">↗</span></Link>
+            <h2>Paving and landscape<br /><em>planned together</em></h2>
+            <p>Synthetic grass can be coordinated with paver driveways, patios, and walkways as part of one outdoor-surface plan.</p>
+            <p>Product selection, transitions, and site preparation are considered alongside the surrounding hardscape.</p>
+            <Link className="dr-text-link" href="/services/paving-stones">Explore paving and outdoor surfaces <span aria-hidden="true">↗</span></Link>
           </div>
         </section>
 
         <section className="dr-section dr-materials">
           <p className="dr-kicker">06 / MATERIALS & PARTNERS</p>
           <div>
-            <h2>Paver systems<br /><em>built to last.</em></h2>
+            <h2>Paver systems<br /><em>built to last</em></h2>
             <p>Stowe installs paver systems from Belgard and Oldcastle, including permeable paver options for driveways, patios, and walkways.</p>
             <a className="dr-text-link" href="https://www.belgard.com/" target="_blank" rel="noopener noreferrer">Visit Belgard <span aria-hidden="true">↗</span></a>
           </div>
@@ -120,6 +119,7 @@ export function StoweDesignReview() {
               <span>3338 Paul Davis Drive</span>
               <span>Marina, CA 93933</span>
               <a href="tel:+18318840732">(831) 884-0732</a>
+              <a href="mailto:info@stowecontracting.com">info@stowecontracting.com</a>
               <a
                 href="https://www.google.com/maps/search/?api=1&query=3338+Paul+Davis+Drive%2C+Marina%2C+CA+93933"
                 target="_blank"
@@ -136,11 +136,11 @@ export function StoweDesignReview() {
           </div>
         </section>
 
-        <StoweAssociations className="mx-auto max-w-6xl px-5 py-16 md:px-8" />
+        <StoweAssociations showResources={false} className="mx-auto max-w-6xl px-5 py-16 md:px-8" />
 
         <section className="dr-section dr-close">
           <p className="dr-kicker">YOUR PROJECT / OUR NEXT CONVERSATION</p>
-          <h2>Let’s build<br /><em>something lasting.</em></h2>
+          <h2>Let’s build<br /><em>something lasting</em></h2>
           <Link className="dr-button" href="/contact#contact-form">Tell us what you have in mind <span aria-hidden="true">↗</span></Link>
         </section>
       </div>
@@ -505,4 +505,3 @@ export function StoweDesignReview() {
     </div>
   );
 }
-

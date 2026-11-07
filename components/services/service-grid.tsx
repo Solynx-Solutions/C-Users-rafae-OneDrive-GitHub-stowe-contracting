@@ -30,9 +30,12 @@ interface ServiceGridProps {
  */
 export function ServiceGrid({ audience, emptyStateMessage }: ServiceGridProps) {
   const allServices = getPublishableServices();
-  const services = audience
+  const filteredServices = audience
     ? allServices.filter((s) => s.audience === audience || s.audience === 'both')
     : allServices;
+  // Synthetic grass is presented as part of the paving/outdoor-surface scope on
+  // the services index. Its verified detail route remains available.
+  const services = filteredServices.filter((service) => service.serviceKey !== 'synthetic-grass');
 
   if (services.length === 0) {
     return <ServiceEmptyState variant="grid" message={emptyStateMessage} />;

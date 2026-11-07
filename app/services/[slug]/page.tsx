@@ -51,6 +51,7 @@ import {
   RelatedServices,
   ServiceEstimateCta,
 } from '@/components/services';
+import { StoweAssociations } from '@/components/sections/stowe-associations';
 import { Breadcrumbs } from '@/components/layout/breadcrumbs';
 
 // =============================================================================
@@ -244,6 +245,10 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
       )}
 
       {/* ── Estimate CTA ─────────────────────────────────────────────────── */}
+      {service.serviceKey === 'grading-site-preparation' && (
+        <StoweAssociations showSocial={false} className="mx-auto max-w-6xl px-5 py-16 md:px-8" />
+      )}
+
       <ContentSection bg="neutral" aria-label="Request an estimate">
         <PageContainer>
           <ServiceEstimateCta

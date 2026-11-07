@@ -54,7 +54,7 @@ export function HomeEditorial() {
         <PageContainer>
           <div className="grid gap-12 lg:grid-cols-[.62fr_1.38fr] lg:gap-24">
             <SectionTitle eyebrow="Hardscape authority">
-              Outdoor work that reads as architecture.
+              Outdoor work that reads as architecture
             </SectionTitle>
             <div>
               <p className="max-w-3xl text-2xl leading-9 text-[#535B57]">
@@ -81,7 +81,7 @@ export function HomeEditorial() {
                 Signature capability
               </p>
               <h2 className="mt-4 text-[clamp(2.5rem,5vw,4.5rem)] leading-[.95] text-[#222522]">
-                Mechanical paver installation.
+                Mechanical paver installation
               </h2>
               <p className="mt-7 max-w-xl text-xl leading-8 text-[#535B57]">
                 People, equipment, and process aligned for controlled placement across larger or
@@ -111,7 +111,7 @@ export function HomeEditorial() {
       <section className="bg-[#F6F3EC] py-24 md:py-32">
         <PageContainer>
           <SectionTitle eyebrow="One accountable contractor">
-            Three divisions. One clear path through the work.
+            Three divisions, one clear path through the work
           </SectionTitle>
           <div className="mt-16 grid border-t border-[#C9C2B7] lg:grid-cols-3">
             {[
@@ -146,7 +146,7 @@ export function HomeEditorial() {
 
       <section className="bg-white py-24 md:py-32">
         <PageContainer>
-          <SectionTitle eyebrow="Featured work">Let the built work carry the story.</SectionTitle>
+          <SectionTitle eyebrow="Featured work">Let the built work carry the story</SectionTitle>
           <p className="mt-6 max-w-2xl text-lg leading-8 text-[#535B57]">
             The editorial project system is ready for approved Stowe photography and verified
             project captions. No stock or scraped imagery is used.
@@ -171,7 +171,7 @@ export function HomeEditorial() {
                   Site capability
                 </p>
                 <h2 className="mt-5 text-[clamp(2.5rem,5vw,4.5rem)] leading-[.95] text-white">
-                  The crew behind the finish.
+                  The crew behind the finish
                 </h2>
               </div>
               <p className="mt-14 text-xl leading-8 text-white/70">
@@ -186,7 +186,7 @@ export function HomeEditorial() {
       <section className="bg-[#E9E3D8] py-24 md:py-32">
         <PageContainer>
           <div className="grid gap-14 lg:grid-cols-[.7fr_1.3fr] lg:gap-24">
-            <SectionTitle eyebrow="Built here">A Monterey Bay contractor since 1987.</SectionTitle>
+            <SectionTitle eyebrow="Built here">A Monterey Bay contractor since 1987</SectionTitle>
             <div>
               <p className="text-2xl leading-9 text-[#535B57]">
                 Stowe Contracting combines long-standing local knowledge with dedicated crews and

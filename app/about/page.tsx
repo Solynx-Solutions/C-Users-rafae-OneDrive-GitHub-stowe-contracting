@@ -194,7 +194,7 @@ export default function AboutPage() {
         </div>
 
         <PageContainer>
-          <div className="relative z-10 flex flex-col gap-6 py-16 md:py-24">
+          <div className="relative z-10 flex flex-col gap-6 py-16 md:py-24 lg:py-28">
             <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'About' }]} />
 
             {/* Eyebrow */}
@@ -236,12 +236,7 @@ export default function AboutPage() {
                 Who We Are
               </SectionHeading>
 
-              <div
-                className={[
-                  'grid gap-6',
-                  pillars.length >= 3 ? 'grid-cols-1 sm:grid-cols-2' : 'grid-cols-1 sm:grid-cols-2',
-                ].join(' ')}
-              >
+              <div className="mx-auto grid max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:gap-7">
                 {pillars.map((pillar, i) => (
                   <div
                     key={i}
@@ -249,7 +244,7 @@ export default function AboutPage() {
                       'flex flex-col gap-5',
                       'rounded-[var(--radius-xl)]',
                       'border border-[var(--color-neutral-200)]',
-                      'bg-white p-7',
+                      'bg-white p-7 lg:p-8',
                       'shadow-sm',
                     ].join(' ')}
                   >

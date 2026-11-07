@@ -88,14 +88,12 @@ describe('M5 — Route governance', () => {
 // =============================================================================
 
 describe('M5 — Contact information governance', () => {
-  it('Test 3 — phone is pending — resolvePhone() returns null', () => {
-    const result = resolvePhone();
-    expect(result).toBeNull();
+  it('Test 3 — confirmed phone resolves', () => {
+    expect(resolvePhone()).toBe('(831) 884-0732');
   });
 
-  it('Test 4 — email is pending — resolveEmail() returns null', () => {
-    const result = resolveEmail();
-    expect(result).toBeNull();
+  it('Test 4 — confirmed email resolves', () => {
+    expect(resolveEmail()).toBe('info@stowecontracting.com');
   });
 
   it('Test 5 — address is pending — resolveAddress() returns null', () => {
@@ -133,10 +131,13 @@ describe('M5 — Contact data model structure', () => {
     expect(contactInformation).toHaveProperty('serviceArea');
   });
 
-  it('Test 10 — all pending contact fields have empty values', () => {
-    // Pending fields must not have real values
-    expect(contactInformation.phone.value).toBe('');
-    expect(contactInformation.email.value).toBe('');
+  it('Test 10 — confirmed contact fields contain verified values', () => {
+    expect(contactInformation.phone.verificationStatus).toBe('confirmed');
+    expect(contactInformation.phone.publicationStatus).toBe('active');
+    expect(contactInformation.email.verificationStatus).toBe('confirmed');
+    expect(contactInformation.email.publicationStatus).toBe('active');
+    expect(contactInformation.phone.value).toBe('(831) 884-0732');
+    expect(contactInformation.email.value).toBe('info@stowecontracting.com');
     expect(contactInformation.address.street).toBe('');
     expect(contactInformation.address.city).toBe('');
     expect(contactInformation.address.state).toBe('');
@@ -156,8 +157,6 @@ describe('M5 — Contact data model structure', () => {
     ];
 
     const pendingValues = [
-      contactInformation.phone.value,
-      contactInformation.email.value,
       contactInformation.address.street,
       contactInformation.address.city,
       contactInformation.hours.display,
@@ -188,11 +187,12 @@ describe('M5 — Contact form validation', () => {
     firstName: 'Jane',
     lastName: 'Smith',
     email: 'jane.smith@example.com',
+    phone: '(831) 555-0198',
     message: 'I have a question about a residential project on my property.',
   };
 
   it('accepts empty browser inquiry type and routes to general contact without SMS consent', () => {
-    const data = contactFormSchema.parse({ ...validBase, phone: '', inquiryType: '', preferredContactMethod: '' });
+    const data = contactFormSchema.parse({ ...validBase, inquiryType: '', preferredContactMethod: '' });
     const lead = mapContactLead(data);
     expect(data.inquiryType).toBeUndefined();
     expect(lead).not.toHaveProperty('inquiryType');
@@ -246,11 +246,11 @@ describe('M5 — Contact form validation', () => {
     }
   });
 
-  it('Test 19 — phone is optional — omitting it does not fail', () => {
+  it('Test 19 — phone is required — omitting it fails', () => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { phone: _omit, ...withoutPhone } = { ...validBase, phone: undefined };
     const result = contactFormSchema.safeParse(withoutPhone);
-    expect(result.success).toBe(true);
+    expect(result.success).toBe(false);
   });
 
   it('Test 20 — invalid inquiryType fails validation', () => {
@@ -290,10 +290,10 @@ describe('M5 — Contact page schema governance', () => {
     expect(schema['@type']).toBe('ContactPage');
   });
 
-  it('Test 25 — contactPageSchema does not contain telephone, email, or street address', () => {
+  it('Test 25 — contactPageSchema includes verified phone/email but no street address', () => {
     const schemaStr = JSON.stringify(contactPageSchema({ url: '/contact' })).toLowerCase();
-    expect(schemaStr).not.toContain('"telephone"');
-    expect(schemaStr).not.toContain('"email"');
+    expect(schemaStr).toContain('"telephone":"(831) 884-0732"');
+    expect(schemaStr).toContain('"email":"info@stowecontracting.com"');
     expect(schemaStr).not.toContain('"streetaddress"');
   });
 });

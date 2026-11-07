@@ -7,8 +7,6 @@
 //
 //   BLOCKED (pending verification):
 //   - address (street, city, state, zip) — vr-contact-information
-//   - telephone — vr-contact-information
-//   - email — vr-contact-information
 //   - legalName — vr-legal-entity-name
 //   - openingHoursSpecification — vr-business-hours
 //   - areaServed — vr-service-areas
@@ -20,27 +18,32 @@
 //
 //   CONFIRMED (safe to include):
 //   - name: 'Stowe Contracting'
+//   - telephone and email — Adam Cox website notes, 2026-10-19
 //   - url: siteConfig.url
 //   - @type: 'Organization' / 'LocalBusiness'
 //   - @context: 'https://schema.org'
 // =============================================================================
 
 import { siteConfig } from '@/data/siteConfig';
+import { resolveEmail, resolvePhone } from '@/content/contact';
 
 /**
  * Safe LocalBusiness schema — minimal confirmed fields only.
- * Unverified address, phone, email, hours, and social profiles are omitted.
+ * Unverified address, hours, and social profiles are omitted.
  */
 export function localBusinessSchema() {
+  const telephone = resolvePhone();
+  const email = resolveEmail();
+
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: siteConfig.name,
     url: siteConfig.url,
     sameAs: [siteConfig.social.facebook],
+    ...(telephone ? { telephone } : {}),
+    ...(email ? { email } : {}),
     // address: OMITTED — pending vr-contact-information
-    // telephone: OMITTED — pending vr-contact-information
-    // email: OMITTED — pending vr-contact-information
     // openingHoursSpecification: OMITTED — pending vr-business-hours
     // areaServed: OMITTED — pending vr-service-areas
     // foundingDate: OMITTED — CHRONOLOGY POLICY: no exact year
@@ -52,16 +55,19 @@ export function localBusinessSchema() {
  * Safe Organization schema — minimal confirmed fields only.
  */
 export function organizationSchema() {
+  const telephone = resolvePhone();
+  const email = resolveEmail();
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: siteConfig.name,
     url: siteConfig.url,
     sameAs: [siteConfig.social.facebook],
+    ...(telephone ? { telephone } : {}),
+    ...(email ? { email } : {}),
     // legalName: OMITTED — pending vr-legal-entity-name
     // address: OMITTED — pending vr-contact-information
-    // telephone: OMITTED — pending vr-contact-information
-    // email: OMITTED — pending vr-contact-information
   };
 }
 
@@ -207,14 +213,17 @@ export function articleSchema({
  *
  * GOVERNANCE:
  *   - ContactPage type indicates this page's purpose to search engines.
- *   - telephone, email, and address are OMITTED until vr-contact-information resolves.
- *   - Do not add invented telephone/address/email here.
+ *   - Verified telephone and email are included from the governed contact registry.
+ *   - Address remains omitted until vr-contact-information resolves.
  *   - LocalBusiness block reused from localBusinessSchema() for consistency.
  *
  * When contact fields are confirmed, update localBusinessSchema() —
  * this schema will inherit the values automatically via the shared block.
  */
 export function contactPageSchema({ url }: { url: string }) {
+  const telephone = resolvePhone();
+  const email = resolveEmail();
+
   return {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
@@ -230,8 +239,8 @@ export function contactPageSchema({ url }: { url: string }) {
       '@type': 'LocalBusiness',
       name: siteConfig.name,
       url: siteConfig.url,
-      // telephone: omitted — pending vr-contact-information
-      // email: omitted — pending vr-contact-information
+      ...(telephone ? { telephone } : {}),
+      ...(email ? { email } : {}),
       // address: omitted — pending vr-contact-information
       // openingHoursSpecification: omitted — pending vr-business-hours
       areaServed: {

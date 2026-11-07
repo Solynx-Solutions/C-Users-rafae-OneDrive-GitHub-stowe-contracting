@@ -5,7 +5,7 @@
 //
 // DESIGN:
 //   - Split firstName/lastName for CRM compatibility (GoHighLevel / LeadConnector)
-//   - Phone optional — visitor may prefer email contact
+//   - Phone required for project follow-up; SMS consent remains separate and optional
 //   - inquiryType drives routing (estimate vs. general question)
 //   - message field kept separate from projectDescription
 //
@@ -36,12 +36,12 @@ export const contactFormSchema = z.object({
   // ── Contact: communication ─────────────────────────────────────────────────
   email: z.string().email('Please enter a valid email address'),
 
-  // Phone is optional on the contact form (visitor may prefer email-only)
+  // Phone is required for project follow-up. This does not imply SMS consent.
   phone: z
     .string()
-    .optional()
+    .min(1, 'Phone number is required')
     .refine(
-      (val) => !val || /^\+?[\d\s\-().]{7,20}$/.test(val),
+      (val) => /^\+?[\d\s\-().]{7,20}$/.test(val),
       'Please enter a valid phone number'
     ),
 
