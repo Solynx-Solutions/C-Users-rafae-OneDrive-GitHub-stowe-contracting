@@ -17,25 +17,30 @@ import { claimsRegistry, messagesRegistry } from '../../lib/content/registry';
 describe('Schema safety — localBusinessSchema()', () => {
   const schema = localBusinessSchema();
 
-  // Test 12: Schema must not include unverified fields
-  it('Test 12 — does not include telephone', () => {
-    expect(schema).not.toHaveProperty('telephone');
+  // Test 12: Schema includes only fields confirmed by the November 7 SEO reconciliation.
+  it('Test 12 — includes the confirmed public telephone', () => {
+    expect(schema).toHaveProperty('telephone', '(831) 884-0732');
   });
 
-  it('Test 12 — does not include email', () => {
-    expect(schema).not.toHaveProperty('email');
+  it('Test 12 — includes the confirmed public email', () => {
+    expect(schema).toHaveProperty('email', 'info@stowecontracting.com');
   });
 
-  it('Test 12 — does not include address', () => {
-    expect(schema).not.toHaveProperty('address');
+  it('Test 12 — includes the confirmed public address', () => {
+    expect(schema.address).toMatchObject({
+      streetAddress: '3338 Paul Davis Drive',
+      addressLocality: 'Marina',
+      addressRegion: 'CA',
+      postalCode: '93933',
+    });
   });
 
   it('Test 12 — does not include openingHoursSpecification', () => {
     expect(schema).not.toHaveProperty('openingHoursSpecification');
   });
 
-  it('Test 12 — does not include areaServed', () => {
-    expect(schema).not.toHaveProperty('areaServed');
+  it('Test 12 — includes the confirmed Monterey Bay service identity', () => {
+    expect(schema.areaServed).toEqual({ '@type': 'Place', name: 'Monterey Bay' });
   });
 
   it('Test 12 — does not include foundingDate', () => {
@@ -74,9 +79,9 @@ describe('Schema safety — organizationSchema()', () => {
     expect(schema).not.toHaveProperty('legalName');
   });
 
-  it('Test 12 — does not include telephone, email, or address', () => {
-    expect(schema).not.toHaveProperty('telephone');
-    expect(schema).not.toHaveProperty('email');
+  it('Test 12 — includes confirmed public contact fields but not an organization address', () => {
+    expect(schema).toHaveProperty('telephone', '(831) 884-0732');
+    expect(schema).toHaveProperty('email', 'info@stowecontracting.com');
     expect(schema).not.toHaveProperty('address');
     expect(schema.sameAs).toEqual(['https://www.facebook.com/stowecontractinginc']);
   });

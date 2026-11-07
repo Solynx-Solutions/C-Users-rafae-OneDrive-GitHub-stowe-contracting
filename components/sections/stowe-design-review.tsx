@@ -121,7 +121,7 @@ export function StoweDesignReview() {
               <a href="tel:+18318840732">(831) 884-0732</a>
               <a href="mailto:info@stowecontracting.com">info@stowecontracting.com</a>
               <a
-                href="https://www.google.com/maps/search/?api=1&query=3338+Paul+Davis+Drive%2C+Marina%2C+CA+93933"
+                href="https://www.google.com/maps/place/?q=place_id:ChIJ2VOGkiT9jYARqrfsI5ATT-s"
                 target="_blank"
                 rel="noopener noreferrer"
               >

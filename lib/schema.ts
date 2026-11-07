@@ -6,10 +6,8 @@
 // are confirmed + active:
 //
 //   BLOCKED (pending verification):
-//   - address (street, city, state, zip) — vr-contact-information
 //   - legalName — vr-legal-entity-name
 //   - openingHoursSpecification — vr-business-hours
-//   - areaServed — vr-service-areas
 //   - foundingDate — vr-founding-year (CHRONOLOGY POLICY: no exact year)
 //   - numberOfEmployees — exact total pending (use 30+ in copy; omit from schema)
 //   - unverified social profiles — vr-social-profiles
@@ -19,6 +17,7 @@
 //   CONFIRMED (safe to include):
 //   - name: 'Stowe Contracting'
 //   - telephone and email — Adam Cox website notes, 2026-10-19
+//   - public address, Monterey Bay service identity, and Google place ID — Agent 08 audit, 2026-11-07
 //   - url: siteConfig.url
 //   - @type: 'Organization' / 'LocalBusiness'
 //   - @context: 'https://schema.org'
@@ -28,8 +27,8 @@ import { siteConfig } from '@/data/siteConfig';
 import { resolveEmail, resolvePhone } from '@/content/contact';
 
 /**
- * Safe LocalBusiness schema — minimal confirmed fields only.
- * Unverified address, hours, and social profiles are omitted.
+ * Safe LocalBusiness schema — confirmed public fields only.
+ * Unverified hours and coordinates are omitted.
  */
 export function localBusinessSchema() {
   const telephone = resolvePhone();
@@ -38,14 +37,27 @@ export function localBusinessSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
+    '@id': 'https://stowecontracting.com/#localbusiness',
     name: siteConfig.name,
     url: siteConfig.url,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: '3338 Paul Davis Drive',
+      addressLocality: 'Marina',
+      addressRegion: 'CA',
+      postalCode: '93933',
+      addressCountry: 'US',
+    },
+    areaServed: {
+      '@type': 'Place',
+      name: 'Monterey Bay',
+    },
+    hasMap: 'https://www.google.com/maps/place/?q=place_id:ChIJ2VOGkiT9jYARqrfsI5ATT-s',
     sameAs: [siteConfig.social.facebook],
     ...(telephone ? { telephone } : {}),
     ...(email ? { email } : {}),
-    // address: OMITTED — pending vr-contact-information
     // openingHoursSpecification: OMITTED — pending vr-business-hours
-    // areaServed: OMITTED — pending vr-service-areas
+    // geo: OMITTED — exact GBP coordinates were not supplied by the audit
     // foundingDate: OMITTED — CHRONOLOGY POLICY: no exact year
     // numberOfEmployees: OMITTED — exact total pending
   };
@@ -241,11 +253,10 @@ export function contactPageSchema({ url }: { url: string }) {
       url: siteConfig.url,
       ...(telephone ? { telephone } : {}),
       ...(email ? { email } : {}),
-      // address: omitted — pending vr-contact-information
       // openingHoursSpecification: omitted — pending vr-business-hours
       areaServed: {
-        '@type': 'GeoCircle',
-        description: 'Monterey Bay area',
+        '@type': 'Place',
+        name: 'Monterey Bay',
       },
     },
   };

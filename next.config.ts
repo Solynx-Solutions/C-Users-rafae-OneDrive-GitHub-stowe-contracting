@@ -33,6 +33,12 @@ const nextConfig: NextConfig = {
   // Add URL redirects here (e.g., old page slugs after rebrand)
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.stowecontracting.com' }],
+        destination: 'https://stowecontracting.com/:path*',
+        permanent: true,
+      },
       { source: '/us', destination: '/about', permanent: true },
       { source: '/construction', destination: '/services/construction-remodeling', permanent: true },
       { source: '/paving-stones', destination: '/services/paving-stones', permanent: true },
